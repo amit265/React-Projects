@@ -1,0 +1,85 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* write your CSS here */
+
+body {
+  background-color: #f9efef;
+
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  width: 60vw;
+  height: 35vh;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 35vh;
+  margin-left: 20vw;
+
+}
+
+.heading, .paragraph, .form, .terms {
+  margin-bottom: 10px;
+  padding: 0 150px;
+  text-align: center;
+}
+
+.paragraph p {
+  font-size: 16px;
+}
+
+.heading h1 {
+  font-size: 32px;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  gap: 1em;
+}
+
+.form input {
+  width: 80%;
+  height: 60px;
+  border-radius: 5px;
+  font-size: 20px;
+  padding-left: 20px;
+  background-color: #f9efef;
+}
+
+.form button {
+  width: 20%;
+  font-size: 20px;
+  background-color: black;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.terms {
+  display: flex;
+
+}
+
+.terms input {
+  display: inline;
+  text-align: start;
+  align-self: first baseline;
+}
+
+.terms p {
+  font-size: 12px;
+  text-align: start;
+  padding-left: 10px;
+}
+
+
+
+
