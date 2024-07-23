@@ -11,9 +11,9 @@ const ItemList = ({ data}) => {
   return (
     <div>
       {data.categories.map((res, index) => (
-        <div key={res.title} className="bg-green-400 p-2 rounded-lg my-2" onClick={handleClick}>
+        <div key={res.title} className="bg-green-400 p-2 rounded-lg my-2">
           <h1
-            className="cursor-pointer font-semibold text-black"
+            className="cursor-pointer font-semibold text-black" onClick={handleClick}
             
           >
             {res.title}

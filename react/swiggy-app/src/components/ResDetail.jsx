@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
-import { SWIGGY_CDN, SWIGGY_RES_API } from "../utils/constants";
+import { Link, useParams } from "react-router-dom";
+import { BASE_URL, SWIGGY_CDN, SWIGGY_RES_API } from "../utils/constants";
 import useResAPI from "../utils/useResAPI";
 import ShimmerRes from "./ShimmerRes";
 import ResItemCategory from "./ResItemCategory";
@@ -30,6 +30,9 @@ const ResDetail = () => {
     return <div>Error fetching data</div>;
   }
 
+  console.log("filterNestedCategory", filterNestedCategory);
+  console.log("resItemCategory", resItemCategory);
+
   return (
     <>
       <div className="mx-auto bg-white flex w-8/12 mt-8 p-4 rounded-lg justify-between shadow-lg">
@@ -56,14 +59,28 @@ const ResDetail = () => {
 
       <div className="mt-8 p-4 rounded-lg w-10/12 mx-auto">
         <h1 className="text-center text-2xl text-black font-bold">Main Menu</h1>
-        {filterNestedCategory.map((res, index) => (
-          <ResItemCategory
-            key={res.card.card.title}
-            data={res.card.card}
-            showItems={index === showIndex ? true : false}
-            setShowIndex={() => setShowIndex(index)}
-          />
-        ))}
+        {filterNestedCategory.length === 0 ? (
+          <div>
+            <h1 className="fonr-bold text-center mt-4">
+              There is no menu available for{" "}
+              <span className="font-bold underline">{name}</span>
+            </h1>{" "}
+            <Link to={BASE_URL+"/"}>
+              <h2 className="text-center p-4 shadow-lg font-bold text-red-600">
+                Go to Restaurant
+              </h2>
+            </Link>
+          </div>
+        ) : (
+          filterNestedCategory.map((res, index) => (
+            <ResItemCategory
+              key={res.card.card.title}
+              data={res.card.card}
+              showItems={index === showIndex ? true : false}
+              setShowIndex={() => setShowIndex(index)}
+            />
+          ))
+        )}
       </div>
     </>
   );

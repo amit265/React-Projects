@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
-import { SWIGGY_API, SWIGGY_PATNA } from "../utils/constants";
+import { BASE_URL, SWIGGY_API, SWIGGY_PATNA } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useResAPI from "../utils/useResAPI";
@@ -91,7 +91,7 @@ const Body = () => {
 
       <div className="card-container">
         {filteredResList.map((res) => (
-          <Link key={res.info.id} to={"/" + res.info.id}>
+          <Link key={res.info.id} to={BASE_URL+"/" + res.info.id}>
             <Card data={res} />
           </Link>
         ))}

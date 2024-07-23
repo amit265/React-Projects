@@ -4,8 +4,38 @@
   box-sizing: border-box;
 }
 
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fireworks {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+/* Add this to your styles.css or as inline CSS */
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+.animate-fireworks {
+  animation: fireworks 2s ease-in-out infinite;
+}
+
 body {
-  background-color: azure
+  background-color: azure;
 }
 
 @tailwind base;
@@ -39,7 +69,6 @@ body {
   margin-inline: auto;
   min-width: 400px;
   padding: 1rem;
-
 }
 
 .container {
@@ -101,14 +130,11 @@ ul {
   box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
   background-color: #e2e4e7;
   border-radius: 10px;
-
 }
 
 .active {
   background-color: green;
 }
-
-
 
 h3 {
   font-weight: 800;
@@ -254,18 +280,4 @@ input {
   font-size: 1.2rem;
   text-align: center;
   border: 1px solid black;
-}
-
-button {
-  font-size: 1.5rem;
-
-  background-color: #e2e4e7;
-  padding: 10px 1rem;
-  border-radius: 10px;
-}
-
-button:hover {
-  background-color: greenyellow;
-  box-shadow: 0px 0px 10px rgba(10, 235, 81, 0.7);
-  
 }
