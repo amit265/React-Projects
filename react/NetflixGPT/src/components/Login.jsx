@@ -17,7 +17,7 @@ const Login = () => {
       </div>
       
         <div className="absolute inset-0 mx-auto my-56 w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 opacity-90">
-          <form className="space-y-6" action="#">
+          <form onSubmit={(e) => e.preventDefault()} className="space-y-6" action="#">
             <h5 className="text-xl font-medium text-gray-900 dark:text-white">
               {isSignIn ? "Sign in" : "Sign Up"}
             </h5>
