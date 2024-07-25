@@ -3,28 +3,30 @@ import { API_OPTIONS } from "../utils/constants";
 import { addTrailerVideo } from "../utils/moviesSlice";
 import { useEffect } from "react";
 
-const useMovieTrailer =(movieId) => {
-    const dispatch = useDispatch();
-
+const useMovieTrailer = (movieId) => {
+  const dispatch = useDispatch();
 
   const getMovieVideos = async () => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/movie/"+ movieId +"/videos?language=en-US",
-      API_OPTIONS
-    );
-    const json = await data.json();
-    // console.log("video id", json);
+    if (!movieId) return;
 
-    const filterData = json.results.filter((vid) => vid.type === "Trailer");
-    const trailer = filterData.length ? filterData[0] : json.results[0];
-    // console.log("trailer", trailer);
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
+        API_OPTIONS
+      );
+      const json = await response.json();
+      const filterData = json.results.filter((vid) => vid.type === "Trailer");
+      const trailer = filterData.length ? filterData[0] : json.results[0];
 
-    dispatch(addTrailerVideo(trailer));
+      dispatch(addTrailerVideo({ id: movieId, trailer }));
+    } catch (error) {
+      console.error("Failed to fetch movie trailer:", error);
+    }
   };
 
   useEffect(() => {
     getMovieVideos();
-  }, []);
-}
+  }, [movieId]);
+};
 
 export default useMovieTrailer;
