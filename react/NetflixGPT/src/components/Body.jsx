@@ -25,23 +25,6 @@ const Body = () => {
         }
     ]);
 
-    useEffect(() => {
-
-
-        onAuthStateChanged(auth, (user) => {
-          if (user) {
-                 const {uid, displayName, email, photoURL} = user;
-                dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}))
-                // navigate("/browse");
-          } else {
-            dispatch(removeUser());
-            // navigate("/")
-          }
-        });
-
-
-
-    }, [])
 
 
 
