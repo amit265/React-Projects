@@ -11,10 +11,14 @@ const useNowPlayingMovies = () => {
 );
 
   const getNowPlayingMovies = async () => {
+    try {
     const data = await fetch(NOW_PLAYING, API_OPTIONS);
     const json = await data.json();
-    // console.log("movieList", json);
     dispatch(addNowPlayingMovies(json.results));
+    } catch (error){
+      console.error("Failed to fetch now playing movies:", error);
+    }
+
   };
 
   useEffect(() => {

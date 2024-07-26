@@ -20,7 +20,6 @@ const Header = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const showGPTSearch = useSelector(store => store.gpt.showGPTSearch);
-console.log(showGPTSearch);
 
   const handleSignOut = () => {
     signOut(auth)
@@ -68,11 +67,11 @@ console.log(showGPTSearch);
 
 
   return (
-    <div className="absolute z-10 w-full bg-gradient-to-b from-black px-8 py-2 flex justify-between items-center">
-      <img className="w-44" src={LOGO} alt="logo" />
-      {user && (
-        <div className="flex items-center space-x-4 text-white">
-         { showGPTSearch && 
+    <div className="fixed z-50 w-full bg-gradient-to-b from-black px-8 py-2 flex justify-between items-center">
+    <img className="w-44" src={LOGO} alt="logo" />
+    {user && (
+      <div className="flex items-center space-x-4 text-white">
+        {showGPTSearch && (
           <select
             onChange={handleLanguageChange}
             className="p-2 bg-gray-900 text-white m-2"
@@ -82,23 +81,24 @@ console.log(showGPTSearch);
                 {lang.name}
               </option>
             ))}
-          </select>}
-          <button
-            onClick={handleGPTSearch}
-            className="p-2 mx-4 my-2 bg-purple-800 text-white rounded-lg"
-          >
-           {showGPTSearch ? "Home" : "GPT Search"} 
-          </button>
-          <img className="w-12 h-12" src={USER_AVATAR} alt="" />
-          <button
-            onClick={handleSignOut}
-            className="bg-red-600 px-4 py-2 rounded"
-          >
-            Sign out
-          </button>
-        </div>
-      )}
-    </div>
+          </select>
+        )}
+        <button
+          onClick={handleGPTSearch}
+          className="p-2 mx-4 my-2 bg-purple-800 text-white rounded-lg"
+        >
+          {showGPTSearch ? "Home" : "GPT Search"}
+        </button>
+        <img className="w-12 h-12" src={USER_AVATAR} alt="" />
+        <button
+          onClick={handleSignOut}
+          className="bg-red-600 px-4 py-2 rounded"
+        >
+          Sign out
+        </button>
+      </div>
+    )}
+  </div>
   );
 };
 

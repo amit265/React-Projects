@@ -11,10 +11,13 @@ const useTopRatedMovies = () => {
 );
 
   const getTopRatedMovies = async () => {
+    try {
     const data = await fetch(TOP_RATED, API_OPTIONS);
     const json = await data.json();
-    // console.log("movieList", json);
     dispatch(addTopRatedMovies(json.results));
+    } catch (error) {
+      console.error("Failed to fetch top rated movies:", error);
+    }
   };
 
   useEffect(() => {

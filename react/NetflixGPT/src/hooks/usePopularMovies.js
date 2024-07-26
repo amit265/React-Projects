@@ -11,10 +11,15 @@ const usePopularMovies = () => {
 );
 
   const getPopularMovies = async () => {
+
+    try {
     const data = await fetch(POPULAR, API_OPTIONS);
     const json = await data.json();
-    // console.log("movieList", json);
     dispatch(addPopularMovies(json.results));
+    } catch (error) {
+      console.error("Failed to fetch popular movies:", error);
+
+    }
   };
 
   useEffect(() => {

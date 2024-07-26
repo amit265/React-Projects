@@ -14,7 +14,6 @@ const MovieCard = ({ movies }) => {
   useMovieTrailer(movieId);
   const trailerVideo = useSelector((store) => store.movies?.trailers[movieId]);
   const trailerKey = trailerVideo?.key;
-  console.log("trailerKey", trailerKey);
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);

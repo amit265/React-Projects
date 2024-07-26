@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 const VideoBackground = ({ movieId }) => {
   const trailerVideo = useSelector((store) => store.movies?.trailers[movieId]);
-
+  if(!trailerVideo) return;
   return (
     <div className="top-0 left-0 w-full h-full overflow-hidden">
       {trailerVideo ? (

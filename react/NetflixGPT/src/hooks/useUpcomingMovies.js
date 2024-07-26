@@ -11,10 +11,14 @@ const useUpcomingMovies = () => {
 );
 
   const getUpcomingMovies = async () => {
+    try {
     const data = await fetch(UPCOMING, API_OPTIONS);
     const json = await data.json();
-    // console.log("movieList", json);
     dispatch(addUpcomingMovies(json.results));
+    } catch (error) {
+      console.error("Failed to fetch upcoming movies:", error);
+
+    }
   };
 
   useEffect(() => {
