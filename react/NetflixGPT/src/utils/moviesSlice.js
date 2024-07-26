@@ -29,6 +29,9 @@ const moviesSlice = createSlice({
     },
     addMovieGenre: (state, action) => {
       state.movieGenre = action.payload;
+    },
+    clearMovieGenre: (state) => {
+      state.movieGenre = null;
     }
   },
 });
@@ -39,7 +42,8 @@ export const {
   addTopRatedMovies,
   addUpcomingMovies,
   addTrailerVideo,
-  addMovieGenre
+  addMovieGenre,
+  clearMovieGenre
 } = moviesSlice.actions;
 
 export default moviesSlice.reducer;

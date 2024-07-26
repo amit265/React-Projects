@@ -1,11 +1,11 @@
 const lang = {
   en: {
     search: "Search",
-    gptSearchPlaceholder: "What would you like to watch today?",
+    gptSearchPlaceholder: "API token is exhausted. You can only search movies?",
     allCategories: "Browse All Genre",
     top250: "Top 250",
     action: "Action",
-    comedy : "Comedy",
+    comedy: "Comedy",
     documentary: "Documentary",
     fantasy: "Fantasy",
     horror: "Horror",
@@ -20,7 +20,7 @@ const lang = {
     allCategories: "सभी प्रकार ब्राउज़ करें",
     top250: "शीर्ष 250",
     action: "ऐक्शन",
-    comedy : "कॉमेडी",
+    comedy: "कॉमेडी",
     documentary: "डॉक्यूमेंट्री",
     fantasy: "कल्पना",
     horror: "डरावने",
@@ -28,7 +28,6 @@ const lang = {
     romance: "रोमांस",
     thriller: "थ्रिलर",
     musical: "संगीतमय",
-
   },
   bahasa: {
     search: "Mencari",
@@ -36,7 +35,7 @@ const lang = {
     allCategories: "Jelajahi semua genre",
     top250: "250 teratas",
     action: "Tindakan",
-    comedy : "Komedi",
+    comedy: "Komedi",
     documentary: "Dokumenter",
     fantasy: "Fantasi",
     horror: "Fengerian",
@@ -44,7 +43,6 @@ const lang = {
     romance: "Romantis",
     thriller: "Thriller",
     musical: "Musikal",
-
   },
 };
 

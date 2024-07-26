@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { useDispatch } from "react-redux";
 import { XIcon } from "@heroicons/react/solid"; // You may need to install @heroicons/react
 
 const TrailerModal = ({ isOpen, onClose, trailerKey }) => {

@@ -19,14 +19,14 @@ export const API_OPTIONS = {
 
 export const BASE_URL = "/projects/react/netflixgpt";
 
-export const NOW_PLAYING ="https://api.themoviedb.org/3/movie/now_playing?&page=1";
+export const NOW_PLAYING =
+  "https://api.themoviedb.org/3/movie/now_playing?&page=1";
 export const POPULAR = "https://api.themoviedb.org/3/movie/popular?page=1";
 export const UPCOMING = "https://api.themoviedb.org/3/movie/upcoming?&page=1";
 export const TOP_RATED = "https://api.themoviedb.org/3/movie/top_rated?&page=1";
 
-export const MOVIE_GENRE_API = "https://api.themoviedb.org/3/discover/movie?include_adult=false&sort_by=popularity.desc&page=1&with_genres="
-
-
+export const MOVIE_GENRE_API =
+  "https://api.themoviedb.org/3/discover/movie?include_adult=false&sort_by=popularity.desc&page=1&with_genres=";
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/original";
 
@@ -36,84 +36,49 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "bahasa", name: "Bahasa" },
 ];
 
-
-
 export const MOVIE_GENRE = [
-  
-    {
-      "id": 28,
-      "name": "Action"
-    },
-    {
-      "id": 12,
-      "name": "Adventure"
-    },
-    {
-      "id": 16,
-      "name": "Animation"
-    },
-    {
-      "id": 35,
-      "name": "Comedy"
-    },
-    {
-      "id": 80,
-      "name": "Crime"
-    },
-    {
-      "id": 99,
-      "name": "Documentary"
-    },
-    {
-      "id": 18,
-      "name": "Drama"
-    },
-    {
-      "id": 10751,
-      "name": "Family"
-    },
-    {
-      "id": 14,
-      "name": "Fantasy"
-    },
-    {
-      "id": 36,
-      "name": "History"
-    },
-    {
-      "id": 27,
-      "name": "Horror"
-    },
-    {
-      "id": 10402,
-      "name": "Music"
-    },
-    {
-      "id": 9648,
-      "name": "Mystery"
-    },
-    {
-      "id": 10749,
-      "name": "Romance"
-    },
-    {
-      "id": 878,
-      "name": "Science Fiction"
-    },
-    {
-      "id": 10770,
-      "name": "TV Movie"
-    },
-    {
-      "id": 53,
-      "name": "Thriller"
-    },
-    {
-      "id": 10752,
-      "name": "War"
-    },
-    {
-      "id": 37,
-      "name": "Western"
-    }
-  ]
+  {
+    id: 12,
+    name: "Adventure",
+  },
+  {
+    id: 16,
+    name: "Animation",
+  },
+  {
+    id: 35,
+    name: "Comedy",
+  },
+
+  {
+    id: 14,
+    name: "Fantasy",
+  },
+
+  {
+    id: 27,
+    name: "Horror",
+  },
+
+  {
+    id: 9648,
+    name: "Mystery",
+  },
+  {
+    id: 10749,
+    name: "Romance",
+  },
+  {
+    id: 878,
+    name: "Science Fiction",
+  },
+
+  {
+    id: 53,
+    name: "Thriller",
+  },
+  {
+    id: 10752,
+    name: "War",
+  },
+];

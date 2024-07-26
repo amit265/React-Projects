@@ -6,6 +6,7 @@ import { useEffect } from "react";
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
 
+
   const nowPlayingMovies = useSelector(
     (store) => store.movies.nowPlayingMovies
 );
