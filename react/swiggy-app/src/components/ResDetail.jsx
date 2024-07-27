@@ -3,14 +3,47 @@ import { BASE_URL, SWIGGY_CDN, SWIGGY_RES_API } from "../utils/constants";
 import useResAPI from "../utils/useResAPI";
 import ShimmerRes from "./ShimmerRes";
 import ResItemCategory from "./ResItemCategory";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import FlashMessageGeneral from "./FlashMessageGeneral";
 
 const ResDetail = () => {
   const { resId } = useParams();
   const { resInfo, loading, error } = useResAPI(SWIGGY_RES_API + resId);
   const [showIndex, setShowIndex] = useState(null);
 
-  if (resInfo === null) return <ShimmerRes />;
+
+  if (resInfo === null)
+    return (
+      <>
+        <div className="flex flex-col my-12 items-center max-w-md mx-auto">
+          <h1 className="font-semibold text-center p-4 m-4">
+            If you are not offline, then you need cors bypass to view this page,
+            you can download plugin for that, use it temporarily then remove it.
+          </h1>
+          <p className="text-red-700 p-4">
+            Click on the link below to download CORS plugin
+          </p>
+          <a
+            className="hover:text-blue-700 hover:bg-green-500 bg-pink-400 p-2 m-2"
+            href="https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Chrome : Allow CORS
+          </a>
+          <a
+            className="hover:text-blue-700 hover:bg-green-500 bg-pink-400 p-2 m-2"
+            href="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Mozilla : CORS Everywhere
+          </a>
+        </div>
+        <ShimmerRes />
+      </>
+    );
+
   const resData = resInfo?.data?.cards[2]?.card?.card?.info;
   const { name, cloudinaryImageId, locality, city, cuisines } = resData;
 
@@ -27,15 +60,12 @@ const ResDetail = () => {
   }
 
   if (error) {
-    return <div>Error fetching data</div>;
+    return <div>Error fetching data : {error}</div>;
   }
-
-  console.log("filterNestedCategory", filterNestedCategory);
-  console.log("resItemCategory", resItemCategory);
 
   return (
     <>
-      <div className="mx-auto bg-white flex w-8/12 mt-8 p-4 rounded-lg justify-between shadow-lg">
+      <div className="mx-auto bg-white flex w-10/12 sm:w-1/2 mt-8 p-4 rounded-lg justify-between shadow-lg">
         <div className="flex flex-col justify-around">
           <div>
             <h1 className="font-bold text-lg">{name}</h1>
@@ -57,20 +87,17 @@ const ResDetail = () => {
         </div>
       </div>
 
-      <div className="mt-8 p-4 rounded-lg w-10/12 mx-auto">
-        <h1 className="text-center text-2xl text-black font-bold">Main Menu</h1>
+      <div className="mt-8 p-4 rounded-lg w-10/12 sm:w-1/2 mx-auto shadow-lg">
+        <div className="flex justify-between">
+          <h1 className="mx-4 p-4 text-xl text-black font-bold">Main Menu</h1>
+          <Link to={BASE_URL + "/"}>
+            <h2 className="mx-4 p-4 shadow-lg font-bold text-red-600 hover:bg-gray-300">
+              Go to Restaurant
+            </h2>
+          </Link>
+        </div>
         {filterNestedCategory.length === 0 ? (
-          <div>
-            <h1 className="fonr-bold text-center mt-4">
-              There is no menu available for{" "}
-              <span className="font-bold underline">{name}</span>
-            </h1>{" "}
-            <Link to={BASE_URL+"/"}>
-              <h2 className="text-center p-4 shadow-lg font-bold text-red-600">
-                Go to Restaurant
-              </h2>
-            </Link>
-          </div>
+          <FlashMessageGeneral message={name} />
         ) : (
           filterNestedCategory.map((res, index) => (
             <ResItemCategory

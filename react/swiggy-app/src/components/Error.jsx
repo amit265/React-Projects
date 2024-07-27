@@ -7,7 +7,6 @@ const Error = () => {
   return (
     <div style={{ backgroundColor: "white" }}>
       <h1>{err.status}</h1>
-      <h2>{err.error.message}</h2>
     </div>
   );
 };

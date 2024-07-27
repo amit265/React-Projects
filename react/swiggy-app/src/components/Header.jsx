@@ -13,29 +13,36 @@ const Header = () => {
   //subscribing to the store using selector
   const cartItems = useSelector((store) => store.cart.items);
 
-  console.log("amit", cartItems);
-
   return (
-    <div className="container">
-      <div className="logo">
-        <img src={logo} alt="logo" />
+    <div className="bg-white dark:bg-gray-800"> 
+    <div className="mb-4 flex flex-col sm:flex-row justify-between items-center sm:w-10/12 sm:mx-auto">
+      <div className="w-20 pt-4 pb-2">
+        <img className="rounded-full" src={logo} alt="logo" />
       </div>
-      <div className="links">
-        <ul>
-          <li className="hover:bg-gray-400 p-2 rounded-lg hover:shadow-lg">
-            Online Status: {onlineStatus ? "💚" : "💔"}
+      <div>
+        <ul className="sm:flex gap-0 sm:gap-4 p-2 sm:p-4 items-center flex justify-between text-gray-700 dark:text-gray-400">
+          <li className="hover:bg-gray-400 hover:text-white p-2 rounded-lg hover:shadow-lg">
+            {onlineStatus ? "💚" : "💔"}
           </li>
-          <li className="hover:bg-gray-400 p-2 rounded-lg hover:shadow-lg">
-            <Link to={BASE_URL+"/"}>Home</Link>
+          <li className="hover:bg-gray-400 hover:text-white p-2 rounded-lg hover:shadow-lg">
+            <Link to={BASE_URL + "/"}>Home</Link>
           </li>
-          <li className="hover:bg-gray-400 p-2 rounded-lg hover:shadow-lg">
-            <Link to={BASE_URL+"/about"}>About</Link>
+          <li className="hover:bg-gray-400 p-2 hover:text-white rounded-lg hover:shadow-lg">
+            <Link to={BASE_URL + "/about"}>About</Link>
           </li>
-          <li className="hover:bg-gray-400 p-2 rounded-lg hover:shadow-lg">
-            <Link to={BASE_URL+"/contact"}>Contact</Link>
+          <li className="hover:bg-gray-400 p-2 hover:text-white rounded-lg hover:shadow-lg">
+            <Link to={BASE_URL + "/contact"}>Contact</Link>
           </li>
-          <li className="hover:bg-gray-400 p-2 rounded-lg hover:shadow-lg font-bold text-xl">
-            <Link className="relative inline-block" to={BASE_URL+"/cart"}>
+          <li
+            className="hover:bg-gray-400 hover:text-white cursor-pointer p-2 rounded-lg hover:shadow-lg "
+            onClick={() => {
+              login === "Login" ? setLogin("Logout") : setLogin("Login");
+            }}
+          >
+            {login}
+          </li>
+          <li className="hover:bg-gray-400 p-2 hover:text-white rounded-lg hover:shadow-lg font-bold text-xl">
+            <Link className="relative inline-block" to={BASE_URL + "/cart"}>
               <div className="w-10">
                 <img
                   className="w-full bg-red-800 rounded-lg"
@@ -48,16 +55,10 @@ const Header = () => {
               </span>
             </Link>
           </li>
-          <li
-            className="hover:bg-gray-400 p-2 rounded-lg hover:shadow-lg "
-            onClick={() => {
-              login === "Login" ? setLogin("Logout") : setLogin("Login");
-            }}
-          >
-            {login}
-          </li>
+         
         </ul>
       </div>
+    </div>
     </div>
   );
 };

@@ -24,12 +24,13 @@ const Cart = () => {
   }, [cartItems]); // Recalculate total price when cart items change
 
   const handleClearCart = () => {
+    if(confirm("This will delete everything from your cart, are you sure?")){
     dispatch(clearCard());
+    }
 
   };
 
   const handlePurchase = () => {
-    console.log("Purchase button clicked");
    
     setMessage(
       `Congratulations, Your order is placed, you should receive your package withinn thirty minutes`
@@ -42,8 +43,8 @@ const Cart = () => {
 
   return (
     <div>
-      <h1 className="text-center mt-4 font-bold text-2xl">Your Cart</h1>
-      <div className="flex flex-col mt-4 border-2 w-10/12 mx-auto">
+      <h1 className="text-center font-bold text-2xl">Your Cart</h1>
+      <div className="flex flex-col my-4 border-2 max-w-2xl p-4 mx-auto">
         {cartItems.length === 0 ? (
           <div className="shadow-lg flex flex-col items-center">
             <h1 className="mt-4 p-4">Your cart is empty</h1>

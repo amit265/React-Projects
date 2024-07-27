@@ -5,26 +5,33 @@ const Card = ({ data }) => {
   const { name, cloudinaryImageId, cuisines, avgRating, costForTwo, sla } =
     data.info;
 
-    
-    // console.log(cuisines, name);
   return (
-    <>
-        <div className="card">
-          <img
-            className="res-logo"
-            src={SWIGGY_CDN + cloudinaryImageId}
-            alt=""
-          />
-          <h3 className="res-name">{name}</h3>
-          <p className="rating pfont">
-            <span>✪</span>
-            {" " + avgRating + " "}
-          </p>
-          <p className="time pfont">{sla.slaString}</p>
-          <p className="price">{costForTwo}</p>
-          <p className="cuisine">{cuisines.slice(1, 4).join(", ")}</p>
-        </div>
-    </>
+    <div className="max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-2 hover:shadow-2xl">
+      <div className="h-48 overflow-hidden">
+        <img
+          className="object-contain rounded-t-lg"
+          src={SWIGGY_CDN + cloudinaryImageId}
+          alt=""
+        />
+      </div>
+      <div className="p-4">
+        <h3 className="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+          {name}
+        </h3>
+        <p className="mb-1 text-base font-normal text-gray-700 dark:text-gray-400">
+          <span className="text-green-600 text-lg">✪</span> {avgRating}
+        </p>
+        <p className="mb-1 text-base font-normal text-gray-700 dark:text-gray-400">
+          {sla.slaString}
+        </p>
+        <p className="mb-1 text-base font-normal text-gray-700 dark:text-gray-400">
+          {costForTwo}
+        </p>
+        <p className="text-base font-normal text-gray-700 dark:text-gray-400">
+          {cuisines.slice(0, 3).join(", ")}
+        </p>
+      </div>
+    </div>
   );
 };
 

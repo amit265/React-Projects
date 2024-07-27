@@ -7,14 +7,14 @@ const useResAPI = (api) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if(!api) return;
       try {
         const data = await fetch(api);
         const json = await data.json();
-        console.log("coming from useResApi");
-        console.log(json);
         setResInfo(json);
+        
       } catch (error) {
-        console.error("Failed to fetch data: ", error);
+        // console.error("Failed to fetch data: ", error);
         setError(error);
       } finally {
         setLoading(false);

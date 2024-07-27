@@ -4,7 +4,6 @@ import ItemListMore from "./ItemListMore";
 const ItemList = ({ data}) => {
     const [showItems, setShowItems ] = useState(null);
   const handleClick = () => {
-    console.log(showItems);
  setShowItems(!showItems);
   };
 
@@ -16,7 +15,7 @@ const ItemList = ({ data}) => {
             className="cursor-pointer font-semibold text-black" onClick={handleClick}
             
           >
-            {res.title}
+            {res.title} ({res.itemCards.length}) 
             <span className="ml-2 text-gray-700">⬇</span>
           </h1>
           {showItems && (

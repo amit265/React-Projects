@@ -1,7 +1,7 @@
 import React from 'react'
 const ShimmerRes = () => {
   return (
-    <div className='card-container shimmer-effect'>
+    <div className='shimmer-effect flex flex-wrap items-center justify-evenly gap-8'>
       <div className="shimmer"></div>
     
     </div>
