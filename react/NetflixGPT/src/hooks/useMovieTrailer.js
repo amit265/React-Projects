@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 import { addTrailerVideo } from "../utils/moviesSlice";
 import { useEffect } from "react";
+import { clearError, setError } from "../utils/errorSlice";
 
 const useMovieTrailer = (movieId) => {
   const dispatch = useDispatch();
@@ -19,8 +20,9 @@ const useMovieTrailer = (movieId) => {
       const trailer = filterData.length ? filterData[0] : json.results[0];
 
       dispatch(addTrailerVideo({ id: movieId, trailer }));
+      dispatch(clearError());
     } catch (error) {
-      console.error("Failed to fetch movie trailer:", error);
+      dispatch(setError("Failed to fetch movie trailer: " + error))
     }
   };
 

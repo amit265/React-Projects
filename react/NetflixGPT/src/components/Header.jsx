@@ -19,7 +19,7 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  const showGPTSearch = useSelector(store => store.gpt.showGPTSearch);
+  const showGPTSearch = useSelector((store) => store.gpt.showGPTSearch);
 
   const handleSignOut = () => {
     signOut(auth)
@@ -56,49 +56,52 @@ const Header = () => {
     dispatch(toggleGPTSearchView());
   };
 
-
   const handleLanguageChange = (e) => {
-
     dispatch(changeLanguage(e.target.value));
-
-  }
-
-
-
+  };
 
   return (
-    <div className="fixed z-50 w-full bg-gradient-to-b from-black px-8 py-2 flex justify-between items-center">
-    <img className="w-44" src={LOGO} alt="logo" />
-    {user && (
-      <div className="flex items-center space-x-4 text-white">
-        {showGPTSearch && (
-          <select
-            onChange={handleLanguageChange}
-            className="p-2 bg-gray-900 text-white m-2"
+    <div className="fixed z-50 w-full bg-gradient-to-b from-black  px-0 sm:px-8 py-2 flex flex-col sm:flex-row sm:justify-between items-center">
+      <img className="w-44" src={LOGO} alt="logo" />
+      {user && (
+        <div className="flex flex-row items-center text-white">
+          {showGPTSearch && (
+            <select
+              onChange={handleLanguageChange}
+              className="p-2 bg-gray-900 text-white m-2"
+            >
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
+          <button
+            onClick={handleGPTSearch}
+            className="p-2 mx-4 my-2 bg-purple-800 rounded"
           >
-            {SUPPORTED_LANGUAGES.map((lang) => (
-              <option key={lang.identifier} value={lang.identifier}>
-                {lang.name}
-              </option>
-            ))}
-          </select>
-        )}
-        <button
-          onClick={handleGPTSearch}
-          className="p-2 mx-4 my-2 bg-purple-800 text-white rounded-lg"
-        >
-          {showGPTSearch ? "Home" : "GPT Search"}
-        </button>
-        <img className="w-12 h-12" src={USER_AVATAR} alt="" />
-        <button
-          onClick={handleSignOut}
-          className="bg-red-600 px-4 py-2 rounded"
-        >
-          Sign out
-        </button>
-      </div>
-    )}
-  </div>
+            {showGPTSearch ? "Home" : "GPT Search"}
+          </button>
+          <figure className="w-12 h-12">
+            <img
+              className="hidden sm:inline-block w-12 h-12"
+              src={USER_AVATAR}
+              alt="user Avatar"
+            />
+            <figcaption className="text-center py-2 my-1 rounded md:p-0 md:my-0 md:rounded-none md:bg-transparent">
+              {user?.displayName ? user?.displayName.split(" ")[0].slice(0,6)+"..." : "User"}
+            </figcaption>
+          </figure>
+          <button
+            onClick={handleSignOut}
+            className="bg-red-600 p-2 mx-4 my-2 rounded"
+          >
+            Sign out
+          </button>
+        </div>
+      )}
+    </div>
   );
 };
 

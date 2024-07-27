@@ -21,9 +21,9 @@ const MovieGenre = () => {
 
   return (
     <>
-      <div className="mx-auto p-4 m-4">
+      <div className="mx-auto w-11/12 p-4 m-4">
         <div>
-          <div className="w-8/12 mx-auto flex flex-auto gap-4 flex-wrap justify-center">
+          <div className="w-full lg:8/12 mx-auto flex flex-auto gap-4 flex-wrap justify-center">
             {MOVIE_GENRE.map((movie) => (
               <button
                 key={movie.id}
@@ -36,9 +36,9 @@ const MovieGenre = () => {
           </div>
         </div>
         {movieGenre && (
-          <div className="mx-auto p-4 m-4 bg-black text-white bg-opacity-80">
-            <h1 className="text-3xl font-bold py-4">{genreTitle}</h1>
-            <div className="flex justify-center flex-wrap gap-8 mx-auto w-full">
+          <div className="mx-auto py-2 px-4 my-4 bg-black rounded-lg text-white bg-opacity-80">
+            <h1 className="text-xl sm:text-3xl text-center  font-bold py-2 pb-4">{genreTitle}</h1>
+            <div className="flex justify-around lg:justify-center  flex-wrap gap-8 mx-auto w-full">
               {movieGenre &&
                 movieGenre.map((movie) => (
                   <MovieCard key={movie.id} movies={movie} />

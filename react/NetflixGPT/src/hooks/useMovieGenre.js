@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS, MOVIE_GENRE_API } from "../utils/constants";
 import { addMovieGenre } from "../utils/moviesSlice";
 import { useEffect } from "react";
+import { clearError, setError } from "../utils/errorSlice";
 
 const useMovieGenre = (genre) => {
   const dispatch = useDispatch();
@@ -15,8 +16,9 @@ const useMovieGenre = (genre) => {
       const data = await fetch(MOVIE_GENRE_API + genre, API_OPTIONS);
       const json = await data.json();
       dispatch(addMovieGenre(json.results));
+      dispatch(clearError());
     } catch (error) {
-      console.error("Failed to fetch movie genre:", error);
+      dispatch(setError("Failed to fetch movie genre: " + error))
     }
   };
 

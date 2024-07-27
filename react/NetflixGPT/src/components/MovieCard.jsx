@@ -19,7 +19,7 @@ const MovieCard = ({ movies }) => {
   const handleCloseModal = () => setIsModalOpen(false);
 
   return (
-    <div className="relative w-48 text-white rounded-lg overflow-hidden shadow-lg">
+    <div className="relative w-2/3 md:w-48 text-white rounded-lg overflow-hidden shadow-lg">
       <div className="relative w-full h-72">
         <img
           className="w-full h-full object-cover cursor-pointer transition-opacity duration-300 hover:opacity-30"

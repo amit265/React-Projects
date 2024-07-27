@@ -7,6 +7,7 @@ import GPTSearch from "./GPTSearch";
 import Header from "./Header";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
+import ErrorMessage from "./ErrorMessage";
 
 const Browse = () => {
   const showGPTSearch = useSelector((store) => store.gpt.showGPTSearch);
@@ -15,6 +16,8 @@ const Browse = () => {
   useTopRatedMovies();
   useUpcomingMovies();
 
+  
+
   return (
     <div>
       <Header />
@@ -22,6 +25,7 @@ const Browse = () => {
         <GPTSearch />
       ) : (
         <>
+          <ErrorMessage />
           <MainContainer />
           <SecondaryContainer />
         </>

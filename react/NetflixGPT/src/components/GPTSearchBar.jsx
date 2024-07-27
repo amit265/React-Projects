@@ -4,12 +4,12 @@ import lang from "../utils/languageConstants";
 import { API_OPTIONS } from "../utils/constants";
 import { addGPTMovieResult, clearGPTMovieResults } from "../utils/gptSlice";
 import { clearMovieGenre } from "../utils/moviesSlice";
+import { clearError, setError } from "../utils/errorSlice";
 
 const GPTSearchBar = () => {
   const langKey = useSelector((store) => store.config.lang);
   const searchText = useRef(null);
   const dispatch = useDispatch();
-  console.log("searchText", searchText);
 
   const searchMovieTMDB = async (movie) => {
     try {
@@ -19,13 +19,11 @@ const GPTSearchBar = () => {
           "&include_adult=false&language=en-US&page=1",
         API_OPTIONS
       );
-      if (!data.ok) {
-        throw new Error(`HTTP error! status: ${data.status}`);
-      }
+      dispatch(clearError());
       const json = await data.json();
       return json.results;
     } catch (error) {
-      console.log("There is some error while fetching movies" + error);
+      dispatch(setError("Failed to fetch searched movie: " + error))
       return [];
     }
   };
@@ -68,7 +66,6 @@ const GPTSearchBar = () => {
       if (searchTextValue) {
         const result = await searchMovieTMDB(searchTextValue);
         tmdbResults = [result];
-        console.log("searchTextValue, tmdbResults", tmdbResults);
         dispatch(
           addGPTMovieResult({
             movieNames: [searchTextValue],
@@ -78,13 +75,13 @@ const GPTSearchBar = () => {
       } else {
         const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
         tmdbResults = await Promise.all(promiseArray);
-        console.log("promiseArray, tmdbResults", tmdbResults);
         dispatch(
           addGPTMovieResult({
             movieNames: gptMovies,
             movieResults: tmdbResults,
           })
         );
+        // alert("Enter name of anymovie")
       }
     } catch (error) {
       console.error("Error during GPT search:", error);
@@ -93,13 +90,13 @@ const GPTSearchBar = () => {
 
   return (
     <>
-      <div className="sm:pt-[7%] pt-[15%] flex justify-center">
+      <div className="px-1 sm:px-4 pt-[40%] sm:pt-[15%] md:pt-[10%] lg:pt-[7%] flex justify-center">
         <form
-          className="bg-black sm:w-1/2 grid grid-cols-12 w-full"
+          className="bg-black md:w-3/4 lg:w-1/2 grid grid-cols-12 w-full "
           onSubmit={(e) => e.preventDefault()}
         >
           <input
-            className="p-4 m-4 col-span-9"
+            className="p-4 sm:m-4 my-4 mx-2 col-span-9"
             type="text"
             ref={searchText}
             placeholder={lang[langKey].gptSearchPlaceholder}
@@ -107,13 +104,12 @@ const GPTSearchBar = () => {
 
           <button
             onClick={handleGPTSearch}
-            className="bg-red-700 hover:bg-red-900 m-4 px-4 py-2 text-white rounded-lg col-span-3"
+            className="bg-red-700 hover:bg-red-900 my-4 mx-2 sm:m-4 sm:px-4 py-2 text-white rounded-lg col-span-3"
           >
             {lang[langKey].search}
           </button>
         </form>
       </div>
-      
     </>
   );
 };
