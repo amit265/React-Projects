@@ -3,7 +3,7 @@
 
 # React Projects
 
-Welcome to my React Projects repository! This collection showcases a variety of projects I've developed while learning and mastering React, ranging from simple applications to advanced, production-ready apps. Some of the projects are also unfinished and still in process.
+Welcome to my React Projects repository! This collection showcases a variety of projects I've developed while learning and mastering React, ranging from simple applications to advanced, production-ready apps. Some of the projects are unfinished and still in process.
 
 ## Table of Contents
 
