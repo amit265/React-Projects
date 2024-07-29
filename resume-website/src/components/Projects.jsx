@@ -1,20 +1,16 @@
-import React from 'react';
+import Carousel from "./CarousalProject";
+import { projects } from "../utils/constants";
 
 function Projects() {
   return (
-    <section className="my-8">
-      <h2 className="text-4xl font-semibold font-mono mb-4 text-center">Projects</h2>
-      <ul className="flex justify-around">
-        <li className='shadow-lg m-4 p-4'>
-          <h3 className="text-2xl font-semibold">NetflixGPT</h3>
-          <p className="text-lg">Description of project 1.</p>
-        </li>
-        <li className='shadow-lg m-4 p-4'>
-          <h3 className="text-2xl font-semibold">SwiggyApp</h3>
-          <img src="" alt="" />
-          <p className="text-lg">Description of project 1.</p>
-        </li>
-      </ul>
+    <section className="sm:min-h-[50vh] py-8 bg-purple-400">
+      <h2 className="text-4xl pt-8 font-semibold font-mono mb-4 text-center">
+        Projects ({projects.length})
+      </h2>
+
+      <div className="sm:w-8/12 mx-auto flex items-center justify-center ">
+        <Carousel projects={projects} />
+      </div>
     </section>
   );
 }

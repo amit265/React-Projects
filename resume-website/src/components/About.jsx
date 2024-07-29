@@ -5,17 +5,17 @@ import gmail from "../assets/gmail.png";
 
 function About() {
   return (
-    <section className="my-8 flex w-10/12 min-h-[45vh] mx-auto justify-around items-center">
-      <div className="flex w-1/3 flex-col items-center justify-center">
+    <section className="flex sm:w-8/12  sm:h-[50vh] mx-auto sm:flex-row flex-col sm:justify-around  items-center ">
+      <div className="flex sm:w-1/3 flex-col items-center justify-center">
         <img className="m-4 h-48 w-48 rounded-full" src={profile} alt="amit" />
         <div className="flex gap-2 m-4">
-          <img className="w-10 h-10 rounded-2xl" src={gmail} alt="gmail" />
-          <img className="w-10 h-10 rounded-2xl" src={linkdin} alt="linkdin" />
-          <img className="w-10 h-10 rounded-xl" src={github} alt="github" />
+        <a href="mailto:amitk.kumar414@gmail.com"><img className="w-10 h-10 rounded-2xl" src={gmail} alt="gmail" /></a>
+          <a href="https://www.linkedin.com/in/amit-kumar-96805a130/" target="_blank"><img className="w-10 h-10 rounded-2xl" src={linkdin} alt="linkdin" /></a>
+          <a href="https://github.com/amit265" target="_blank"><img className="w-10 h-10 rounded-xl" src={github} alt="github" /></a>
         </div>
       </div>
-      <div className="flex w-2/3 flex-col p-4">
-        <h2 className="text-5xl mb-4 font-thin">About Me</h2>
+      <div className="flex  sm:w-2/3 flex-col p-4">
+        <h2 className="sm:text-5xl text-3xl font-medium text-center sm:text-left mb-4 ">About Me</h2>
         <p className=" mx-auto text-lg text-start pt-4 text-gray-600">
           Hi! I am a passionate Full Stack Web Developer
           specializing in front-end development with React. My projects showcase
