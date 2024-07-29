@@ -1,94 +1,60 @@
----
+# Netflix GPT Project
 
-# Netflix GPT React App
-
-Welcome to the Netflix GPT React App! This app allows you to search for movies, get recommendations from GPT, and log in using Firebase.
+Welcome to the Netflix GPT project! This application provides a seamless movie searching and browsing experience, integrating several advanced features.
 
 ## Features
 
-- **Search Movies:** Easily search for movies and get details about them.
-- **GPT Recommendations:** Get personalized movie recommendations using GPT.
-- **Firebase Authentication:** Securely log in and manage your account with Firebase.
+- **User Authentication**: Utilizes Firebase for secure user login.
+- **Movie Search**: Leverages TMDB API to search for movies and display comprehensive details.
+- **Movie Recommendations**: Integrates with OpenAI API for movie recommendations (temporarily unavailable due to token exhaustion).
+- **Responsive Design**: Fully responsive across all screen sizes.
+- **Movie Information**: Displays ratings, release dates, descriptions, and more.
+- **Trailer Playback**: Each movie card includes a button to play the trailer.
+- **State Management**: Uses Redux store to manage fetched data.
+- **Language Configuration**: Configurable state to change website language.
+- **Session Management**: Remembers user sessions and displays the username upon login.
+- **Performance Optimization**: Implements memoization to avoid redundant data fetching.
+- **Comprehensive React Concepts**: Showcases custom hooks, React Router, and Redux store.
 
-## Getting Started
+## Demo
 
-Follow these steps to set up and run the app on your local machine.
+[![Live Demo](https://img.shields.io/badge/Live-Demo-green.svg)](https://coderespite.com/projects/react/netflixgpt/)
 
-### Prerequisites
+## Installation
 
-Make sure you have the following installed:
-
-- [Node.js](https://nodejs.org/)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-
-### Installation
-
-1. **Clone the repository:**
-
+1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/netflix-gpt-react-app.git
-   cd netflix-gpt-react-app
+   git clone https://github.com/yourusername/netflix-gpt.git
    ```
-
-2. **Install dependencies:**
-
+2. Navigate to the project directory:
+   ```bash
+   cd netflix-gpt
+   ```
+3. Install dependencies:
    ```bash
    npm install
    ```
+4. Add your Firebase configuration, TMDB API key, and OpenAI API key in the `.env` file.
 
-   or
+## Usage
 
-   ```bash
-   yarn install
-   ```
-
-3. **Set up Firebase:**
-
-   - Go to the [Firebase Console](https://console.firebase.google.com/).
-   - Create a new project.
-   - Go to the project settings and find your Firebase config object.
-   - Create a `.env` file in the root of your project and add the following:
-
-     ```env
-     REACT_APP_FIREBASE_API_KEY=your-api-key
-     REACT_APP_FIREBASE_AUTH_DOMAIN=your-auth-domain
-     REACT_APP_FIREBASE_PROJECT_ID=your-project-id
-     REACT_APP_FIREBASE_STORAGE_BUCKET=your-storage-bucket
-     REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
-     REACT_APP_FIREBASE_APP_ID=your-app-id
-     ```
-
-### Running the App
-
-1. **Start the development server:**
-
+1. Start the development server:
    ```bash
    npm start
    ```
+2. Open your browser and visit `http://localhost:3000`.
 
-   or
+## Technologies Used
 
-   ```bash
-   yarn start
-   ```
+- **Frontend**: React, Redux, React Router
+- **Backend**: Firebase Authentication, TMDB API, OpenAI API
+- **Styling**: Tailwind CSS
+- **State Management**: Redux
+- **Other**: Memoization for performance optimization
 
-2. Open your browser and go to `http://localhost:3000`.
+## Contributions
 
-### Usage
-
-- **Search for Movies:** Use the search bar to find movies. You will see a list of movies with their details.
-- **Get Recommendations:** Click on the "Get Recommendations" button to receive personalized movie recommendations from GPT.
-- **Log In:** Use the log in feature to securely log in with Firebase. This will allow you to save your favorite movies and manage your account.
-
-## Contributing
-
-We welcome contributions from the community! If you want to contribute, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes and commit them (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Open a pull request.
+Contributions are welcome! Feel free to open an issue or submit a pull request.
 
 ## License
 
@@ -96,6 +62,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-If you have any questions or feedback, feel free to open an issue or contact us at [your-email@example.com](mailto:your-email@example.com).
-
----
+For any questions or suggestions, please reach out at [amitk.kumar414@gmail.com](mailto:amitk.kumar414@gmail.com).
