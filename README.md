@@ -24,8 +24,7 @@ This repository contains a series of React projects, each demonstrating differen
 [![High Quality](https://img.shields.io/badge/Quality-High-green)](https://coderespite.com/projects/react/netflixgpt/)
 [![Live Demo](https://img.shields.io/badge/Live-Demo-green)](https://coderespite.com/projects/react/netflixgpt/)
 
-
-A comprehensive movie searching and browsing application with features like user authentication, movie search using TMDB API, movie recommendations (OpenAI API integration), and more.
+ A comprehensive movie searching and browsing application with features like user authentication, movie search using TMDB API, movie recommendations (OpenAI         API integration), and more.
 
 - **User Authentication**: Firebase
 - **APIs**: TMDB, OpenAI (currently token exhausted)
