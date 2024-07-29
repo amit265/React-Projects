@@ -19,7 +19,7 @@ Welcome to my React Projects repository! This collection showcases a variety of 
 This repository contains a series of React projects, each demonstrating different aspects of React development. The projects range from beginner-friendly applications to more complex ones featuring Redux, authentication, and API integrations.
 
 ## Project List
-
+ 
 1. [Netflix GPT](./netflixgpt/) 
 [![High Quality](https://img.shields.io/badge/Quality-High-green)](https://coderespite.com/projects/react/netflixgpt/)
 [![Live Demo](https://img.shields.io/badge/Live-Demo-green)](https://coderespite.com/projects/react/netflixgpt/)
