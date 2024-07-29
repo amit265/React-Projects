@@ -23,6 +23,17 @@ This repository contains a series of React projects, each demonstrating differen
 1. [Netflix GPT](./netflixgpt/) 
 [![High Quality](https://img.shields.io/badge/Quality-High-green)](https://coderespite.com/projects/react/netflixgpt/)
 [![Live Demo](https://img.shields.io/badge/Live-Demo-green)](https://coderespite.com/projects/react/netflixgpt/)
+
+
+A comprehensive movie searching and browsing application with features like user authentication, movie search using TMDB API, movie recommendations (OpenAI API integration), and more.
+
+- **User Authentication**: Firebase
+- **APIs**: TMDB, OpenAI (currently token exhausted)
+- **State Management**: Redux
+- **Responsive Design**: Yes
+- **Other Features**: Trailer playback, language configuration, session management, memoization
+
+
 2. [Swiggy App](./swiggy-app/)
 [![High Quality](https://img.shields.io/badge/Quality-High-green)](https://coderespite.com/projects/react/swiggy/) 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-green)](https://coderespite.com/projects/react/swiggy/)
@@ -43,6 +54,13 @@ This repository contains a series of React projects, each demonstrating differen
 13. [Watch List](./watch-list/) 
 14. [Weather App](./weather-app/)
 [![Live Demo](https://img.shields.io/badge/Live-Demo-green)](https://coderespite.com/projects/react/weather-app/)
+
+A weather application that fetches and displays weather data.
+
+- **Features**: Search by city, display weather information
+- **API**: OpenWeatherMap
+- **State Management**: Local state
+
 15. [Ecommerce-app](./ecommerce-app/) 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-green)](https://coderespite.com/projects/react/ecommerce-app/)
 16. [Gizmo](./gizmoo/)
