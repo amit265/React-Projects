@@ -43,14 +43,14 @@ const Carousel = ({projects}) => {
                     <a
                       href={project.iframeSrc}
                       target="_blank"
-                      className="font-bold text-lg text-white hover:bg-gray-600  bg-green-600 px-2 py-1 rounded-lg"
+                      className="font-bold text-lg h-full text-white hover:bg-gray-600  bg-green-600 px-2 py-1 rounded-lg"
                     >
                       live
                     </a>
                     <a
                       href={project.url}
                       target="_blank"
-                      className="font-bold text-lg text-white hover:bg-gray-600  bg-purple-600 px-2 py-1 rounded-lg"
+                      className="font-bold text-lg h-full text-white hover:bg-gray-600  bg-purple-600 px-2 py-1 rounded-lg"
                     >
                       code
                     </a>

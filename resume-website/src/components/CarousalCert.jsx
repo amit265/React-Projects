@@ -38,7 +38,7 @@ const CarouselCert = ({ certificates }) => {
                   <div className="flex flex-row gap-4">
                     <h3 className="text-2xl font-semibold">{cert.title}</h3>
                     <a
-                      href={cert.iframeSrc}
+                      href={cert.cert_link}
                       target="_blank"
                       className="cursor-pointer font-bold text-lg text-white hover:bg-gray-600 px-2 py-1 rounded-lg"
                     >
@@ -51,7 +51,6 @@ const CarouselCert = ({ certificates }) => {
                     alt={cert.title}
                   />
 
-        
                   <p className="text-sm mt-2 text-gray-700 p-4">
                     By: {cert.org}
                   </p>

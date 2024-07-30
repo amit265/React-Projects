@@ -9,7 +9,7 @@ function Header() {
           I am a Web Developer.
         </h3>
         <a href="https://coderespite.com/doc/amit-resume.pdf" target="_blank">
-          <div className="text-white border border-white rounded-3xl p-4 shadow-lg flex gap-4 ">
+          <div className="text-white border border-white rounded-3xl p-4 shadow-lg flex gap-4 hover:bg-gray-300 hover:text-black">
             <img
               className="bg-white rounded-full p-1 w-8 h-8"
               src={download}

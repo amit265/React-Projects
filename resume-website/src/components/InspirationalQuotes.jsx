@@ -14,7 +14,7 @@ const InspirationalQuotes = ({ quotes }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 3000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
