@@ -9,8 +9,7 @@ function Footer() {
       <div className="mx-auto p-2">
         <h1 className="text-base md:text-xl w-full lg:w-4/12 mx-auto">
           {" "}
-          I'm always thrilled to dive into exciting projects. Let's chat over
-          coffee and explore how we can collaborate!{" "}
+          I'm always thrilled to dive into exciting projects. Let's connect and explore how we can collaborate!{" "}
         </h1>
         <div className="flex flex-col gap-4 md:flex-row justify-around items-center p-4 m-4">
           <div className="hidden md:block flex flex-col gap-2 justify-start items-start">

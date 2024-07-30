@@ -3,7 +3,7 @@ export const projects = [
     title: "NetflixGPT",
     description:
       "A comprehensive movie searching and browsing application with features like user authentication, movie search using TMDB API, movie recommendations (OpenAI API integration), and more.",
-    techStack: "React, TMDB API, OpenAI API, Firebase Authentication",
+    techStack: "React, Redux, TMDB API, OpenAI API, Firebase Authentication",
     url: "https://github.com/amit265/React-Projects/tree/main/netflixgpt",
     iframeSrc: "https://coderespite.com/projects/react/netflixgpt",
   },

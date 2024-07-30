@@ -18,7 +18,7 @@ const Carousel = ({projects}) => {
   return (
     <>
       <div className="static">
-        <div className="relative w-full max-w-4xl mx-auto my-8">
+        <div className="relative w-full max-w-4xl mx-auto sm:my-8">
           <div>
           <button
             onClick={prevSlide}

@@ -14,8 +14,7 @@ const CarouselCert = ({ certificates }) => {
 
   return (
     <>
-      <div className="static">
-        <div className="relative w-full max-w-4xl mx-auto my-8">
+        <div className="relative w-full max-w-4xl mx-auto sm:my-8">
           <div>
             <button
               onClick={prevSlide}
@@ -36,7 +35,7 @@ const CarouselCert = ({ certificates }) => {
               <div key={index} className="p-4">
                 <div className=" bg-white shadow-lg rounded-lg p-4">
                   <div className="flex flex-row gap-4">
-                    <h3 className="text-2xl font-semibold">{cert.title}</h3>
+                    <h3 className="text-lg sm:text-2xl font-semibold">{cert.title}</h3>
                     <a
                       href={cert.cert_link}
                       target="_blank"
@@ -58,7 +57,6 @@ const CarouselCert = ({ certificates }) => {
               </div>
             ))}
         </div>
-      </div>
     </>
   );
 };

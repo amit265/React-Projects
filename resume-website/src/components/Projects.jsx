@@ -3,8 +3,8 @@ import { projects } from "../utils/constants";
 
 function Projects() {
   return (
-    <section className="sm:min-h-[50vh] py-8 bg-purple-400">
-      <h2 className="text-4xl pt-8 font-semibold font-mono mb-4 text-center">
+    <section className="sm:min-h-[50vh] sm:py-8 bg-purple-400">
+      <h2 className="text-2xl sm:text-4xl pt-8 font-semibold font-mono text-center">
         Projects ({projects.length})
       </h2>
 

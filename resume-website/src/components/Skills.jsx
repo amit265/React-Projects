@@ -3,7 +3,7 @@ import SkillCard from "./SkillCard";
 const Skills = () => {
   return (
     <section className="sm:min-h-[50vh] py-8">
-    <h2 className="text-4xl pt-8 font-semibold font-mono mb-4 text-center">
+    <h2 className="text-2xl sm:text-4xl pt-8 font-semibold font-mono text-center">
       Skills
     </h2>
 

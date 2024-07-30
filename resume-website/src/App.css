@@ -3,6 +3,28 @@
   100% { background-position: -100% 0 }
 }
 
+.animated-text {
+  display: inline-block;
+}
+
+.blinking-cursor {
+  font-weight: 100;
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 /* progress-bar.css */
 .progress-bar {
   background-image: linear-gradient(
