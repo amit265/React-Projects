@@ -5,7 +5,7 @@ import gmail from "../assets/gmail.png";
 
 function About() {
   return (
-    <section className="flex sm:w-8/12  sm:min-h-[50vh] mx-auto md:flex-row flex-col md:justify-around  items-center ">
+    <section className="flex lg:w-8/12  sm:min-h-[50vh] mx-auto md:flex-row flex-col md:justify-around  items-center  bg-white rounded-lg shadow-lg my-8">
       <div className="flex sm:w-1/3 flex-col items-center justify-center">
         <img
           className="m-4 h-48 w-48 rounded-full hover:shadow-lg hover:border-gray-400 hover:border-2"
@@ -21,7 +21,7 @@ function About() {
             />
           </a>
           <a
-            href="https://www.linkedin.com/in/amit-kumar-96805a130/"
+            href="https://www.linkedin.com/in/amit265/"
             target="_blank"
           >
             <img
@@ -40,7 +40,7 @@ function About() {
         </div>
       </div>
       <div className="flex md:w-2/3 flex-col px-4 pb-4 sm:px-2" >
-        <h2 className="text-2xl sm:text-4xl pt-4 font-semibold font-mono sm:mb-4 text-center sm:text-left ">
+        <h2 className="text-2xl sm:text-4xl pt-4 font-semibold sm:mb-4 text-center sm:text-left ">
           About Me
         </h2>
         <p className=" mx-auto text-base sm:text-lg text-start pt-4 text-gray-600">
