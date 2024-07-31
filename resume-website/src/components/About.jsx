@@ -7,7 +7,7 @@ import gmail from "../assets/gmail.png";
 function About() {
   return (
     <section id="about" className="flex lg:w-8/12  sm:min-h-[50vh] mx-auto md:flex-row flex-col md:justify-around  items-center  bg-white rounded-lg shadow-lg my-8">
-      <div className="flex ml-8 sm:w-1/3 flex-col items-center justify-center">
+      <div className="flex md:ml-8 sm:w-1/3 flex-col items-center justify-center">
         <img
           className="m-4 h-48 w-48 rounded-full hover:shadow-lg hover:border-gray-400 hover:border-2"
           src={profile}
@@ -40,7 +40,7 @@ function About() {
           </a>
         </div>
       </div>
-      <div className="flex md:w-2/3 flex-col md:mr-8 sm:px-2 text-[#323954]" >
+      <div className="flex md:w-2/3 px-4 pb-4 flex-col md:mr-8 sm:px-2 text-[#323954]" >
         <h2 className="text-2xl sm:text-4xl pt-4 px-2 font-semibold sm:mb-4 text-center sm:text-left ">
           About Me
         </h2>

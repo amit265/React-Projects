@@ -67,7 +67,7 @@ function Header() {
   return (
     <header className="text-center bg-[#323954]">
       <div className="lg:w-8/12 mx-auto">
-        <div className="flex flex-col md:flex-row justify-between p-4 sm:p-8">
+        <div className="flex flex-col md:flex-row justify-between px-4 pb-10 sm:p-8">
           <div className="flex justify-end">
             <div className="p-4 md:hidden">
               <Hamburger color="#fefffa" toggled={isOpen} toggle={setOpen} />

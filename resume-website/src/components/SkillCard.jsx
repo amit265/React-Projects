@@ -4,9 +4,9 @@ import '../App.css'
 
 const SkillCard = ({ skills }) => {
   return (
-    <div className='flex flex-col sm:flex-row flex-wrap justify-around items-center py-8 w-full'>
+    <div className='flex flex-col md:flex-row flex-wrap justify-around items-center py-4 w-full'>
       {skills.map((skill) => (
-        <div key={skill.stack} className='p-4 w-11/12 sm:w-1/3 m-4 '>
+        <div key={skill.stack} className='p-2 w-10/12 lg:w-1/3 m-2 border-2 rounded-lg shadow-lg'>
           <h1 className='text-xl sm:text-2xl font-bold mb-4 text-center text-[#ea5147] '>
             {skill.stack}
           </h1>
