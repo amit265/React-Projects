@@ -37,20 +37,20 @@ const Carousel = ({projects}) => {
             .filter((_, index) => index === current)
             .map((project, index) => (
               <div key={index} className="p-4">
-                <div className=" bg-white shadow-lg rounded-lg p-4">
+                <div className=" bg-white text-[#323954] shadow-lg rounded-lg p-4">
                   <div className="flex flex-row gap-4">
-                    <h3 className="text-2xl font-semibold">{project.title}</h3>
+                    <h3 className="text-2xl font-semibold py-1">{project.title}</h3>
                     <a
                       href={project.iframeSrc}
                       target="_blank"
-                      className="font-bold text-lg h-full text-white hover:bg-gray-600  bg-green-600 px-2 py-1 rounded-lg"
+                      className="font-bold text-lg h-full text-[#fefffa] cursor-pointer px-4 py-2 rounded-md bg-[#ea5147] hover:bg-[#323954]"
                     >
                       live
                     </a>
                     <a
                       href={project.url}
                       target="_blank"
-                      className="font-bold text-lg h-full text-white hover:bg-gray-600  bg-purple-600 px-2 py-1 rounded-lg"
+                      className="font-bold text-lg h-full text-[#fefffa] cursor-pointer px-4 py-2 rounded-md bg-[#ea5147] hover:bg-[#323954]"
                     >
                       code
                     </a>
@@ -60,10 +60,10 @@ const Carousel = ({projects}) => {
                     className="w-full mx-auto h-96 border-0 rounded-lg mt-4"
                     title={project.title}
                   />
-                  <p className="text-lg mt-4 p-4 text-gray-600 text-wrap">
+                  <p className="text-lg mt-4 p-4 text-wrap">
                     {project.description}
                   </p>
-                  <p className="text-sm mt-2 text-gray-700 p-4">
+                  <p className="text-sm mt-2 p-4">
                     Tech Stake: {project.techStack}
                   </p>
                 </div>

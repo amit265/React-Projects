@@ -22,7 +22,7 @@ const InspirationalQuotes = ({ quotes }) => {
     <section className="w-full flex flex-col items-center justify-center py-8 bg-gray-100">
       <div className="relative w-full max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8 text-center">
        
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-4 text-[#323954]">
             <img
               className="h-24 w-24 rounded-full"
               src={quotes[current].image}
