@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: azure;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* Base styling for shimmer lines */
+.shimmer-effect .shimmer {
+  width: 200px;
+  height: 300px;
+  background: #f6f7f8;
+  background: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 20%,
+    #f6f7f8 40%,
+    #f6f7f8 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer animation */
+.shimmer-effect .shimmer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: flicker 1.5s infinite;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  10% {
+    opacity: 0.3;
+    transform: translateX(-20%);
+  }
+  20% {
+    opacity: 0.7;
+    transform: translateX(10%);
+  }
+  30% {
+    opacity: 0.4;
+    transform: translateX(-15%);
+  }
+  40% {
+    opacity: 0.9;
+    transform: translateX(5%);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(20%);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-10%);
+  }
+  70% {
+    opacity: 0.6;
+    transform: translateX(15%);
+  }
+  80% {
+    opacity: 0.8;
+    transform: translateX(-5%);
+  }
+  90% {
+    opacity: 0.2;
+    transform: translateX(25%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
