@@ -43,7 +43,7 @@ const Header = () => {
           {/* <Link to={"/blogs"}><li onClick={falseHam} className="py-2 px-4 hover:bg-gray-600 hover:text-white text-lg rounded-md cursor-pointer">
             Blogs
           </li></Link> */}
-          <Link to={"/projects"}>
+          <Link to={"/project"}>
             <li
               onClick={falseHam}
               className="py-2 px-4 hover:bg-gray-600 hover:text-white text-lg rounded-md cursor-pointer"

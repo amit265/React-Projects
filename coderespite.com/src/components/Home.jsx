@@ -1,27 +1,9 @@
+import { Link } from "react-router-dom";
 import { projects } from "../utils/projects";
 import Hero from "./Hero"; // Import the Hero component
 import ProjectSection from "./ProjectSection";
 
 const Home = () => {
-
-    // Function to shuffle and slice array
-    const getRandomProjects = (projectArray, count) => {
-      // Create a copy of the array to avoid modifying the original
-      const shuffled = [...projectArray];
-      
-      // Shuffle the array using Fisher-Yates algorithm
-      for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-      }
-      
-      // Return the first 'count' elements from the shuffled array
-      return shuffled.slice(0, count);
-    };
-  
-    // Get a random 6 projects
-    const randomJavaScriptProjects = getRandomProjects(projects.javascript, 6);
-  
   return (
     <div>
       <Hero />
@@ -56,12 +38,14 @@ const Home = () => {
 
       <section className="bg-white py-12">
         <div className="container mx-auto px-4 text-center">
+        <Link to={"/project"}><h2 className="text-3xl font-bold mb-6 hover:text-blue-500">React Projects</h2></Link>
+
           <ProjectSection
-                title="React Projects"
-                projects={projects.react.slice(0, 3)}
-                path_root="react/"
-                github="JavaScript-Projects/tree/main/"
-              />
+            // title="React Projects"
+            projects={projects.react}
+            path_root="react/"
+            github="JavaScript-Projects/tree/main/"
+          />
         </div>
       </section>
 
@@ -87,17 +71,21 @@ const Home = () => {
 
       <section className="bg-white py-12">
         <div className="container mx-auto px-4 text-center">
+        <Link to={"/project"}><h2 className="text-3xl font-bold mb-6 hover:text-blue-500">JavaScript Projects</h2></Link>
+
           <ProjectSection
-                title="JavaScript Projects"
-                projects={randomJavaScriptProjects}
-                path_root="js-projects/"
-                github="JavaScript-Projects/tree/main/"
-                />
+            // title="JavaScript Projects"
+            projects={projects.javascript.slice(0, 6)}
+            path_root="js-projects/"
+            github="JavaScript-Projects/tree/main/"
+          />
+          <div className="flex justify-end items-end w-full">
+            <button className="text-center px-4 py-2 font-semibold text-lg bg-red-600 rounded-lg hover:bg-green-500 text-white">
+              <Link to={"/project"}>More</Link>
+            </button>
+          </div>
         </div>
       </section>
-
-
-      
 
       <section className="bg-gray-100 py-12">
         <div className="container mx-auto px-4 text-center">
