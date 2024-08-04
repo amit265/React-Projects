@@ -74,11 +74,19 @@ export const skills = [
     ],
   },
   {
+    stack: "Mobile",
+    type: [
+      { lang: "Android Studio", strength: "60" },
+      { lang: "React Native", strength: "50" },
+      { lang: "Java", strength: "40" },
+    ],
+  },
+  {
     stack: "Other",
     type: [
       { lang: "Git", strength: "85" },
       { lang: "Docker", strength: "40" },
-      { lang: "AWS", strength: "10" },
+      { lang: "Firebase", strength: "40" },
     ],
   },
 ];

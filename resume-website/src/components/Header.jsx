@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import download from "../assets/downlaod.png";
-import logo from "../assets/logo.jpeg";
 import { Link } from "react-scroll";
 import Hamburger from "hamburger-react";
-import { IconContext } from "react-icons";
 
 function Header() {
   const phrases = [
