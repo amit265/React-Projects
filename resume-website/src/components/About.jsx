@@ -15,7 +15,7 @@ function About() {
           alt="amit"
         />
         <div className="flex gap-2">
-          <a href="mailto:amitk.kumar414@gmail.com">
+          <a href="mailto:amit@coderespite.com">
             <img
               className="w-12 h-12 p-2 rounded-2xl hover:border-gray-400 hover:border-2 hover:shadow-lg"
               src={gmail}

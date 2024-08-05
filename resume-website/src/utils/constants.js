@@ -21,14 +21,14 @@ export const projects = [
       "A blog application that fetches all blog posts through an API. It categorically organizes the posts and provides options for more pages. CRUD operations are not included.",
     techStack: "React, Blog API",
     url: "https://github.com/amit265/React-Projects/tree/main/blog-app",
-    iframeSrc: "https://coderespite.com/blog/",
+    iframeSrc: "https://coderespite.com/projects/react/blog-app/",
   },
   {
-    title: "Password Generator",
+    title: "coderespite.com",
     description:
-      "An app that generates strong passwords using numbers, letters, and special characters randomly.",
+      "Code Respite is your go-to destination for mastering full stack web development. Explore tutorials, projects, and insightful blogs on HTML, CSS, JavaScript, React, Node.js, and more.",
     techStack: "React",
-    url: "https://github.com/amit265/React-Projects/tree/main/password-generator",
+    url: "https://github.com/amit265/React-Projects/tree/main/coderespite.com",
     iframeSrc: "https://coderespite.com/",
   },
 ];
