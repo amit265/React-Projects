@@ -9,6 +9,7 @@ import {
   FaFacebook,
   FaXmark,
 } from "react-icons/fa6";
+import { BASE_URL } from "../utils/constants";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,11 +36,11 @@ function Navbar() {
   //nav Items
 
   const navItems = [
-    { path: "/blog", link: "Home", end: true },
-    { path: "/blog/blogs", link: "Blogs" },
-    { path: "/blog/about", link: "About" },
-    { path: "/blog/services", link: "Services" },
-    { path: "/blog/contact", link: "Contact" },
+    { path: BASE_URL + "/", link: "Home", end: true },
+    { path: BASE_URL + "/blogs", link: "Blogs" },
+    { path: BASE_URL + "/about", link: "About" },
+    { path: BASE_URL + "/services", link: "Services" },
+    { path: BASE_URL + "/contact", link: "Contact" },
   ];
 
   return (

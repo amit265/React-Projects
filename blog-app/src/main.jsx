@@ -10,10 +10,11 @@ import Services from "./pages/Services.jsx";
 import About from "./pages/About.jsx";
 import SingleBlog from "./pages/SingleBlog.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import { BASE_URL } from "./utils/constants.js";
 
 const router = createBrowserRouter([
   {
-    path: "/blog", // Root path for blog app
+    path: BASE_URL + "/", // Root path for blog app
     element: <App />,
     children: [
       {
