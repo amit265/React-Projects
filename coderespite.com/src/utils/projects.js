@@ -273,9 +273,133 @@ export const projects = {
       id: "js31",
       title: "Sidebar Menu",
       path: "sidebar-menu",
-      description:
-        "Sidebar menu opens on left side",
+      description: "Sidebar menu opens on left side",
     },
+    {
+      id: "js32",
+      title: "Word Counter",
+      path: "word-counter",
+      description: "This program counts the number of words and letters.",
+    },
+    {
+      id: "js33",
+      title: "Calorie Counter",
+      path: "calorie-counter",
+      description:
+        "A web app that tracks daily caloric intake using JavaScript, helping users manage their diet and health.",
+    },
+    {
+      id: "js34",
+      title: "Todo App",
+      path: "todo-app",
+      description:
+        "A simple task management app that allows users to create, edit, and delete to-do lists using JavaScript.",
+    },
+    {
+      id: "js35",
+      title: "Statistics Calculator",
+      path: "statistics-calculator",
+      description:
+        "A JavaScript-based calculator for performing basic statistical calculations like mean, median, and mode.",
+    },
+    {
+      id: "js36",
+      title: "Spreadsheet",
+      path: "spreadsheet",
+      description:
+        "An online spreadsheet application that uses JavaScript for managing and manipulating tabular data.",
+    },
+    {
+      id: "js37",
+      title: "Spam Filter",
+      path: "spam-filter",
+      description:
+        "A JavaScript project that detects and filters out spam messages based on predefined rules.",
+    },
+    {
+      id: "js38",
+      title: "Shopping Cart",
+      path: "shopping-cart",
+      description:
+        "A JavaScript-based shopping cart system to manage products, quantities, and calculate total prices.",
+    },
+    {
+      id: "js39",
+      title: "Role-Playing Game",
+      path: "role-playing-game",
+      description:
+        "A JavaScript game where players take on roles, complete quests, and battle enemies.",
+    },
+    {
+      id: "js40",
+      title: "Platform Game",
+      path: "platform-game",
+      description:
+        "A JavaScript-powered platform game with multiple levels, characters, and challenges.",
+    },
+    {
+      id: "js41",
+      title: "Number Sorter",
+      path: "number-sorter",
+      description:
+        "A simple tool that sorts numbers in ascending or descending order using JavaScript.",
+    },
+    {
+      id: "js42",
+      title: "Music Player",
+      path: "music-player",
+      description:
+        "A JavaScript-based music player that plays and manages audio tracks, including playlist functionality.",
+    },
+    {
+      id: "js43",
+      title: "Football Team Cards",
+      path: "football-team-cards",
+      description:
+        "A JavaScript project to display football team stats and player information in a card format.",
+    },
+    {
+      id: "js44",
+      title: "FCC Forum Leaderboard",
+      path: "fcc-forum-leaderboard",
+      description:
+        "A leaderboard for the FCC forum displaying user ranks and scores, built using JavaScript.",
+    },
+    {
+      id: "js45",
+      title: "FCC Author Page",
+      path: "fcc-author-page",
+      description:
+        "A JavaScript project that showcases articles and author profiles on an FCC Author Page.",
+    },
+    {
+      id: "js46",
+      title: "Dice Game",
+      path: "dice-game",
+      description:
+        "A simple dice game that uses JavaScript for game mechanics and random number generation.",
+    },
+    {
+      id: "js47",
+      title: "Date Formatter",
+      path: "date-formatter",
+      description:
+        "A JavaScript tool for formatting and manipulating dates in various formats.",
+    },
+    {
+      id: "js48",
+      title: "Binary Converter",
+      path: "binary-converter",
+      description:
+        "A converter tool that uses JavaScript to switch between binary and decimal number systems.",
+    },
+    {
+      "id": "js49",
+      "title": "Random Emoji Generator",
+      "path": "random-emoji",
+      "description": "Discover and display random emojis with this interactive JavaScript application. Data is fetched using https://emoji-api.com/. Click to generate a new emoji each time!"
+    }
+    
 
     // Add more JavaScript projects here
   ],
@@ -314,6 +438,111 @@ export const projects = {
       path: "tribute-page",
       description:
         "A tribute page dedicated to a notable figure, highlighting biography and achievements with a responsive design.",
+    },
+    {
+      id: "rs06",
+      title: "Balance Sheet",
+      path: "balance-sheet",
+      description:
+        "A responsive balance sheet page designed to showcase financial information, utilizing tables and structured data presentation.",
+    },
+    {
+      id: "rs07",
+      title: "Camper Cafe",
+      path: "camper-cafe",
+      description:
+        "A simple webpage for a fictional cafe, demonstrating the use of responsive design principles to create an attractive and functional layout.",
+    },
+    {
+      id: "rs08",
+      title: "Cat Painting",
+      path: "cat-painting",
+      description:
+        "A project featuring a gallery of cat paintings, focusing on responsive image handling and layout practices.",
+    },
+    {
+      id: "rs09",
+      title: "Cat Photo App",
+      path: "cat-photo-app",
+      description:
+        "A responsive web page for a cat photo application, incorporating flexible layouts and responsive images.",
+    },
+    {
+      id: "rs10",
+      title: "City Skyline",
+      path: "city-skyline",
+      description:
+        "A responsive webpage showcasing a city skyline, utilizing CSS for creating visual designs and responsive layouts.",
+    },
+    {
+      id: "rs11",
+      title: "Colored Markers",
+      path: "colored-markers",
+      description:
+        "A page highlighting a collection of colored markers, focusing on responsive grid layouts and image presentation.",
+    },
+    {
+      id: "rs12",
+      title: "Ferris Wheel",
+      path: "ferris-wheel",
+      description:
+        "A project depicting a ferris wheel, designed to practice responsive layouts and positioning techniques.",
+    },
+    {
+      id: "rs13",
+      title: "Flexbox Photo Gallery",
+      path: "flexbox-photo-gallery",
+      description:
+        "A photo gallery created using Flexbox, demonstrating responsive image grids and flexible layouts.",
+    },
+    {
+      id: "rs14",
+      title: "HTML CSS Quiz",
+      path: "html-css-quiz",
+      description:
+        "A simple quiz page built with HTML and CSS, focusing on form elements and responsive design.",
+    },
+    {
+      id: "rs15",
+      title: "Magazine",
+      path: "magazine",
+      description:
+        "A responsive magazine-style layout, showcasing articles and images with a focus on typography and responsive design.",
+    },
+    {
+      id: "rs16",
+      title: "Nutrition Label",
+      path: "nutrition-label",
+      description:
+        "A project featuring a nutrition label, designed to practice responsive typography and data presentation.",
+    },
+    {
+      id: "rs17",
+      title: "Penguin",
+      path: "penguin",
+      description:
+        "A simple webpage featuring a penguin illustration, focusing on responsive design and layout practices.",
+    },
+    {
+      id: "rs18",
+      title: "Piano",
+      path: "piano",
+      description:
+        "A responsive webpage showcasing a piano, designed to practice layout techniques and responsive design.",
+    },
+    {
+      id: "rs19",
+      title: "Registration Form",
+      path: "registration-form",
+      description:
+        "A simple, responsive registration form designed to collect user input, focusing on form elements and layout practices.",
+    },
+    {
+      id: "rs20",
+      title: "Rothko Painting",
+      path: "rothko-painting",
+      description:
+        "A project featuring a Rothko-style painting, focusing on CSS design techniques and responsive layout.",
     },
   ],
 };

@@ -1,3 +1,20 @@
 .full-screen {
   min-height: 100vh;
 }
+
+
+
+/* Define the keyframes for blinking */
+@keyframes blink-animation {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Apply blinking animation to the '/' character */
+.blink {
+  animation: blink-animation 2s 5000; /* Adjust animation duration as needed */
+}

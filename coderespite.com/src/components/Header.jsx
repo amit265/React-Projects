@@ -13,12 +13,24 @@ const Header = () => {
     <header className="flex flex-col md:flex-row md:justify-between md:items-center p-4 bg-gray-800 text-white">
       <div className="flex justify-between items-center">
         <div className="flex flex-col items-center">
-          {/* <img
-            src="/public/flame.png"
-            className="w-12 h-12 md:w-16 md:h-16"
-            alt="Logo"
-          /> */}
-          <h1 className="ml-4 text-xl md:text-2xl">CodeRespite</h1>
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-orange-700 flex items-center">
+            <span className="text-white text-3xl sm:text-4xl md:text-5xl">{"<"}</span>
+            <span className="flex items-center pt-1">
+              <span className="text-orange-700 text-xl sm:text-2xl md:text-3xl">
+                CODE
+              </span>
+              <span className="text-white text-xl sm:text-2xl md:text-3xl mx-1">
+                RESPITE
+              </span>
+            </span>
+            <span className="blink text-yellow-500 text-xl sm:text-2xl md:text-3xl pt-0.5">
+              /
+            </span>
+            <span className="text-orange-500 text-3xl sm:text-4xl md:text-5xl">
+              {">"}
+            </span>
+          </h1>
+          <h3 className="text-xs sm:text-base mt-1">REFRESH YOUR TECH SKILLS</h3>
         </div>
 
         <div className="md:hidden pr-4">
