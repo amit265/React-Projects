@@ -1,6 +1,9 @@
+import { FaGithub } from "react-icons/fa";
+import { TfiLinkedin } from "react-icons/tfi";
+import { FaSquareXTwitter } from "react-icons/fa6";
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-6">
+    <footer className="text-[var(--text-color)] py-6">
       <div className="flex  flex-col justify-center items-center gap-2">
         {/* <div className="flex flex-col items-center justify-center gap-2">
           <h3 className="text-xl font-semibold mb-2">
@@ -20,43 +23,34 @@ const Footer = () => {
             </button>
           </form>
         </div> */}
+        <div className="flex flex-col gap-2 items-center justify-center">
+          <div className="flex gap-2">
+            <a
+              href="https://x.com/coderespite/"
+              className="p-2 rounded-full hover:shadow-lg hover:bg-gray-500"
+              target="_blank"
 
-        <div className="flex flex-row gap-2">
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-gray-300"
-          >
-            Facebook
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-gray-300"
-          >
-            Twitter
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-gray-300"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-gray-300"
-          >
-            GitHub
-          </a>
+            >
+              <FaSquareXTwitter />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/amit265/"
+              className="p-2 rounded-full hover:shadow-lg hover:bg-gray-500"
+              target="_blank"
+            >
+              <TfiLinkedin />
+            </a>
+            <a
+              href="https://github.com/amit265"
+              className="p-2 rounded-full hover:shadow-lg hover:bg-gray-500"
+              target="_blank"
+            >
+              <FaGithub />
+            </a>
+          </div>
         </div>
 
-        <div className="text-gray-400">
+        <div>
           <p>Made with ❤️ by CodeRespite</p>
         </div>
       </div>

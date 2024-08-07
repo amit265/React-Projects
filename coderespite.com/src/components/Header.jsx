@@ -10,23 +10,23 @@ const Header = () => {
   };
 
   return (
-    <header className="flex flex-col md:flex-row md:justify-between md:items-center p-4 bg-gray-800 text-white">
+    <header className="flex flex-col md:flex-row md:justify-between md:items-center p-4 text-[var(--text-color)] header-animate">
       <div className="flex justify-between items-center">
         <div className="flex flex-col items-center">
-          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-orange-700 flex items-center">
-            <span className="text-white text-3xl sm:text-4xl md:text-5xl">{"<"}</span>
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--primary-color)] flex items-center lexend">
+            <span className="text-[var(--text-color)] text-3xl sm:text-4xl md:text-5xl">{"<"}</span>
             <span className="flex items-center pt-1">
-              <span className="text-orange-700 text-xl sm:text-2xl md:text-3xl">
+              <span className="text-[#ef233c] text-xl sm:text-2xl md:text-3xl">
                 CODE
               </span>
-              <span className="text-white text-xl sm:text-2xl md:text-3xl mx-1">
+              <span className="text-xl text-[var(--text-color)] sm:text-2xl md:text-3xl">
                 RESPITE
               </span>
             </span>
-            <span className="blink text-yellow-500 text-xl sm:text-2xl md:text-3xl pt-0.5">
+            <span className="text-yellow-500 text-xl sm:text-2xl md:text-3xl pt-0.5">
               /
             </span>
-            <span className="text-orange-500 text-3xl sm:text-4xl md:text-5xl">
+            <span className="text-[#ef233c] text-3xl sm:text-4xl md:text-5xl">
               {">"}
             </span>
           </h1>
@@ -44,10 +44,11 @@ const Header = () => {
         }`}
       >
         <ul className="flex flex-col md:flex-row items-center gap-2 md:gap-4 mt-4 md:mt-0 ">
+         
           <Link to={"/"}>
             <li
               onClick={falseHam}
-              className="py-2 px-4 hover:bg-gray-600 hover:text-white text-lg rounded-md cursor-pointer"
+              className="py-2 px-4 hover:text-[var(--background-color)] hover:bg-[var(--text-color)] text-lg rounded-md cursor-pointer"
             >
               Home
             </li>
@@ -58,7 +59,7 @@ const Header = () => {
           <Link to={"/project"}>
             <li
               onClick={falseHam}
-              className="py-2 px-4 hover:bg-gray-600 hover:text-white text-lg rounded-md cursor-pointer"
+              className="py-2 px-4 hover:text-[var(--background-color)] hover:bg-[var(--text-color)] text-lg rounded-md cursor-pointer"
             >
               Projects
             </li>
@@ -66,7 +67,7 @@ const Header = () => {
           <Link to={"/about"}>
             <li
               onClick={falseHam}
-              className="py-2 px-4 hover:bg-gray-600 hover:text-white text-lg rounded-md cursor-pointer"
+              className="py-2 px-4 hover:text-[var(--background-color)] hover:bg-[var(--text-color)] text-lg rounded-md cursor-pointer"
             >
               About
             </li>
@@ -74,7 +75,7 @@ const Header = () => {
           <Link to={"/contact"}>
             <li
               onClick={falseHam}
-              className="py-2 px-4 hover:bg-gray-600 hover:text-white text-lg rounded-md cursor-pointer"
+              className="py-2 px-4 hover:text-[var(--background-color)] hover:bg-[var(--text-color)] text-lg rounded-md cursor-pointer"
             >
               Contact
             </li>

@@ -5,14 +5,33 @@ import {
   GITHUB_BASE,
 } from "../utils/projects";
 
-const ProjectSection = ({ title, projects, path_root, github }) => {
+const ProjectSection = ({
+  title,
+  projects,
+  path_root,
+  github,
+  horizontalScroll,
+  animation,
+}) => {
   return (
-    <div className="p-2">
-      <h2 className="text-3xl font-bold mb-6">{title}</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, index) => (
-          <div key={index} className="p-6 border rounded-lg shadow-md">
-            <div className="flex justify-between pt-4">
+    <div className="text-[var(--background-color)]">
+      <h2 className="text-3xl font-bold mb-6 text-[var(--primary-color)] hover:text-[#ef233c] lexend">
+        {title}
+      </h2>
+
+      <div
+        className={`flex pb-4 justify-center lg:justify-between  ${
+          horizontalScroll ? "flex-wrap lg:flex-nowrap lg:overflow-x-auto" : "flex-wrap"
+        } gap-8`}
+      >
+        {projects.map((project) => (
+          <div
+            key={project.id}
+            className={`w-80 px-4 py-2 border rounded-lg shadow-lg flex-shrink-0 bg-[var(--text-color)] ${
+              animation ? "project-animate" : ""
+            } hover:transform-gpu hover:scale-105`}
+          >
+            <div className="flex justify-between">
               <h3 className="text-2xl font-semibold mb-4">{project.title}</h3>
             </div>
             <div className="relative">
@@ -34,7 +53,7 @@ const ProjectSection = ({ title, projects, path_root, github }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <button className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors duration-300">
+                    <button className="bg-[var(--primary-color)] px-4 py-2 text-[var(--text-color)] rounded-md hover:bg-[var(--text-color)] hover:text-[var(--primary-color)] transition-colors duration-300">
                       Live
                     </button>
                   </a>
@@ -43,14 +62,14 @@ const ProjectSection = ({ title, projects, path_root, github }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <button className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors duration-300">
+                    <button className="bg-[var(--primary-color)] text-[var(--text-color)] px-4 py-2 rounded-md hover:bg-[var(--text-color)] hover:text-[var(--primary-color)] transition-colors duration-300">
                       Code
                     </button>
                   </a>
                 </div>
               </div>
             </div>
-            <p className="text-gray-600 px-4 pt-4">{project.description}</p>
+            <p className="pt-4 text-justify">{project.description}</p>
           </div>
         ))}
       </div>

@@ -3,7 +3,7 @@ import React from 'react'
 const Blogs = () => {
   return (
     <div>
-      <h2>bloggs</h2>
+      <h2 className='text-[var(--primary-color)] lexend'>bloggs</h2>
     </div>
   )
 }

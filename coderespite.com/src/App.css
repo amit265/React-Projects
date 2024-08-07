@@ -2,14 +2,30 @@
   min-height: 100vh;
 }
 
+/* <weight>: Use a value from 100 to 900 */
 
+.lexend {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.albert-sans {
+  font-family: "Albert Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
 
 /* Define the keyframes for blinking */
 @keyframes blink-animation {
-  0%, 50% {
+  0%,
+  50% {
     opacity: 1;
   }
-  51%, 100% {
+  51%,
+  100% {
     opacity: 0;
   }
 }
@@ -17,4 +33,103 @@
 /* Apply blinking animation to the '/' character */
 .blink {
   animation: blink-animation 2s 5000; /* Adjust animation duration as needed */
+}
+
+.project-item {
+  will-change: transform, opacity;
+}
+
+/* Custom scrollbar styles */
+.scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Light theme */
+:root {
+  --background-color: #edf2f4;
+  --text-color: #2b2d42;
+  --primary-color: #ef233c; /* Example primary color */
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #2b2d42;
+    --text-color: #edf2f4;
+    --primary-color: #ef233c; /* Example primary color */
+  }
+}
+
+* {
+  @apply transition-colors duration-300;
+  @apply transition-all duration-200;
+}
+
+@media (min-width: 1024px) {
+  .project-animate {
+    position: relative; /* or absolute depending on your layout */
+    animation: anime 10s linear infinite alternate;
+  }
+}
+
+
+@keyframes anime {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.header-animate {
+  animation: headerBounce .5s ease-in;
+}
+
+@keyframes headerBounce {
+  0% {
+    transform: translateY(-50px);
+  }
+
+  100% {
+    transform: translateY(0); /* Slight bounce up to finalize */
+  }
+}
+
+.main-animate {
+  animation: header 600ms ease-in;
+}
+
+@keyframes header {
+  0% {
+    transform: translatey(40%);
+  }
+  100% {
+    transform: translatey(0%);
+  }
+}
+
+.hero-animate {
+  animation: hero 600ms ease-in;
+}
+
+@keyframes hero {
+  0% {
+    transform: translatey(20%);
+  }
+  100% {
+    transform: translatey(0%);
+  }
 }

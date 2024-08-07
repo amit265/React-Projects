@@ -8,7 +8,8 @@ export const projects = {
       id: "rt01",
       title: "Expense Tracker App",
       path: "expense-tracker-app",
-      path_root: "js-projects/",
+      path_root: "react/",
+
       description:
         "Tracks daily expenses using React, allowing users to input transactions and view spending summaries over time.",
     },
@@ -16,6 +17,8 @@ export const projects = {
       id: "rt02",
       title: "NetflixGPT",
       path: "netflixgpt",
+      path_root: "react/",
+
       description:
         "A React app inspired by Netflix, offering movie browsing, detailed information, and a sleek, user-friendly UI.",
     },
@@ -23,6 +26,8 @@ export const projects = {
       id: "rt03",
       title: "Swiggy",
       path: "swiggy",
+      path_root: "react/",
+
       description:
         "A React-based clone of Swiggy's food delivery app, showcasing restaurant menus and enabling order placement.",
     },
@@ -30,6 +35,8 @@ export const projects = {
       id: "rt04",
       title: "Todo List",
       path: "todo-list",
+      path_root: "react/",
+
       description:
         "A straightforward React app for managing tasks, allowing users to add, edit, and delete to-do items.",
     },
@@ -37,6 +44,8 @@ export const projects = {
       id: "rt05",
       title: "Weather App",
       path: "weather-app",
+      path_root: "react/",
+
       description:
         "Displays current weather data using React, fetching real-time information from a weather API for user-selected locations.",
     },
@@ -61,6 +70,7 @@ export const projects = {
       id: "js01",
       title: "2D Breakout Game",
       path: "2d-breakout-game",
+
       description:
         "A classic 2D arcade game where players use a paddle to bounce a ball and break bricks.",
     },
@@ -394,12 +404,12 @@ export const projects = {
         "A converter tool that uses JavaScript to switch between binary and decimal number systems.",
     },
     {
-      "id": "js49",
-      "title": "Random Emoji Generator",
-      "path": "random-emoji",
-      "description": "Discover and display random emojis with this interactive JavaScript application. Data is fetched using https://emoji-api.com/. Click to generate a new emoji each time!"
-    }
-    
+      id: "js49",
+      title: "Random Emoji Generator",
+      path: "random-emoji",
+      description:
+        "Discover and display random emojis with this interactive JavaScript application. Data is fetched using https://emoji-api.com/. Click to generate a new emoji each time!",
+    },
 
     // Add more JavaScript projects here
   ],

@@ -2,14 +2,21 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <section className="bg-gray-100 py-12 lg:py-24">
-      <div className="container mx-auto px-4 text-center">
-        <div className="max-w-2xl mx-auto">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
+    <section className="hero-animate -z-10 py-12 lg:py-24 text-[var(--text-color)]">
+      <div className="container mx-auto px-4 text-center ">
+        <div className="max-w-5xl mx-auto ">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 text-[var(--primary-color)] lexend">
             Welcome to CodeRespite
           </h1>
-          <p className="text-lg lg:text-xl text-gray-600 mb-8">
-            Your one-stop platform for coding tutorials, projects, and community support. Empowering students and new coders to learn, grow, and succeed.
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 text-[var(--primary-color)] lexend">Your journey through code, from basics to brilliance.</h2>
+          <p className="text-lg lg:text-xl mb-8 text-justify">
+            Explore a collection of projects that capture my evolution as a
+            developer—from simple HTML/CSS designs to complex React apps using
+            React Router, Redux, and backend applications built with Node,
+            Express, and MongoDB. Each project can be viewed live with a tap on
+            the "Live" button, and the "Code" button reveals the source on
+            GitHub. Look forward to technical blogs where I’ll share my insights
+            and tackle the challenges of coding.
           </p>
           <div className="flex justify-center gap-4">
             {/* <a
