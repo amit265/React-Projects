@@ -10,6 +10,9 @@ import Contact from "./components/Contact.jsx";
 import About from "./components/About.jsx";
 import Error from "./components/Error.jsx";
 import ProjectPage from "./components/ProjectPage.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import Admin from "./components/Admin.jsx";
+import Login from "./components/Login.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -39,6 +42,18 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/admin",
+        element: (
+          <ProtectedRoute>
+            <Admin />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
     errorElement: <Error />,

@@ -1,5 +1,3 @@
-import React from "react";
-
 const Hero = () => {
   return (
     <section className="hero-animate -z-10 py-12 lg:py-24 text-[var(--text-color)]">

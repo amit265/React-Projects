@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
-import { projects } from "../utils/projects";
 import Hero from "./Hero";
 import ProjectSection from "./ProjectSection";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import Shimmer from "./Shimmer";
+import ShimmerHome from "./ShimmerHome";
 
 const Home = () => {
-
   const [visibleProjects, setVisibleProjects] = useState([]);
-
+  const projects = useSelector((store) => store?.projects);
+  const isLoading =
+    projects?.javascript.length === 0 &&
+    projects?.react.length === 0 &&
+    projects?.responsive.length === 0;
   useEffect(() => {
     const updateProjectVisibility = () => {
       const screenWidth = window.innerWidth;
@@ -15,14 +20,11 @@ const Home = () => {
 
       if (isLargeScreen) {
         setVisibleProjects(projects.javascript);
-        
       } else {
         setVisibleProjects(projects.javascript.slice(0, 10));
-
       }
     };
-   
-    
+
     // Set initial number of projects based on current screen size
     updateProjectVisibility();
 
@@ -31,9 +33,7 @@ const Home = () => {
 
     // Cleanup the event listener on component unmount
     return () => window.removeEventListener("resize", updateProjectVisibility);
-  }, []);
-
- 
+  }, [projects]);
 
   return (
     <div className="text-[var(--text-color)] hero-animate">
@@ -48,14 +48,15 @@ const Home = () => {
           </Link>
 
           <div className="overflow-x-auto scroll-container">
-            <ProjectSection
-              projects={projects.react}
-              path_root="react/"
-              github="React-Projects/tree/main/"
-              horizontalScroll={true}
-              animation = {true}
-
-            />
+            {!isLoading ? (
+              <ProjectSection
+                projects={projects.react}
+                horizontalScroll={true}
+                animation={true}
+              />
+            ) : (
+              <ShimmerHome isLoading = {isLoading}/>
+            )}
           </div>
         </div>
       </section>
@@ -69,23 +70,25 @@ const Home = () => {
           </Link>
 
           <div className="overflow-x-auto scroll-container">
-            <ProjectSection
-              projects={visibleProjects}
-              path_root="js-projects/"
-              horizontalScroll={true}
-              animation = {true}
-
-
-              github="JavaScript-Projects/tree/main/"
-            />
+            {!isLoading ? (
+              <ProjectSection
+                projects={visibleProjects}
+                horizontalScroll={true}
+                animation={true}
+                github="JavaScript-Projects/tree/main/"
+              />
+            ) : (
+              <ShimmerHome />
+            )}
           </div>
-         
         </div>
       </section>
 
       <section className="py-12">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6 text-[var(--primary-color)] lexend">Join Our Community</h2>
+          <h2 className="text-3xl font-bold mb-6 text-[var(--primary-color)] lexend">
+            Join Our Community
+          </h2>
           <p className="text-lg max-w-2xl mx-auto mb-6">
             Become a part of our community to get access to exclusive content.
           </p>

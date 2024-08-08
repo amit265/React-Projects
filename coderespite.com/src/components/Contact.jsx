@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import emailjs from "emailjs-com";
-const your_template_id = "template_qywkcyc";
-const your_service_id = "service_yadn6hp";
-const your_user_id = "4-5pbKubOcqAtgnHH";
-const auto_reply_template_id = "template_pq1ubft"
+import { AUTO_REPLY_TEMPLATE_ID, SERVICE_ID, TEMPLATE_ID, USER_ID } from "../utils/constants";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -20,17 +18,17 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    emailjs.sendForm(your_service_id, your_template_id, e.target, your_user_id)
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
     .then((result) => {
       // console.log(result.text);
       setStatusMessage("Message sent successfully!", result); // Set success message
       
       // Send auto-reply email
-      emailjs.send(your_service_id, auto_reply_template_id, {
+      emailjs.send(USER_ID, AUTO_REPLY_TEMPLATE_ID, {
         to_email: formData.email,
         name: formData.name,
         message: formData.message
-      }, your_user_id)
+      }, USER_ID)
       .then((result) => {
         // console.log(result.text);
       }, (error) => {

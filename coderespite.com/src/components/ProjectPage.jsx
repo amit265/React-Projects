@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import ProjectSection from "./ProjectSection";
-import { projects } from "../utils/projects";
+import Shimmer from "./Shimmer";
 
 const ProjectPage = () => {
   const [selectedTab, setSelectedTab] = useState("javascript");
-  const total_js = projects.javascript.length;
-  const total_react = projects.react.length;
-  const total_responsive = projects.responsive.length;
+  const projects = useSelector((store) => store?.projects);
+
+  // Check if the data is still loading or empty
+  const isLoading = !projects || !projects.javascript || !projects.react || !projects.responsive;
+  const isDataEmpty = (projects?.javascript.length === 0 && 
+                        projects?.react.length === 0 && 
+                        projects?.responsive.length === 0);
+
+  // Total counts
+  const total_js = projects?.javascript?.length || 0;
+  const total_react = projects?.react?.length || 0;
+  const total_responsive = projects?.responsive?.length || 0;
   const total = total_js + total_react + total_responsive;
 
+  // Tabs
   const tabs = [
     { name: "All (" + `${total}` + ")", key: "all" },
     { name: "React (" + `${total_react}` + ")", key: "react" },
@@ -16,11 +27,19 @@ const ProjectPage = () => {
     { name: "HTML/CSS (" + `${total_responsive}` + ")", key: "responsive" },
   ];
 
+  if (isLoading || isDataEmpty) {
+    return (
+      <div className="py-12 pt-24 text-center">
+        <Shimmer />
+      </div>
+    );
+  }
+
   return (
     <div>
       <section className="py-12 text-[var(--text-color)]">
         <div className="container mx-auto text-center">
-          {/* <h1 className="text-4xl font-bold mb-8 lexend">Projects</h1> */}
+          {/* Tabs */}
           <div className="flex flex-wrap justify-center gap-4 p-4">
             {tabs.map((tab) => (
               <button
@@ -36,25 +55,21 @@ const ProjectPage = () => {
               </button>
             ))}
           </div>
+
+          {/* Project Sections */}
           {selectedTab === "all" && (
             <>
               <ProjectSection
                 title="React Projects"
                 projects={projects.react}
-                path_root="react/"
-                github="React-Projects/tree/main/"
               />
               <ProjectSection
                 title="JavaScript Projects"
                 projects={projects.javascript}
-                path_root="js-projects/"
-                github="JavaScript-Projects/tree/main/"
               />
               <ProjectSection
                 title="HTML/CSS Projects"
                 projects={projects.responsive}
-                path_root="responsive/"
-                github="freeCodeCamp/tree/main/responsive-web-design/"
               />
             </>
           )}
@@ -62,24 +77,18 @@ const ProjectPage = () => {
             <ProjectSection
               title="React Projects"
               projects={projects.react}
-              path_root="react/"
-              github="React-Projects/tree/main/"
             />
           )}
           {selectedTab === "javascript" && (
             <ProjectSection
               title="JavaScript Projects"
               projects={projects.javascript}
-              path_root="js-projects/"
-              github="JavaScript-Projects/tree/main/"
             />
           )}
           {selectedTab === "responsive" && (
             <ProjectSection
               title="HTML/CSS Projects"
               projects={projects.responsive}
-              path_root="responsive/"
-              github="freeCodeCamp/tree/main/responsive-web-design/"
             />
           )}
         </div>

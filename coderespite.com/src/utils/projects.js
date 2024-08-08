@@ -1,7 +1,7 @@
 export const BASE_URL_JS_PROJECT = "https://coderespite.com/projects/";
 export const GITHUB_BASE = "https://github.com/amit265/";
 export const BASE_URL_JS_IMAGE = "https://coderespite.com/image/";
-
+export const BASE_URL = "https://coderespite.com/"
 export const projects = {
   react: [
     {

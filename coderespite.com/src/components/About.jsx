@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const About = () => {
   const [accord, setAccord] = useState(0);
@@ -86,6 +86,7 @@ const About = () => {
         concepts, offering valuable insights for both beginners and seasoned
         developers.
       </p>
+
     </section>
   );
 };
