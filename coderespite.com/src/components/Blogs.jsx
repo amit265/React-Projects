@@ -1,9 +1,18 @@
+import { useSelector } from "react-redux";
+import React from "react";
+import BlogsSection from "./BlogsSection";
+
 const Blogs = () => {
+  const blogs = useSelector((store) => store?.blogs?.blogs);
+
+  if (!blogs.length) return <p>No blogs available.</p>;
+
   return (
     <div>
-      <h2 className='text-[var(--primary-color)] lexend'>bloggs</h2>
+      <h1>All Blogs</h1>
+      <BlogsSection blogs={blogs} />
     </div>
-  )
-}
+  );
+};
 
-export default Blogs
+export default Blogs;

@@ -14,6 +14,10 @@ export default {
       animation: {
         "project-animate": "anime 10s linear infinite alternate",
       },
+      fontFamily: {
+        'albert': ['Albert Sans', 'sans-serif'],
+        'lexend': ['Lexend', 'sans-serif'],
+      },
     },
   },
   plugins: [],

@@ -24,11 +24,11 @@ const appRouter = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/blogs/",
+        path: "/blogs",
         element: <Blogs />,
       },
       {
-        path: "/forum/",
+        path: "/forum",
         element: <Forum />,
       },
       {
@@ -36,7 +36,7 @@ const appRouter = createBrowserRouter([
         element: <ProjectPage />,
       },
       {
-        path: "/contact/",
+        path: "/contact",
         element: <Contact />,
       },
       {

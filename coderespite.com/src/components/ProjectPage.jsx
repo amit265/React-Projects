@@ -1,17 +1,29 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import ProjectSection from "./ProjectSection";
 import Shimmer from "./Shimmer";
-
+import MyAutocomplete from "./MyAutocomplete";
+import shuffleArray from "../utils/shuffleArray";
 const ProjectPage = () => {
-  const [selectedTab, setSelectedTab] = useState("javascript");
+  const [selectedTab, setSelectedTab] = useState("react");
+  const [inputValue, setInputValue] = useState("");
   const projects = useSelector((store) => store?.projects);
+  const data = projects.javascript
+    .map((item) => item.title)
+    .concat(projects.react.map((item) => item.title))
+    .concat(projects.responsive.map((item) => item.title));
+  const [value, setValue] = useState("");
 
   // Check if the data is still loading or empty
-  const isLoading = !projects || !projects.javascript || !projects.react || !projects.responsive;
-  const isDataEmpty = (projects?.javascript.length === 0 && 
-                        projects?.react.length === 0 && 
-                        projects?.responsive.length === 0);
+  const isLoading =
+    !projects ||
+    !projects.javascript ||
+    !projects.react ||
+    !projects.responsive;
+  const isDataEmpty =
+    projects?.javascript.length === 0 &&
+    projects?.react.length === 0 &&
+    projects?.responsive.length === 0;
 
   // Total counts
   const total_js = projects?.javascript?.length || 0;
@@ -26,7 +38,6 @@ const ProjectPage = () => {
     { name: "JavaScript (" + `${total_js}` + ")", key: "javascript" },
     { name: "HTML/CSS (" + `${total_responsive}` + ")", key: "responsive" },
   ];
-
   if (isLoading || isDataEmpty) {
     return (
       <div className="py-12 pt-24 text-center">
@@ -38,9 +49,23 @@ const ProjectPage = () => {
   return (
     <div>
       <section className="py-12 text-[var(--text-color)]">
+        <div className="flex justify-center pb-4">
+          <div className="relative w-80">
+            <div className="relative">
+              <MyAutocomplete
+                value={value}
+                setValue={setValue}
+                inputValue={inputValue}
+                setInputValue={setInputValue}
+                data={data}
+              />
+            </div>
+          </div>
+        </div>
+
         <div className="container mx-auto text-center">
           {/* Tabs */}
-          <div className="flex flex-wrap justify-center gap-4 p-4">
+         {!value && <div className="flex flex-wrap justify-center gap-4 p-4">
             {tabs.map((tab) => (
               <button
                 key={tab.key}
@@ -54,44 +79,62 @@ const ProjectPage = () => {
                 {tab.name}
               </button>
             ))}
-          </div>
+          </div>}
+
+          {value && (
+            <div className="flex justify-center">
+              <ProjectSection
+                title={value}
+                projects={[
+                  ...(projects?.javascript.filter(
+                    (item) => item.title === value
+                  ) || []),
+                  ...(projects?.responsive.filter(
+                    (item) => item.title === value
+                  ) || []),
+                  ...(projects?.react.filter((item) => item.title === value) ||
+                    []),
+                ]}
+              />
+            </div>
+          )}
 
           {/* Project Sections */}
+          {!value && <div>
           {selectedTab === "all" && (
             <>
               <ProjectSection
                 title="React Projects"
-                projects={projects.react}
+                projects={shuffleArray([...projects.react])}
               />
               <ProjectSection
                 title="JavaScript Projects"
-                projects={projects.javascript}
+                projects={shuffleArray([...projects.javascript])}
               />
               <ProjectSection
                 title="HTML/CSS Projects"
-                projects={projects.responsive}
+                projects={shuffleArray([...projects.responsive])}
               />
             </>
           )}
           {selectedTab === "react" && (
-            <ProjectSection
-              title="React Projects"
-              projects={projects.react}
-            />
+            <ProjectSection title="React Projects" projects={shuffleArray([...projects.react])} />
           )}
           {selectedTab === "javascript" && (
             <ProjectSection
               title="JavaScript Projects"
-              projects={projects.javascript}
+              projects={shuffleArray([...projects.javascript])}
             />
           )}
           {selectedTab === "responsive" && (
             <ProjectSection
               title="HTML/CSS Projects"
-              projects={projects.responsive}
+              projects={shuffleArray([...projects.responsive])}
             />
           )}
+          </div>}
         </div>
+
       </section>
     </div>
   );

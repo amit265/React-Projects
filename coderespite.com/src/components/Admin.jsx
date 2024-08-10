@@ -2,9 +2,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ProjectsManager from "./ProjectManager";
+import BlogAdmin from "./BlogAdmin";
 
 const Admin = () => {
-  const [project, setProject] = useState("react");
+  const [project, setProject] = useState("");
 
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -30,6 +31,7 @@ const Admin = () => {
             <option value="react">React</option>
             <option value="javascript">JavaScript</option>
             <option value="responsive">Responsive</option>
+            <option value="blog">Blog</option>
           </select>
           <h1 className="text-2xl text-[var(--primary-color)]">Admin Panel</h1>
 
@@ -43,6 +45,7 @@ const Admin = () => {
         {project === "react" && <ProjectsManager table="react" />}
         {project === "javascript" && <ProjectsManager table="javascript" />}
         {project === "responsive" && <ProjectsManager table="responsive" />}
+        {project === "blog" && <BlogAdmin />}
       </div>
     </section>
   );

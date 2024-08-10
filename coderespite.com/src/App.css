@@ -3,15 +3,55 @@
 }
 
 /* <weight>: Use a value from 100 to 900 */
+/* 
+@font-face {
+  font-family: "Albert Sans";
+  src: url("../public/fonts/Albert_sans/static/AlbertSans-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Albert Sans";
+  src: url("../public/fonts/Albert_sans/static/AlbertSans-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lexend";
+  src: url("../public/fonts/Lexend/static/Lexend-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lexend";
+  src: url("../public/fonts/Lexend/static/Lexend-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+} */
+
+/* Add more @font-face rules for different weights and styles */
 
 .lexend {
+  /* src: url("/fonts/Lexend/static/Lexend-Bold.ttf") format("truetype"); */
   font-family: "Lexend", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
 }
 
+
+.MuiAutocomplete-popup {
+  border: 1px solid red; /* Temporary border to see the dropdown */
+}
+
 .albert-sans {
+  /* src: url("/fonts/Albert_sans/static/AlbertSans-Regular.ttf"); */
+
   font-family: "Albert Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
@@ -84,7 +124,6 @@
   }
 }
 
-
 @keyframes anime {
   0% {
     transform: translateX(0);
@@ -95,7 +134,7 @@
 }
 
 .header-animate {
-  animation: headerBounce .5s ease-in;
+  animation: headerBounce 0.5s ease-in;
 }
 
 @keyframes headerBounce {
@@ -133,8 +172,6 @@
     transform: translatey(0%);
   }
 }
-
-
 
 /* Base styling for shimmer lines */
 .shimmer-effect .shimmer {
@@ -215,4 +252,3 @@
     transform: translateX(0);
   }
 }
-

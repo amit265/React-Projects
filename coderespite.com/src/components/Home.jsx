@@ -3,12 +3,15 @@ import Hero from "./Hero";
 import ProjectSection from "./ProjectSection";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Shimmer from "./Shimmer";
 import ShimmerHome from "./ShimmerHome";
+import shuffleArray from "../utils/shuffleArray";
 
 const Home = () => {
   const [visibleProjects, setVisibleProjects] = useState([]);
+
+
   const projects = useSelector((store) => store?.projects);
+
   const isLoading =
     projects?.javascript.length === 0 &&
     projects?.react.length === 0 &&
@@ -19,9 +22,9 @@ const Home = () => {
       const isLargeScreen = screenWidth >= 1024; // Tailwind's lg breakpoint is 1024px
 
       if (isLargeScreen) {
-        setVisibleProjects(projects.javascript);
+        setVisibleProjects(shuffleArray([...projects.javascript]));
       } else {
-        setVisibleProjects(projects.javascript.slice(0, 10));
+        setVisibleProjects(shuffleArray([...projects.javascript]).slice(0, 10));
       }
     };
 
@@ -50,7 +53,7 @@ const Home = () => {
           <div className="overflow-x-auto scroll-container">
             {!isLoading ? (
               <ProjectSection
-                projects={projects.react}
+                projects={shuffleArray([...projects.react])}
                 horizontalScroll={true}
                 animation={true}
               />

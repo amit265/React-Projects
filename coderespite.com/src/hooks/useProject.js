@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { BASE_URL } from "../utils/projects";
 import { useDispatch, useSelector } from "react-redux";
 import { addJavascript, addReact, addResponsive } from "../utils/projectsSlice";

@@ -2,13 +2,14 @@ import { useState } from "react";
 import Hamburger from "hamburger-react";
 import { Link } from "react-router-dom";
 import useProjects from "../hooks/useProject";
+import useBlogs from "../hooks/useBlogs";
 
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
   useProjects("responsive");
   useProjects("javascript");
-
   useProjects("react");
+  useBlogs();
   const falseHam = () => {
     setOpen(false);
   };

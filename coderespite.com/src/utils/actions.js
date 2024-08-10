@@ -17,6 +17,8 @@ export const addProject = (table, project) => async (dispatch) => {
     body: JSON.stringify(project),
   });
   const data = await response.json();
+  console.log(data);
+  
   if (data.status === 1) {
     dispatch({ type: ADD_PROJECT, payload: { table, project } });
   }
@@ -30,7 +32,10 @@ export const updateProject = (table, project) => async (dispatch) => {
   });
   const data = await response.json();
   if (data.status === 1) {
+    console.log(data.message);
+    
     dispatch({ type: UPDATE_PROJECT, payload: { table, project } });
+    
   }
 };
 

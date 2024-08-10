@@ -13,8 +13,9 @@ function ProjectsManager({ table }) {
   const [newProject, setNewProject] = useState({
     title: "",
     path: "",
-    visible: "",
+    visible: true,
     rating: "",
+    description: "",
   });
   const [editProject, setEditProject] = useState(null);
 
@@ -24,18 +25,28 @@ function ProjectsManager({ table }) {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value);
+
     if (editProject) {
       setEditProject({ ...editProject, [name]: value });
     } else {
       setNewProject({ ...newProject, [name]: value });
+      console.log({ ...newProject, [name]: value });
     }
   };
 
   const handleAddProject = () => {
     const result = confirm("Are you sure?");
     if (result) {
-    dispatch(addProject(table, newProject));
-    setNewProject({ title: "", path: "", visible: "", rating: "" });
+      dispatch(addProject(table, newProject));
+      setNewProject({
+        title: "",
+        path: "",
+        visible: true,
+        rating: "",
+        description: "",
+
+      });
     }
   };
 
@@ -44,27 +55,23 @@ function ProjectsManager({ table }) {
   };
 
   const handleUpdateProject = () => {
-
     const result = confirm("Are you sure?");
     if (result) {
-    dispatch(updateProject(table, editProject));
-    setEditProject(null);
-
+      dispatch(updateProject(table, editProject));
+      setEditProject(null);
     }
   };
 
   const handleDeleteProject = (id) => {
-  const result = confirm("Are you sure?");
-  if (result) {
-    dispatch(deleteProject(table, id));
-  }
+    const result = confirm("Are you sure?");
+    if (result) {
+      dispatch(deleteProject(table, id));
+    }
   };
-    console.log(projects);
-  
 
   return (
     <div className="p-4 text-[var(--text-color)]">
-          <h2 className="text-3xl font-bold text-[var(--primary-color)]">
+      <h2 className="text-3xl font-bold text-[var(--primary-color)]">
         Manage {table.charAt(0).toUpperCase() + table.slice(1)} Projects
       </h2>
       <div className="mb-4 max-w-xl mx-auto py-12 text-[var(--text-color)]">
@@ -87,14 +94,7 @@ function ProjectsManager({ table }) {
           value={editProject ? editProject.path : newProject.path}
           onChange={handleInputChange}
         />
-        <input
-          className="mb-4 w-full px-4 py-2 border rounded-md text-[var(--background-color)]"
-          type="text"
-          name="visible"
-          placeholder="Visible (true/false)"
-          value={editProject ? editProject.visible : newProject.visible}
-          onChange={handleInputChange}
-        />
+
         <input
           className="mb-4 w-full px-4 py-2 border rounded-md text-[var(--background-color)]"
           type="text"
@@ -103,6 +103,29 @@ function ProjectsManager({ table }) {
           value={editProject ? editProject.rating : newProject.rating}
           onChange={handleInputChange}
         />
+        <textarea
+          className="mb-4 w-full px-4 py-2 border rounded-md text-[var(--background-color)]"
+          type="text"
+          name="description"
+          placeholder="Description"
+          value={editProject ? editProject.description : newProject.description}
+          onChange={handleInputChange}
+        />
+        <label className="flex items-center mb-4">
+          <input
+            type="checkbox"
+            name="visible"
+            className="mr-2"
+            checked={editProject ? editProject.visible : newProject.visible}
+            onChange={(e) =>
+              handleInputChange({
+                target: { name: "visible", value: e.target.checked },
+              })
+            }
+          />
+          Visible
+        </label>
+
         {editProject ? (
           <button
             className="bg-blue-500 text-white px-4 py-2 hover:scale-110"
@@ -133,22 +156,30 @@ function ProjectsManager({ table }) {
           {projects.length > 0 ? (
             projects.map((project) => (
               <div
-                key={project.id}
+                key={project.id + project.path}
                 className="w-80 flex flex-col  gap-2 px-4 py-2 border rounded-lg shadow-lg flex-shrink-0 bg-[var(--text-color)]"
               >
-                <p>
+                <p className="text-left gap-4">
                   <strong>Title:</strong> {project.title}
                 </p>
-                <img className="object-cover h-64 mx-auto w-full rounded-lg shadow-lg cursor-pointer" src={project.image_root + project.path + ".png"} alt="" />
-                <p>
+                <img
+                  className="object-cover h-64 mx-auto w-full rounded-lg shadow-lg cursor-pointer"
+                  src={project.image_root}
+                  alt=""
+                />
+                <p className="text-left gap-4">
                   <strong>Path:</strong> {project.path}
                 </p>
 
-                <p>
+                <p className="text-left gap-4">
                   <strong>Visible:</strong> {project.visible}
                 </p>
-                <p>
+                <p className="text-left gap-4">
                   <strong>Rating:</strong> {project.rating}
+                </p>
+                <p className="text-left">
+                  <strong>Description:</strong>{" "}
+                  {project.description.slice(0, 100) + "..."}
                 </p>
                 <button
                   className="bg-yellow-500 text-white px-2 py-1 mr-2 rounded-md"
