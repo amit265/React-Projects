@@ -16,11 +16,19 @@ The Customer Details Portal is a React-based application designed to display a l
 
 - **Custom Hook for Data Fetching**: The project uses a single custom hook (`useFetchData`) to handle all data fetching operations. This hook is designed to be flexible, allowing for polling intervals and managing loading states effectively. The hook ensures that the data is fetched efficiently and consistently across the application.
 
+- **Unsplash API Integration**: The project integrates with the Unsplash API to display a grid of photos for each customer. This adds a visual component to the customer details, making the interface more engaging.
+
+
+- **Custom Customer Data API**: The customer data is fetched from a custom API hosted at [coderespite.com](https://coderespite.com/api/customer_details.json). The data was sourced from the internet and made available through this API endpoint to simulate real-world API interactions.
+
+
 - **Memoization with `useCallback`**: To optimize performance, the project makes extensive use of the `useCallback` hook. This ensures that functions like event handlers and data processing functions are not unnecessarily recreated on every render, thus improving the overall performance of the application.
 
 - **Lazy Loading with `ref` and `IntersectionObserver`**: The customer list component employs lazy loading techniques to handle large datasets. By using `ref` and the `IntersectionObserver` API, the application dynamically loads more customers as the user scrolls, ensuring a smooth and responsive user experience even with large amounts of data.
 
-- **Fixed Headers and Scrollable Content**: The UI is designed with a fixed header and scrollable content areas, ensuring that the main page does not scroll while keeping the focus on the customer details and list. This layout is achieved using CSS and React’s layout management.
+- **Fixed Headers and Scrollable Content**: The UI is designed with a fixed header and scrollable content areas, ensuring that the main page does not scroll while keeping the focus on the customer details and list. This layout is achieved using Tailwind CSS,
+
+- **Shimmer UI**: It uses shimmer effects when resources is being loaded, so that user feels like data is being fetched in background.
 
 ### Technical Stack
 
@@ -35,6 +43,7 @@ The Customer Details Portal is a React-based application designed to display a l
 - **`CustomerPortal`**: The main component that handles the overall layout and logic for selecting customers.
 - **`CustomerList`**: Displays a list of customers with lazy loading functionality.
 - **`CustomerDetails`**: Shows detailed information about the selected customer.
+- **`PhotoGrid`**: Show a grid of 9 random images.
 - **`useFetchData`**: Custom hook to fetch data from the API with loading state management and optional polling.
 
 ### How to Run
