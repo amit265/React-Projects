@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback } from "react";
 import CustomerCard from "./CustomerCard";
 import ShimmerCustomer from "./ShimmerCustomer";
 
-const CustomerList = ({ customers, selectedCustomerId, onSelect, loading }) => {
+const CustomerList = ({ customers, selectedCustomerId, onSelect, loading , error}) => {
   const [visibleCount, setVisibleCount] = useState(20); // Load the first 20 customers initially
   const observer = useRef();
 
@@ -24,6 +24,8 @@ const CustomerList = ({ customers, selectedCustomerId, onSelect, loading }) => {
     },
     [loadMore, visibleCount, customers.length]
   );
+
+  if (error) return <h1> Error fetching date: {error} </h1>;
 
   if (loading) {
     return Array.from({ length: 20 }).map((_, index) => (

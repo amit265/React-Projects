@@ -7,18 +7,17 @@ import { CUSTOMER_DETAILS_API } from "../utils/constants";
 function CustomerPortal() {
   const [selectedCustomerId, setSelectedCustomerId] = useState(null);
 
-  const { data, loading } = useFetchData(CUSTOMER_DETAILS_API);
+  const { data, loading, error } = useFetchData(CUSTOMER_DETAILS_API);
   const customers = data;
 
-  console.log("customers", customers);
 
 
   const handleSelectCustomer = (id) => {
     setSelectedCustomerId(id);
+    
   };
 
   const selectedCustomer = customers.find((c) => c.id === selectedCustomerId);
-  console.log("selectedCustomer", selectedCustomer);
 
   return (
     <div className="flex flex-col bg-slate-800 h-screen overflow-hidden">
@@ -31,6 +30,7 @@ function CustomerPortal() {
             customers={customers}
             selectedCustomerId={selectedCustomerId}
             loading={loading}
+            error = {error}
             onSelect={handleSelectCustomer}
           />
         </div>
