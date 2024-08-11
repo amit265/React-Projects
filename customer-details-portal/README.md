@@ -53,7 +53,7 @@ To run this project locally:
    ```bash
    npm install
    ```
-4. Add your unsplash access API key in the `.env` file or contants.
+4. Add your unsplash access API key in the `.env` file or in the constants.
 
 ## Usage
 
@@ -61,9 +61,9 @@ To run this project locally:
    ```bash
    npm start
    ```
-2. Open your browser and visit `http://localhost:3000`.
+2. Open your browser and visit `http://localhost:3000`, or whatever port your system assigns.
 
 #### Conclusion
-This project is an excellent example of a well-optimized React application that efficiently handles data fetching, lazy loading, and UI responsiveness. It’s a great starting point for anyone looking to learn about modern React development practices or to build upon for more complex projects.
+This project is an excellent example of a well-optimized React application that efficiently handles data fetching, lazy loading, and UI responsiveness.
 
 For any contributions or issues, please feel free to create a pull request or raise an issue on the GitHub repository.
