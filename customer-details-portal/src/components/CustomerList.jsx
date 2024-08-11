@@ -1,7 +1,8 @@
 import React, { useState, useRef, useCallback } from "react";
 import CustomerCard from "./CustomerCard";
+import ShimmerCustomer from "./ShimmerCustomer";
 
-const CustomerList = ({ customers, selectedCustomerId, onSelect }) => {
+const CustomerList = ({ customers, selectedCustomerId, onSelect, loading }) => {
   const [visibleCount, setVisibleCount] = useState(20); // Load the first 20 customers initially
   const observer = useRef();
 
@@ -24,12 +25,14 @@ const CustomerList = ({ customers, selectedCustomerId, onSelect }) => {
     [loadMore, visibleCount, customers.length]
   );
 
+  if (loading) {
+    return Array.from({ length: 20 }).map((_, index) => (
+      <ShimmerCustomer key={index} />
+    ));
+  }
+
   return (
     <div className="relative h-full">
-      {/* <h1 className="font-bold text-center p-4 bg-purple-400 fixed w-1/3 z-10">
-        Customer List
-      </h1> */}
-
       <div className="flex flex-col bg-white overflow-y-auto h-screen">
         {customers.slice(0, visibleCount).map((customer, index) => {
           if (index === visibleCount - 1) {

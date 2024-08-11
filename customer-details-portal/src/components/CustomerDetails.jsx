@@ -4,10 +4,11 @@ import useFetchData from "../hooks/useFetchData";
 import { UNSPLASH_API, UNSPLASH_API_ACCESS_KEY } from "../utils/constants";
 
 const CustomerDetails = ({ customer }) => {
-  const photos = useFetchData(UNSPLASH_API + UNSPLASH_API_ACCESS_KEY, 10000);
-
-  const loading = photos.length === 0;
-
+  const { data, loading, error } = useFetchData(
+    UNSPLASH_API + UNSPLASH_API_ACCESS_KEY,
+    30000
+  );
+  const photos = data;
 
   if (!customer) {
     return (
@@ -19,20 +20,19 @@ const CustomerDetails = ({ customer }) => {
 
   console.log("customer", customer);
   return (
-  
-      <div className="overflow-y-auto h-screen bg-gray-200 p-4">
-        <h1 className="font-semibold text-xl py-4">
-          Customer {customer.id} details
-        </h1>
-        <h2 className="font-bold text-xl">
-          Name : {customer.first + " " + customer.last}
-        </h2>
-        <p className="text-lg text-gray-800">Email : {customer.email}</p>
-        <p className="text-lg text-gray-800">Company : {customer.company}</p>
-        <p className="text-lg text-gray-800">Country : {customer.country}</p>
+    <div className="overflow-y-auto h-screen bg-gray-200 p-4">
+      <h1 className="font-semibold text-xl py-4">
+        Customer {customer.id} details
+      </h1>
+      <h2 className="font-bold text-xl">
+        Name : {customer.first + " " + customer.last}
+      </h2>
+      <p className="text-lg text-gray-800">Email : {customer.email}</p>
+      <p className="text-lg text-gray-800">Company : {customer.company}</p>
+      <p className="text-lg text-gray-800">Country : {customer.country}</p>
 
-        <PhotoGrid  photos={photos} loading={loading} />
-      </div>
+      <PhotoGrid photos={photos} loading={loading} error={error} />
+    </div>
   );
 };
 

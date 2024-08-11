@@ -4,8 +4,8 @@ const CustomerCard = forwardRef(({ customer, isSelected, onSelect }, ref) => {
   return (
     <div
       ref={ref}
-      className={`p-4 shadow-md cursor-pointer botder-1 border-[#000000] ${
-        isSelected ? "bg-gray-400" : ""
+      className={`p-4 shadow-md cursor-pointer border-1 border-[#000000] ${
+        isSelected ? "bg-gray-200" : ""
       }`}
       onClick={() => onSelect(customer.id)}
     >

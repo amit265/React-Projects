@@ -7,8 +7,11 @@ import { CUSTOMER_DETAILS_API } from "../utils/constants";
 function CustomerPortal() {
   const [selectedCustomerId, setSelectedCustomerId] = useState(null);
 
-  const customers = useFetchData(CUSTOMER_DETAILS_API);
-  console.log("customers, customer");
+  const { data, loading } = useFetchData(CUSTOMER_DETAILS_API);
+  const customers = data;
+
+  console.log("customers", customers);
+
 
   const handleSelectCustomer = (id) => {
     setSelectedCustomerId(id);
@@ -27,6 +30,7 @@ function CustomerPortal() {
           <CustomerList
             customers={customers}
             selectedCustomerId={selectedCustomerId}
+            loading={loading}
             onSelect={handleSelectCustomer}
           />
         </div>
