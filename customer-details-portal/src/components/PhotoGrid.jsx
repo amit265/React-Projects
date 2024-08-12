@@ -1,5 +1,7 @@
 import Shimmer from "./Shimmer";
 const PhotoGrid = ({ photos, loading, error }) => {
+  console.log(photos);
+  console.log("error", error);
   if (error) <h1> Error fetching date: {error} </h1>;
   return (
     <div className="grid grid-cols-3 grid-rows-3 gap-4 mt-4">
@@ -18,10 +20,9 @@ const PhotoGrid = ({ photos, loading, error }) => {
           <div key={index} className="w-[100%] pb-[100%] relative">
             <img
               src={photo.urls.small}
-              alt={`Customer image ${index + 1}`}
+              alt={photo.alt_description}
               className="absolute top-0 left-0 w-[100%] h-[100%] object-cover rounded-lg hover:scale-105 cursor-pointer"
             />
-            ))
           </div>
         ))
       )}

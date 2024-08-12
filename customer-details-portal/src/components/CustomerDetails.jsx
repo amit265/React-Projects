@@ -6,7 +6,7 @@ import { UNSPLASH_API, UNSPLASH_API_ACCESS_KEY } from "../utils/constants";
 const CustomerDetails = ({ customer }) => {
   const { data, loading, error } = useFetchData(
     UNSPLASH_API + UNSPLASH_API_ACCESS_KEY,
-    30000
+    10000
   );
   const photos = data;
 
