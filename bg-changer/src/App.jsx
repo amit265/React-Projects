@@ -22,7 +22,6 @@ function App() {
 
 
   return (
-    <>
       <div
         className="w-[100vw] h-[100vh] duration-150"
         style={{ backgroundColor: color }}
@@ -47,7 +46,6 @@ function App() {
           </div>
         </div>
       </div>
-    </>
   );
 }
 
