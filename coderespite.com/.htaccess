@@ -1,0 +1,17 @@
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+</IfModule>
+
+ <IfModule mod_rewrite.c>
+   RewriteEngine On
+   # Redirect API requests to the API folder
+ RewriteCond %{REQUEST_URI} ^/api/
+ RewriteRule ^api/(.*)$ /api/$1 [L]
+   # Existing rules
+  # RewriteRule ^index\.html$ - [L]
+   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteCond %{REQUEST_FILENAME} !-d
+   RewriteRule . /index.html [L]
+ </IfModule>
+
+

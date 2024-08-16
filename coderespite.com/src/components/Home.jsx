@@ -39,7 +39,7 @@ const Home = () => {
   }, [projects]);
 
   return (
-    <div className="text-[var(--text-color)] hero-animate">
+    <div className="text-[var(--text-color)]">
       <Hero />
 
       <section className="py-12">

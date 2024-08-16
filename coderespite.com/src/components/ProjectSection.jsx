@@ -24,20 +24,20 @@ const ProjectSection = ({ title, projects, horizontalScroll, animation }) => {
             </div>
             <div className="relative">
               <a
-                href={project.path_root + project.path}
+                href={project.path_root}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img
                   className="object-cover h-64 mx-auto w-full rounded-lg shadow-lg cursor-pointer"
-                  src={project.image_root + project.path + ".png"}
+                  src={project.image_root}
                   alt={project.path}
                 />
               </a>
               <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 rounded-lg">
                 <div className="flex gap-4">
                   <a
-                    href={project.path_root + project.path}
+                    href={project.path_root}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -46,7 +46,7 @@ const ProjectSection = ({ title, projects, horizontalScroll, animation }) => {
                     </button>
                   </a>
                   <a
-                    href={project.github_root + project.path}
+                    href={project.github_root}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

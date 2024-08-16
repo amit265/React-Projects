@@ -5,13 +5,11 @@ import Footer from "./components/Footer";
 import { DataProvider } from './context/DataContext';
 function App() {
   return (
-    <>
       <DataProvider>
         <Navbar />
         <Outlet />
         <Footer />
       </DataProvider>
-    </>
   );
 }
 
