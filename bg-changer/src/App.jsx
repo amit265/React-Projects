@@ -35,7 +35,7 @@ function App() {
           <div className="flex flex-wrap justify-center gap-3 shadow-lg bg-white px-3 py-2 rounded-3xl">
             {colour.map((color, index) => (
               <button
-                key={index}
+                key={color}
                 onClick={() => setColor(color.toLowerCase())}
                 className="outline-none px-4 m-2 py-1 rounded-full text-black shadow-lg"
                 style={{ backgroundColor: color }}
