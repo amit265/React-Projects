@@ -10,6 +10,9 @@ const VideosContainer = () => {
     try {
       const data = await fetch(YOUTUBE_API);
       const json = await data.json();
+      console.log("json", json);
+      console.log(import.meta.env.VITE_GOOGLE_API_KEY);
+
       setVideos(json.items);
     } catch (error) {
       console.error("Error: " + error);
@@ -19,6 +22,8 @@ const VideosContainer = () => {
   useEffect(() => {
     getVideos();
   }, []);
+  
+  if(videos === undefined) return;
 
   return (
     <div className="flex flex-wrap col-span-11">
