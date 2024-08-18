@@ -9,16 +9,13 @@ const BlogAdmin = () => {
   const [content, setContent] = useState("");
   const [author, setAuthor] = useState("");
   const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
   const [tags, setTags] = useState("");
   const [image, setImage] = useState("");
   const [message, setMessage] = useState("");
   const [isImageUploaded, setIsImageUploaded] = useState(false);
 
   const fileInputRef = useRef(null);
-
-  useEffect(() => {
-    console.log("Component re-rendered");
-  }, [image, content, title, category, tags, author]);
 
   const handleImageUpload = debounce(async (e) => {
     const file = e.target.files[0];
@@ -34,7 +31,7 @@ const BlogAdmin = () => {
       });
 
       const data = await response.json();
-
+      console.log("imge data", data);
       if (data.status === 1) {
         setImage(data.url);
         setIsImageUploaded(true);
@@ -62,6 +59,7 @@ const BlogAdmin = () => {
           title,
           content,
           category,
+          description,
           tags,
           author,
           image_url: image,
@@ -75,6 +73,7 @@ const BlogAdmin = () => {
         setTitle("");
         setContent("");
         setCategory("");
+        setDescription("");
         setTags("");
         setAuthor("");
         setImage("");
@@ -83,12 +82,14 @@ const BlogAdmin = () => {
         setMessage("Failed to add blog. Please try again.");
       }
     } catch (error) {
-      setMessage("An error occurred. Please try again.");
+      console.log("error", error);
+      setMessage("An error occurred. Please try again.", error);
     }
 
     setTimeout(() => setMessage(""), 3000);
   };
 
+  console.log("image", image);
   return (
     <div className="py-12 text-[var(--text-color)]">
       <div className="container mx-auto px-4 text-center">
@@ -99,6 +100,13 @@ const BlogAdmin = () => {
             placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+          />
+           <textarea
+            type="text"
+            className="w-full px-4 py-2 border rounded-md mt-4"
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
           <div className="flex justify-between gap-4 mt-4">
             <div className="mb-4 w-full text-[var(--background-color)]">
