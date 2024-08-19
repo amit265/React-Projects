@@ -11,7 +11,7 @@ const BlogAdmin = () => {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState("");
-  const [image, setImage] = useState("");
+  const [image_url, setImage_url] = useState("");
   const [message, setMessage] = useState("");
   const [isImageUploaded, setIsImageUploaded] = useState(false);
 
@@ -31,9 +31,10 @@ const BlogAdmin = () => {
       });
 
       const data = await response.json();
-      console.log("imge data", data);
+      // console.log("imge data", data);
       if (data.status === 1) {
-        setImage(data.url);
+        console.log("image url", data.url);
+        setImage_url(data.url);
         setIsImageUploaded(true);
       } else {
         setMessage(data.message);
@@ -62,7 +63,7 @@ const BlogAdmin = () => {
           description,
           tags,
           author,
-          image_url: image,
+          image_url,
         }),
       });
 
@@ -76,7 +77,7 @@ const BlogAdmin = () => {
         setDescription("");
         setTags("");
         setAuthor("");
-        setImage("");
+        setImage_url("");
         setIsImageUploaded(false);
       } else {
         setMessage("Failed to add blog. Please try again.");
@@ -89,7 +90,7 @@ const BlogAdmin = () => {
     setTimeout(() => setMessage(""), 3000);
   };
 
-  console.log("image", image);
+  // console.log("image", image_url);
   return (
     <div className="py-12 text-[var(--text-color)]">
       <div className="container mx-auto px-4 text-center">
@@ -101,7 +102,7 @@ const BlogAdmin = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-           <textarea
+          <textarea
             type="text"
             className="w-full px-4 py-2 border rounded-md mt-4"
             placeholder="Description"
@@ -155,7 +156,7 @@ const BlogAdmin = () => {
             onChange={handleImageUpload}
             className="file-input"
           />
-          {image && <img src={image} alt="Uploaded" className="mt-4" />}
+          {image_url && <img src={image_url} alt="Uploaded" className="mt-4" />}
         </div>
         <button
           className="px-6 py-3 bg-[var(--primary-color)] text-lg rounded-md hover:bg-[#ef231a]"
