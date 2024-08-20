@@ -47,7 +47,6 @@ const ProjectPage = () => {
   }
 
   return (
-    <div>
       <section className="py-12 text-[var(--text-color)]">
         <div className="flex justify-center pb-4">
           <div className="relative w-80">
@@ -136,7 +135,6 @@ const ProjectPage = () => {
         </div>
 
       </section>
-    </div>
   );
 };
 

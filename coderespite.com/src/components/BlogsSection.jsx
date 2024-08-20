@@ -1,23 +1,26 @@
 import React from "react";
+import { CiUser } from "react-icons/ci";
+
 
 const BlogsSection = ({ blogs }) => {
+
+  console.log(blogs);
   return (
-    <div className="text-[var(--background-color)]">
+    <div className="text-[var(--background-color)] container mx-auto">
       {/* <h2 className="text-2xl font-bold mb-4 text-[var(--primary-color)] hover:text-[#ef233c] lexend p-4">
         {title}
       </h2> */}
 
-      <div className="flex pb-4 justify-center lg:justify-between flex-wrap gap-8">
+      <div className="flex flex-wrap justify-center md:justify-between gap-8">
         {blogs.map((blog) => (
           <div
             key={blog.id}
-            className="w-80 px-4 py-2 border rounded-lg shadow-[var(--background-color)] shadow-lg flex-shrink-0 bg-[var(--text-color)] hover:transform-gpu hover:scale-105"
+            className="w-80 px-4 py-2 border rounded-lg shadow-[var(--background-color)] shadow-lg flex-shrink-0 bg-[var(--text-color)] hover:scale-105"
           >
-            <div className="flex justify-between">
-              <h3 className="text-2xl font-semibold mb-4">{blog.title}</h3>
-            </div>
-            <div className="flex justify-between">
-              <p className="text-lg font-semibold mb-4">{blog.category}</p>
+            <div>
+              <h3 className="text-base font-semibold mb-2">{blog.title}</h3> 
+              <p className="text-xs mb-4">{blog.tags.split(" ").map((elem) => (<span key={elem} className="bg-[var(--background-color)] text-[var(--text-color)] mr-1 p-2 rounded-lg hover:cursor-pointer hover:bg-[var(--primary-color)]">#{elem}</span>))}</p>
+
             </div>
 
             <div className="relative">
@@ -46,13 +49,22 @@ const BlogsSection = ({ blogs }) => {
               </div>
             </div>
 
+            {/* <div>
+              <p className="text-lg font-semibold mb-4">{blog.category}</p>
+              <p className="text-lg font-semibold mb-4">{blog.views}</p>
+              <p className="text-lg font-semibold mb-4">{blog.comments}</p>
+              <p className="text-lg font-semibold mb-4">{blog.likes}</p>
+              <p className="text-lg font-semibold mb-4">{blog.shares}</p>
+            </div> */}
+            <div>
+            <p className="text-sm my-2">🕗: {Math.ceil(blog.content.split(" ").length * 0.003)}{console.log(blog.content.split(" "))} minute</p>
 
-            <p className="text-lg font-semibold mb-4">{blog.author}</p>
-            <p className="text-lg font-semibold mb-4">{blog.tags}</p>
-
-
-            <p className="pt-4 text-justify">{blog.description}</p>
-            <p className="text-lg font-semibold mb-4">{blog.created_at}</p>
+            <p className="text-sm mb-2">✍ : {blog.author}</p>
+            </div>
+          
+          <div>            
+             <p className="text-sm mb-2">🗓: {blog.created_at.slice(0,10)}</p>
+          </div>
 
           </div>
         ))}

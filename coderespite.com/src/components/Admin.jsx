@@ -5,7 +5,7 @@ import ProjectsManager from "./ProjectManager";
 import BlogAdmin from "./BlogAdmin";
 
 const Admin = () => {
-  const [project, setProject] = useState("");
+  const [project, setProject] = useState("react");
 
   const navigate = useNavigate();
   const handleLogout = () => {
