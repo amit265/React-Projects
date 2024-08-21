@@ -50,7 +50,7 @@ const Home = () => {
             </h2>
           </Link>
 
-          <div className="overflow-x-auto scroll-container">
+          <div className="overflow-x-auto no-scrollbar">
             {!isLoading ? (
               <ProjectSection
                 projects={shuffleArray([...projects.react])}
@@ -72,7 +72,7 @@ const Home = () => {
             </h2>
           </Link>
 
-          <div className="overflow-x-auto scroll-container">
+          <div className="overflow-x-auto no-scrollbar">
             {!isLoading ? (
               <ProjectSection
                 projects={visibleProjects}

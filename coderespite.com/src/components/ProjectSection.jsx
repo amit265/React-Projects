@@ -8,7 +8,7 @@ const ProjectSection = ({ title, projects, horizontalScroll, animation }) => {
       <div
         className={`flex pb-4 justify-center lg:justify-between  ${
           horizontalScroll
-            ? "flex-wrap lg:flex-nowrap lg:overflow-x-auto"
+            ? "flex-wrap lg:flex-nowrap lg:overflow-x-auto no-scollbar"
             : "flex-wrap"
         } gap-8`}
       >
