@@ -1,5 +1,6 @@
 import { FaUser } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
 
 const BlogCards = ({ blogs, currentPage, selectedCategory, pageSize }) => {
   const filteredBlogs = blogs
@@ -9,7 +10,7 @@ const BlogCards = ({ blogs, currentPage, selectedCategory, pageSize }) => {
   return (
     <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
       {filteredBlogs.map((blog) => (
-        <Link key={blog.id} to={`/blogs/${blog.id}`} className="p-5 shadow-lg rounded cursor-pointer">
+        <Link key={blog.id} to={`${BASE_URL}/blogs/${blog.id}`} className="p-5 shadow-lg rounded cursor-pointer">
           <div>
             <img src={blog.image} alt="" className="w-full" />
           </div>
