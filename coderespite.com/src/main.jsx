@@ -13,6 +13,7 @@ import ProjectPage from "./components/ProjectPage.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Admin from "./components/Admin.jsx";
 import Login from "./components/Login.jsx";
+import BlogPage from "./components/BlogPage.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs />,
+      },
+      {
+        path: "blogs/:id", // Relative path for single blog
+        element: <BlogPage />,
       },
       {
         path: "/forum",

@@ -18,6 +18,7 @@
     "@mui/material": "^5.16.6",
     "@reduxjs/toolkit": "^2.2.7",
     "axios": "^1.7.3",
+    "dompurify": "^3.1.6",
     "emailjs-com": "^3.2.0",
     "hamburger-react": "^2.5.1",
     "react": "^18.3.1",
@@ -31,6 +32,7 @@
     "sitemap": "^8.0.0"
   },
   "devDependencies": {
+    "@types/dompurify": "^3.0.5",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
