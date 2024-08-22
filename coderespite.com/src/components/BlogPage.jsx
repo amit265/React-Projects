@@ -10,12 +10,12 @@ const BlogPage = () => {
   const blog = blogs.find((blogPost) => blogPost.id === Number(id));
 
   // Set header height (adjust as needed based on your header's actual height)
-  const headerHeight = '64px'; // Example value, adjust to match your header's height
+  const headerHeight = '128px'; // Example value, adjust to match your header's height
 
   return (
     <section className="container mx-auto flex flex-col lg:flex-row lg:space-x-4 py-4">
       <div
-        className="flex-1 lg:max-h-[calc(100vh_-_64px)] overflow-y-auto p-4 lg:p-8 no-scrollbar"
+        className="flex-1 lg:max-h-[calc(100vh_-_64px)] overflow-y-auto no-scrollbar"
         style={{ maxHeight: `calc(100vh - ${headerHeight})` }}
       >
         {/* Add padding to the blog content area */}

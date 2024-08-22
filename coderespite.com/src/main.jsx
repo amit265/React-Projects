@@ -21,11 +21,11 @@ const appRouter = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/",
+        path: "",
         element: <Home />,
       },
       {
-        path: "/blogs",
+        path: "blogs",
         element: <Blogs />,
       },
       {
@@ -33,23 +33,23 @@ const appRouter = createBrowserRouter([
         element: <BlogPage />,
       },
       {
-        path: "/forum",
+        path: "forum",
         element: <Forum />,
       },
       {
-        path: "/project",
+        path: "project",
         element: <ProjectPage />,
       },
       {
-        path: "/contact",
+        path: "contact",
         element: <Contact />,
       },
       {
-        path: "/about",
+        path: "about",
         element: <About />,
       },
       {
-        path: "/admin",
+        path: "admin",
         element: (
           <ProtectedRoute>
             <Admin />
@@ -57,9 +57,13 @@ const appRouter = createBrowserRouter([
         ),
       },
       {
-        path: "/login",
+        path: "login",
         element: <Login />,
       },
+      {
+        path: "*", // Wildcard path to match any other routes
+        element: <Error />,
+      }
     ],
     errorElement: <Error />,
   },

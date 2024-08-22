@@ -24,7 +24,7 @@ const Home = () => {
       if (isLargeScreen) {
         setVisibleProjects(shuffleArray([...projects.javascript]));
       } else {
-        setVisibleProjects(shuffleArray([...projects.javascript]).slice(0, 10));
+        setVisibleProjects(shuffleArray([...projects.javascript]).slice(0, 5));
       }
     };
 
@@ -50,7 +50,7 @@ const Home = () => {
             </h2>
           </Link>
 
-          <div className="overflow-x-auto no-scrollbar">
+          <div>
             {!isLoading ? (
               <ProjectSection
                 projects={shuffleArray([...projects.react])}
@@ -72,13 +72,12 @@ const Home = () => {
             </h2>
           </Link>
 
-          <div className="overflow-x-auto no-scrollbar">
+          <div>
             {!isLoading ? (
               <ProjectSection
                 projects={visibleProjects}
                 horizontalScroll={true}
                 animation={true}
-                github="JavaScript-Projects/tree/main/"
               />
             ) : (
               <ShimmerHome />

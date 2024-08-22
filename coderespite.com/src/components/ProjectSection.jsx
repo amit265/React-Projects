@@ -8,13 +8,13 @@ const ProjectSection = ({ title, projects, horizontalScroll, animation }) => {
       <div
         className={`flex pb-4 justify-center lg:justify-between  ${
           horizontalScroll
-            ? "flex-wrap lg:flex-nowrap lg:overflow-x-auto no-scollbar"
+            ? "flex-wrap lg:flex-nowrap lg:overflow-x-auto lg:no-scollbar"
             : "flex-wrap"
         } gap-8`}
       >
         {projects.map((project) => (
           <div
-            key={project.id}
+            key={project.id + project.title}
             className={`w-80 px-4 py-2 border rounded-lg shadow-[var(--background-color)] shadow-lg flex-shrink-0 bg-[var(--text-color)] ${
               animation ? "project-animate" : ""
             } hover:transform-gpu hover:scale-105`}
@@ -29,7 +29,7 @@ const ProjectSection = ({ title, projects, horizontalScroll, animation }) => {
                 rel="noopener noreferrer"
               >
                 <img
-                  className="object-cover h-64 mx-auto w-full rounded-lg shadow-lg cursor-pointer"
+                  className="object-cover h-56 mx-auto w-full rounded-lg shadow-lg cursor-pointer"
                   src={project.image_root}
                   alt={project.path}
                 />

@@ -32,7 +32,7 @@ const BlogsSection = ({ blogs, handleTags }) => {
               <a href={blog.path} target="_blank" rel="noopener noreferrer">
                 {blog.image_url && (
                   <img
-                    className="object-cover h-64 mx-auto w-full rounded-lg shadow-lg cursor-pointer"
+                    className="object-cover h-56 mx-auto w-full rounded-lg shadow-lg cursor-pointer"
                     src={blog.image_url}
                     alt={blog.title}
                   />
