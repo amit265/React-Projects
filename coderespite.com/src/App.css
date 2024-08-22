@@ -1,6 +1,3 @@
-.full-screen {
-  min-height: 100vh;
-}
 
 /* <weight>: Use a value from 100 to 900 */
 /* 
@@ -79,22 +76,7 @@
   will-change: transform, opacity;
 }
 
-/* Custom scrollbar styles */
-.scroll-container::-webkit-scrollbar {
-  height: 8px;
-}
 
-.scroll-container::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.scroll-container::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-.scroll-container::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
 
 /* Light theme */
 :root {
@@ -251,4 +233,32 @@
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+
+
+/* Infinite Scroll Animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.scroll-container {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-content {
+  display: flex;
+  animation: scroll 30s linear infinite;
+}
+
+.scroll-content > * {
+  flex: 0 0 auto;
+  margin-right: 16px; /* Adjust spacing between items */
 }

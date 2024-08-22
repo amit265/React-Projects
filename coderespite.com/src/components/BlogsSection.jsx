@@ -1,29 +1,31 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-const BlogsSection = ({ blogs, handleTags, horizontalScroll, animation }) => {
+const BlogsSection = ({ blogs, handleTags, horizontalScroll, animation, tags }) => {
+  const location = useLocation();
+  const [hovered, setHovered] = useState(null);
+
   return (
     <section className="text-[var(--background-color)] mx-auto">
-      {/* <h2 className="text-2xl font-bold mb-4 text-[var(--primary-color)] hover:text-[#ef233c] lexend p-4">
-        {title}
-      </h2> */}
-
       <div
-        className={`flex pb-4 justify-center ${
+        className={`flex py-4 justify-center ${
           horizontalScroll
-            ? "flex-wrap lg:flex-nowrap lg:overflow-x-auto lg:no-scollbar"
+            ? "flex-wrap lg:flex-nowrap lg:overflow-x-auto lg:no-scrollbar"
             : "flex-wrap"
         } gap-8`}
       >
-        {" "}
         {blogs.map((blog) => (
           <div
             key={blog.id}
-            className={`w-80 px-4 py-2 border rounded-lg shadow-[var(--background-color)] shadow-lg flex-shrink-0 bg-[var(--text-color)] ${
-              animation ? "project-animate" : ""
-            } hover:transform-gpu hover:scale-105`}          >
+            className={`w-80 px-4 py-2 border rounded-lg shadow-[var(--background-color)] shadow-lg flex-shrink-0 bg-[var(--text-color)] transition-transform duration-300 ${
+              hovered === null && animation ? "lg:animate-move" : ""
+            } hover:scale-105 ${hovered === blog.id ? "relative z-10" : ""}`}
+            onMouseEnter={() => setHovered(blog.id)}
+            onMouseLeave={() => setHovered(null)}
+          >
             <div>
               <h3 className="text-base font-semibold mb-2">{blog.title}</h3>
-              <p className="text-xs mb-4">
+              {tags && <p className="text-xs mb-4">
                 {blog.tags.split(" ").map((elem) => (
                   <span
                     key={elem}
@@ -33,7 +35,7 @@ const BlogsSection = ({ blogs, handleTags, horizontalScroll, animation }) => {
                     #{elem}
                   </span>
                 ))}
-              </p>
+              </p>}
             </div>
 
             <div className="relative">
@@ -60,19 +62,11 @@ const BlogsSection = ({ blogs, handleTags, horizontalScroll, animation }) => {
               </div>
             </div>
 
-            {/* <div>
-              <p className="text-lg font-semibold mb-4">{blog.category}</p>
-              <p className="text-lg font-semibold mb-4">{blog.views}</p>
-              <p className="text-lg font-semibold mb-4">{blog.comments}</p>
-              <p className="text-lg font-semibold mb-4">{blog.likes}</p>
-              <p className="text-lg font-semibold mb-4">{blog.shares}</p>
-            </div> */}
             <div>
               <p className="text-sm my-2">
                 🕗: {Math.ceil(blog.content.split(" ").length * 0.005)} minute
                 read
               </p>
-
               <p className="text-sm mb-2">✍ : {blog.author}</p>
             </div>
 

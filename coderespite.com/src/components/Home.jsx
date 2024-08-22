@@ -12,7 +12,6 @@ const Home = () => {
 
   const projects = useSelector((store) => store?.projects);
   const blogs = useSelector((store) => store?.blogs?.blogs);
-  console.log(blogs);
 
   const isLoading =
     projects?.javascript.length === 0 &&

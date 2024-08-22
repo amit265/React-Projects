@@ -2,7 +2,7 @@ import React from 'react';
 
 const ShimmerHome = (isLoading) => {
   return (
-    <div className={`flex flex-wrap sm:overflow-x-auto sm:whitespace-nowrap py-4 transition-opacity duration-1000 ${!isLoading ? 'opacity-0' : 'opacity-100'}`}>
+    <div className={`flex flex-wrap justify-center sm:overflow-x-auto sm:whitespace-nowrap py-4 transition-opacity duration-1000 ${!isLoading ? 'opacity-0' : 'opacity-100'}`}>
       <div className="inline-flex space-x-8">
         {/* Repeat the shimmer placeholder based on the number of visible cards */}
         {Array.from({ length: 4 }).map((_, index) => (

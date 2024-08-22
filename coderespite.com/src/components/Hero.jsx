@@ -16,7 +16,7 @@ const Hero = () => {
   const [value, setValue] = useState("");
 
   return (
-    <section className="hero-animate -z-10 py-4 lg:pt-12 text-[var(--text-color)]">
+    <section className="hero-animate -z-10 pt-8 lg:pt-12 text-[var(--text-color)]">
       <div className="container mx-auto px-4 text-center ">
         <div className="max-w-5xl mx-auto ">
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 text-[var(--primary-color)] lexend">
@@ -39,7 +39,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center gap-4">
             {value && (
-                <div className="flex flex-col gap-8 justify-center">
+                <div className="flex flex-col justify-center">
                   <ProjectSection
                     projects={[
                       ...(projects?.javascript.filter(
@@ -49,13 +49,14 @@ const Hero = () => {
                         (item) => item.title === value
                       ) || []),
                       ...(projects?.react.filter((item) => item.title === value) ||
-                        []),
+                        []),  
                     ]}
                   />
 
                   {/* Blog Section */}
                   <BlogsSection
                     blogs={blogs.filter((blog) => blog.title === value)}
+                    tags={false}
                   />
                 </div>
               )}

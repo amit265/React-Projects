@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 const ProjectSection = ({ title, projects, horizontalScroll, animation }) => {
+  const [hovered, setHovered] = useState(null);
+
   return (
     <div className="text-[var(--background-color)]">
       <h2 className="text-2xl font-bold mb-4 text-[var(--primary-color)] hover:text-[#ef233c] lexend p-4">
@@ -6,18 +10,22 @@ const ProjectSection = ({ title, projects, horizontalScroll, animation }) => {
       </h2>
 
       <div
-        className={`flex pb-4 justify-center ${
+        className={`flex py-4 justify-center ${
           horizontalScroll
-            ? "flex-wrap lg:flex-nowrap lg:overflow-x-auto lg:no-scollbar"
+            ? "flex-wrap lg:flex-nowrap lg:overflow-x-auto lg:no-scrollbar"
             : "flex-wrap"
         } gap-8`}
       >
         {projects.map((project) => (
           <div
             key={project.id + project.title}
-            className={`w-80 px-4 py-2 border rounded-lg shadow-[var(--background-color)] shadow-lg flex-shrink-0 bg-[var(--text-color)] ${
-              animation ? "project-animate" : ""
-            } hover:transform-gpu hover:scale-105`}
+            className={`w-80 px-4 py-2 border rounded-lg shadow-[var(--background-color)] shadow-lg flex-shrink-0 bg-[var(--text-color)] transition-transform duration-300 ${
+              hovered === null && animation ? "lg:animate-move" : ""
+            } hover:scale-105 ${
+              hovered === project.id ? "relative z-10" : ""
+            }`}
+            onMouseEnter={() => setHovered(project.id)}
+            onMouseLeave={() => setHovered(null)}
           >
             <div className="flex justify-between">
               <h3 className="text-2xl font-semibold mb-4">{project.title}</h3>

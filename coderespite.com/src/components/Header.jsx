@@ -15,7 +15,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex flex-col md:flex-row md:justify-between md:items-center p-4 text-[var(--text-color)] header-animate">
+    <header className="flex flex-col md:flex-row md:justify-between md:items-center py-4 lg:px-8 px-4 text-[var(--text-color)] header-animate shadow-sm shadow-[var(--text-color)] mb-4">
       <div className="flex justify-between items-center">
         <Link to={"/"}>
           <div className="flex flex-col items-center">
@@ -23,11 +23,11 @@ const Header = () => {
               {/* <span className="text-[var(--text-color)] text-2xl sm:text-3xl md:text-4xl">
                 {"<"}
               </span> */}
-              <span className="flex items-center">
-                <span className="text-[var(--primary-color)] text-lg sm:text-xl md:text-3xl">
+              <span className="flex items-center text-2xl md:text-3xl">
+                <span className="text-[var(--primary-color)] ">
                   CODE
                 </span>
-                <span className="text-[var(--text-color)] text-lg sm:text-xl md:text-3xl">
+                <span className="text-[var(--text-color)]">
                   RESPITE
                 </span>
               </span>

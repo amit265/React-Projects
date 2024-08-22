@@ -19,6 +19,15 @@ export default {
         'lexend': ['Lexend', 'sans-serif'],
       },
     },
+    keyframes: {
+      move: {
+        '0%': { transform: 'translateX(0)' },
+        '100%': { transform: 'translateX(-100%)' },
+      },
+    },
+    animation: {
+      move: 'move 20s linear infinite',
+    },
   },
   plugins: [],
 };

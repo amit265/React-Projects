@@ -1,8 +1,8 @@
 import DOMPurify from "dompurify";
 import ShimmerBlog from "./ShimmerBlog";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 const SingleBlog = ({ blog }) => {
-  window.scrollTo(0, 0);
-
 
   if (!blog) {
     return <ShimmerBlog/>;

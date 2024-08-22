@@ -56,17 +56,16 @@ const Blogs = () => {
   return (
     <section className="py-12 text-[var(--text-color)] mx-auto">
       <div className="w-full lg:w-3/4 mx-auto flex flex-col items-center gap-4">
-          <div className="relative w-1/2 sm:w-full">
-            <MyAutocomplete
-              value={value}
-              setValue={setValue}
-              inputValue={inputValue}
-              setInputValue={setInputValue}
-              data={blogSearch}
-              searchPlaceholder = "Search Blogs"
-
-            />
-          </div>
+        <div className="relative w-3/4 sm:w-full">
+          <MyAutocomplete
+            value={value}
+            setValue={setValue}
+            inputValue={inputValue}
+            setInputValue={setInputValue}
+            data={blogSearch}
+            searchPlaceholder="Search Blogs"
+          />
+        </div>
         <select
           onChange={handleCategory}
           name="category"
@@ -82,7 +81,11 @@ const Blogs = () => {
       </div>
       <div className="container mx-auto flex flex-col lg:flex-row gap-12">
         <div className="w-full lg:w-3/4 mx-auto">
-          <BlogsSection blogs={filteredBlogs} handleTags={handleTags} />
+          <BlogsSection
+            blogs={filteredBlogs}
+            handleTags={handleTags}
+            tags={true}
+          />
         </div>
         <div className="w-full lg:w-1/4 mx-auto">
           <SideBar blogs={blogs} />

@@ -7,7 +7,6 @@ import { addBlog } from "../utils/blogSlice";
 const useBlogs = () => {
   const dispatch = useDispatch();
   const blogs = useSelector((store) => store?.blogs);
-//   console.log("blogs", blogs);
 
   const fetchBlogs = async () => {
     try {
@@ -16,7 +15,6 @@ const useBlogs = () => {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-    //   console.log("from useBlog", data);
 
       dispatch(addBlog(data));
     } catch (error) {
