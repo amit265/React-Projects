@@ -10,16 +10,16 @@ const ProjectSection = ({ title, projects, horizontalScroll, animation }) => {
       </h2>
 
       <div
-        className={`flex py-4 justify-center ${
+        className={`flex px-4 items-center py-4 justify-center ${
           horizontalScroll
-            ? "flex-wrap lg:flex-nowrap lg:overflow-x-auto lg:no-scrollbar"
+            ? "flex-wrap  no-scrollbar"
             : "flex-wrap"
         } gap-8`}
       >
         {projects.map((project) => (
           <div
             key={project.id + project.title}
-            className={`w-80 px-4 py-2 border rounded-lg shadow-[var(--background-color)] shadow-lg flex-shrink-0 bg-[var(--text-color)] transition-transform duration-300 ${
+            className={`w-80 h-[28rem] px-4 py-2 border rounded-lg shadow-[var(--background-color)] shadow-lg flex-shrink-0 bg-[var(--text-color)] transition-transform duration-300 ${
               hovered === null && animation ? "lg:animate-move" : ""
             } hover:scale-105 ${
               hovered === project.id ? "relative z-10" : ""

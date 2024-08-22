@@ -140,14 +140,22 @@ const BlogAdmin = () => {
           </div>
         </div>
         <div className="mb-4 text-[var(--background-color)]">
-          <CKEditor
+          {/* <CKEditor
             editor={ClassicEditor}
             data={content}
             onChange={(event, editor) => {
               const data = editor.getData();
               setContent(data);
             }}
-          />
+          /> */}
+          <textarea
+                cols={10}
+                type="text"
+                placeholder="Content"
+                className="w-full px-4 py-2 border rounded-md text-[var(--background-color)]"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+              />
         </div>
         <div className="mb-4">
           <input

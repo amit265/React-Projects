@@ -58,7 +58,7 @@ const Contact = () => {
               type="text"
               name="name"
               placeholder="Your Name"
-              className="w-full px-4 py-2 border rounded-md "
+              className="w-full px-4 py-2 border rounded-md bg-[var(--text-color)]"
               value={formData.name}
               onChange={handleChange}
               required
@@ -69,7 +69,7 @@ const Contact = () => {
               type="email"
               name="email"
               placeholder="Your Email"
-              className="w-full px-4 py-2 border rounded-md text-[var(--background-color)]"
+              className="w-full px-4 py-2 border rounded-md bg-[var(--text-color)]"
               value={formData.email}
               onChange={handleChange}
               required
@@ -79,7 +79,7 @@ const Contact = () => {
             <textarea
               name="message"
               placeholder="Your Message"
-              className="w-full px-4 py-2 border rounded-md"
+              className="w-full px-4 py-2 border rounded-md bg-[var(--text-color)]"
               rows="4"
               value={formData.message}
               onChange={handleChange}
@@ -88,7 +88,7 @@ const Contact = () => {
           </div>
           <button
             type="submit"
-            className="px-6 py-3 bg-[var(--primary-color)] text-lg rounded-md hover:bg-[#ef231a]"
+            className="px-6 py-3 bg-[var(--primary-color)] text-lg rounded-md hover:bg-[var(--text-color)] hover:text-[var(--background-color)]"
           >
             Send Message
           </button>

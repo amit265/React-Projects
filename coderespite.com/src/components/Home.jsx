@@ -8,45 +8,55 @@ import shuffleArray from "../utils/shuffleArray";
 import BlogsSection from "./BlogsSection";
 
 const Home = () => {
-  const [visibleProjects, setVisibleProjects] = useState([]);
+  // const [visibleProjects, setVisibleProjects] = useState([]);
 
   const projects = useSelector((store) => store?.projects);
   const blogs = useSelector((store) => store?.blogs?.blogs);
-
   const isLoading =
     projects?.javascript.length === 0 &&
     projects?.react.length === 0 &&
     projects?.responsive.length === 0;
-  useEffect(() => {
-    const updateProjectVisibility = () => {
-      const screenWidth = window.innerWidth;
-      const isLargeScreen = screenWidth >= 1024; // Tailwind's lg breakpoint is 1024px
+  // useEffect(() => {
+  //   const updateProjectVisibility = () => {
+  //     const screenWidth = window.innerWidth;
+  //     const isLargeScreen = screenWidth >= 1024; // Tailwind's lg breakpoint is 1024px
 
-      if (isLargeScreen) {
-        setVisibleProjects(shuffleArray([...projects.javascript]));
-      } else {
-        setVisibleProjects(shuffleArray([...projects.javascript]).slice(0, 5));
-      }
-    };
+  //     if (isLargeScreen) {
+  //       setVisibleProjects(shuffleArray([...projects.javascript]));
+  //     } else {
+  //       setVisibleProjects(shuffleArray([...projects.javascript]).slice(0, 5));
+  //     }
+  //   };
 
-    // Set initial number of projects based on current screen size
-    updateProjectVisibility();
+  //   // Set initial number of projects based on current screen size
+  //   updateProjectVisibility();
 
-    // Update the number of visible projects on window resize
-    window.addEventListener("resize", updateProjectVisibility);
+  //   // Update the number of visible projects on window resize
+  //   window.addEventListener("resize", updateProjectVisibility);
 
-    // Cleanup the event listener on component unmount
-    return () => window.removeEventListener("resize", updateProjectVisibility);
-  }, [projects]);
+  //   // Cleanup the event listener on component unmount
+  //   return () => window.removeEventListener("resize", updateProjectVisibility);
+  // }, [projects]);
+
+  console.log(
+    [...projects.react]
+      .sort((a, b) => b.rating - a.rating) // Sort by rating (highest to lowest)
+      .slice(0, 8) // Take the top 8
+  );  
+
+  const reactProject = [...projects.react].sort((a, b) => b.rating - a.rating).slice(0, 4);
+  const javascriptProject = [...projects.javascript].sort((a, b) => b.rating - a.rating).slice(0, 4);
+  const blogProject = [...blogs].sort((a, b) => b.rating - a.rating).slice(0, 4);
+
 
   return (
     <div className="text-[var(--text-color)]">
       <Hero />
 
-      <section className="py-12">
+      {blogs.length > 0 && <section className="py-8">
         <div className="container mx-auto sm:px-4">
           <Link to={"/project"}>
-            <h2 className="text-center text-3xl font-bold mb-6 text-[var(--primary-color)] hover:text-[#ef233c] lexend">
+            <h2 className="text-center text-3xl font-bold mb-2 text-[var(--primary-color)] hover:text-[var(--text-color)] lexend">
               Blogs
             </h2>
           </Link>
@@ -54,21 +64,21 @@ const Home = () => {
           <div>
             {!isLoading ? (
               <BlogsSection
-                blogs={blogs}
+                blogs={blogProject}
                 horizontalScroll={true}
-                animation={true}
+                animation={false}
               />
             ) : (
               <ShimmerHome isLoading={isLoading} />
             )}
           </div>
         </div>
-      </section>
+      </section>}
 
-      <section className="py-12">
+      <section className="py-8">
         <div className="container mx-auto sm:px-4 text-center">
           <Link to={"/project"}>
-            <h2 className="text-3xl font-bold mb-6 text-[var(--primary-color)] hover:text-[#ef233c] lexend">
+            <h2 className="text-3xl font-bold text-[var(--primary-color)] hover:text-[var(--text-color)] lexend">
               React Projects
             </h2>
           </Link>
@@ -76,9 +86,9 @@ const Home = () => {
           <div>
             {!isLoading ? (
               <ProjectSection
-                projects={shuffleArray([...projects.react])}
+                projects={reactProject}
                 horizontalScroll={true}
-                animation={true}
+                animation={false}
               />
             ) : (
               <ShimmerHome isLoading={isLoading} />
@@ -87,10 +97,10 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-12">
+      <section className="py-8">
         <div className="container mx-auto sm:px-4 text-center">
           <Link to={"/project"}>
-            <h2 className="text-3xl font-bold mb-6 text-[var(--primary-color)] hover:text-[#ef233c] lexend">
+            <h2 className="text-3xl font-bold text-[var(--primary-color)] hover:text-[var(--text-color)] lexend">
               JavaScript Projects
             </h2>
           </Link>
@@ -98,9 +108,9 @@ const Home = () => {
           <div>
             {!isLoading ? (
               <ProjectSection
-                projects={visibleProjects}
+                projects={javascriptProject}
                 horizontalScroll={true}
-                animation={true}
+                animation={false}
               />
             ) : (
               <ShimmerHome />

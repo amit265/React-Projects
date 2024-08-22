@@ -17,7 +17,7 @@ const BlogsSection = ({ blogs, handleTags, horizontalScroll, animation, tags }) 
         {blogs.map((blog) => (
           <div
             key={blog.id}
-            className={`w-80 px-4 py-2 border rounded-lg shadow-[var(--background-color)] shadow-lg flex-shrink-0 bg-[var(--text-color)] transition-transform duration-300 ${
+            className={`w-80 h-[28rem] px-4 py-2 border rounded-lg shadow-[var(--background-color)] shadow-lg flex-shrink-0 bg-[var(--text-color)] transition-transform duration-300 ${
               hovered === null && animation ? "lg:animate-move" : ""
             } hover:scale-105 ${hovered === blog.id ? "relative z-10" : ""}`}
             onMouseEnter={() => setHovered(blog.id)}

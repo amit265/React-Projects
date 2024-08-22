@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import ProjectSection from "./ProjectSection";
 import Shimmer from "./Shimmer";
 import MyAutocomplete from "./MyAutocomplete";
-import shuffleArray from "../utils/shuffleArray";
 const ProjectPage = () => {
   const [selectedTab, setSelectedTab] = useState("react");
   const [inputValue, setInputValue] = useState("");
@@ -25,6 +24,11 @@ const ProjectPage = () => {
     projects?.react.length === 0 &&
     projects?.responsive.length === 0;
 
+
+  const reactProject = [...projects.react].sort((a, b) => b.rating - a.rating);
+  const javascriptProject = [...projects.javascript].sort((a, b) => b.rating - a.rating);
+  const responsiveProject = [...projects.responsive].sort((a, b) => b.rating - a.rating);
+
   // Total counts
   const total_js = projects?.javascript?.length || 0;
   const total_react = projects?.react?.length || 0;
@@ -38,6 +42,9 @@ const ProjectPage = () => {
     { name: "JavaScript (" + `${total_js}` + ")", key: "javascript" },
     { name: "HTML/CSS (" + `${total_responsive}` + ")", key: "responsive" },
   ];
+
+
+
   if (isLoading || isDataEmpty) {
     return (
       <div className="py-12 pt-24 text-center">
@@ -106,31 +113,31 @@ const ProjectPage = () => {
             <>
               <ProjectSection
                 title="React Projects"
-                projects={shuffleArray([...projects.react])}
+                projects={reactProject}
               />
               <ProjectSection
                 title="JavaScript Projects"
-                projects={shuffleArray([...projects.javascript])}
+                projects={javascriptProject}
               />
               <ProjectSection
                 title="HTML/CSS Projects"
-                projects={shuffleArray([...projects.responsive])}
+                projects={responsiveProject}
               />
             </>
           )}
           {selectedTab === "react" && (
-            <ProjectSection title="React Projects" projects={shuffleArray([...projects.react])} />
+            <ProjectSection title="React Projects" projects={reactProject} />
           )}
           {selectedTab === "javascript" && (
             <ProjectSection
               title="JavaScript Projects"
-              projects={shuffleArray([...projects.javascript])}
+              projects={javascriptProject}
             />
           )}
           {selectedTab === "responsive" && (
             <ProjectSection
               title="HTML/CSS Projects"
-              projects={shuffleArray([...projects.responsive])}
+              projects={responsiveProject}
             />
           )}
           </div>}
