@@ -55,23 +55,23 @@ const Blogs = () => {
 
   return (
     <section className="py-12 text-[var(--text-color)] mx-auto">
-      <div className="w-full lg:w-3/4 mx-auto">
-        <div className="flex justify-center items-center mb-4">
-          <div className="relative w-full">
+      <div className="w-full lg:w-3/4 mx-auto flex flex-col items-center gap-4">
+          <div className="relative w-1/2 sm:w-full">
             <MyAutocomplete
               value={value}
               setValue={setValue}
               inputValue={inputValue}
               setInputValue={setInputValue}
               data={blogSearch}
+              searchPlaceholder = "Search Blogs"
+
             />
           </div>
-        </div>
         <select
           onChange={handleCategory}
           name="category"
           id="blog_category"
-          className="max-w-md mb-4 px-2 py-2 border outline-none rounded-md text-[var(--background-color)]"
+          className="max-w-lg mb-4 px-2 py-2 border outline-none rounded-md text-[var(--background-color)]"
         >
           {uniqueCategory.map((elm) => (
             <option key={elm} value={elm}>

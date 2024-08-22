@@ -10,7 +10,6 @@ import BlogsSection from "./BlogsSection";
 const Home = () => {
   const [visibleProjects, setVisibleProjects] = useState([]);
 
-
   const projects = useSelector((store) => store?.projects);
   const blogs = useSelector((store) => store?.blogs?.blogs);
   console.log(blogs);
@@ -45,7 +44,7 @@ const Home = () => {
     <div className="text-[var(--text-color)]">
       <Hero />
 
-      <section className="py-12"> 
+      <section className="py-12">
         <div className="container mx-auto sm:px-4">
           <Link to={"/project"}>
             <h2 className="text-center text-3xl font-bold mb-6 text-[var(--primary-color)] hover:text-[#ef233c] lexend">
@@ -54,7 +53,7 @@ const Home = () => {
           </Link>
 
           <div>
-            {!isLoading? (
+            {!isLoading ? (
               <BlogsSection
                 blogs={blogs}
                 horizontalScroll={true}
@@ -83,7 +82,7 @@ const Home = () => {
                 animation={true}
               />
             ) : (
-              <ShimmerHome isLoading = {isLoading}/>
+              <ShimmerHome isLoading={isLoading} />
             )}
           </div>
         </div>
@@ -114,17 +113,18 @@ const Home = () => {
       <section className="py-12">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6 text-[var(--primary-color)] lexend">
-            Join Our Community
+            Let's Connect!
           </h2>
           <p className="text-lg max-w-2xl mx-auto mb-6">
-            Become a part of our community to get access to exclusive content.
+            Have something to share or want to hire me for a project? I’d love
+            to hear from you.
           </p>
-          <a
-            href="#signup"
+          <Link
+            to={"/contact"}
             className="px-6 py-3 bg-[var(--primary-color)] text-lg rounded-md hover:bg-[#ef231a]"
           >
-            Sign Up Now
-          </a>
+            Contact Me
+          </Link>
         </div>
       </section>
     </div>

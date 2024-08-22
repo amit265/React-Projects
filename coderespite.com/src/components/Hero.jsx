@@ -34,6 +34,7 @@ const Hero = () => {
                 inputValue={inputValue}
                 setInputValue={setInputValue}
                 data={data}
+                searchPlaceholder = "Search Projects/Blogs"
               />
             </div>
             <div className="flex items-center gap-4">

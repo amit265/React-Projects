@@ -6,6 +6,7 @@ const MyAutocomplete = ({
   inputValue,
   setInputValue,
   data,
+  searchPlaceholder
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const autocompleteRef = useRef(null);
@@ -57,7 +58,7 @@ const MyAutocomplete = ({
         type="text"
         value={inputValue}
         onChange={handleInputChange}
-        placeholder={value ? value : "Search Projects"}
+        placeholder={value ? value : searchPlaceholder}
         onClick={toggleDropdown}
         className="w-full p-2 border border-gray-300 rounded-md"
       />

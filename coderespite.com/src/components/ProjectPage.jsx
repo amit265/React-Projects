@@ -57,6 +57,8 @@ const ProjectPage = () => {
                 inputValue={inputValue}
                 setInputValue={setInputValue}
                 data={data}
+                searchPlaceholder = "Search Projects"
+
               />
             </div>
           </div>
