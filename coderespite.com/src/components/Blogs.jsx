@@ -2,14 +2,18 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import BlogsSection from "./BlogsSection";
 import SideBar from "./SideBar";
+import MyAutocomplete from "./MyAutocomplete";
+import { useNavigate } from "react-router-dom";
 
 const Blogs = () => {
   const blogs = useSelector((store) => store?.blogs?.blogs);
   const [filteredBlogs, setFilteredBlogs] = useState([]);
-  const [activeCategory, setActiveCategory] = useState("All");
-
+  const [inputValue, setInputValue] = useState("");
+  const [value, setValue] = useState("");
+  const navigate = useNavigate();
   // Get unique categories including "All"
   const category = blogs.map((category) => category?.category);
+  const blogSearch = blogs.map((blog) => blog?.title);
   const uniqueCategory = ["All", ...new Set(category)];
 
   useEffect(() => {
@@ -17,14 +21,24 @@ const Blogs = () => {
     setFilteredBlogs(blogs);
   }, [blogs]);
 
-  const handleCategory = (elm) => {
-    if (elm === "All") {
+  useEffect(() => {
+    if (value) {
+      const searchedBlog = blogs.find((blog) => blog?.title === value);
+      if (searchedBlog) {
+        navigate(`/blogs/${searchedBlog.id}`);
+      }
+    }
+  }, [value, blogs, navigate]);
+
+  const handleCategory = (e) => {
+    if (e.target.value === "All") {
       setFilteredBlogs(blogs);
     } else {
-      const filterBlogs = blogs.filter((blog) => blog.category === elm);
+      const filterBlogs = blogs.filter(
+        (blog) => blog.category === e.target.value
+      );
       setFilteredBlogs(filterBlogs);
     }
-    setActiveCategory(elm);
   };
 
   const handleTags = (elm) => {
@@ -41,21 +55,30 @@ const Blogs = () => {
 
   return (
     <section className="py-12 text-[var(--text-color)] mx-auto">
-      <div className="container lg:w-3/4 w-full mx-auto flex overflow-x-scroll no-scrollbar mb-8">
-        {uniqueCategory.map((elm) => (
-          <div
-            key={elm}
-            className={`px-4 py-2 text-[var(--text-color)] hover:text-[var(--text-color)] hover:bg-gray-400 hover:cursor-pointer m-2 rounded-md text-lg font-semibold ${
-              activeCategory === elm
-                ? "bg-gray-400"
-                : "bg-[var(--primary-color)]"
-            }`}
-          >
-            <h2 className="text-center" onClick={() => handleCategory(elm)}>
-              {elm}
-            </h2>
+      <div className="w-full lg:w-3/4 mx-auto">
+        <div className="flex justify-center items-center mb-4">
+          <div className="relative w-full">
+            <MyAutocomplete
+              value={value}
+              setValue={setValue}
+              inputValue={inputValue}
+              setInputValue={setInputValue}
+              data={blogSearch}
+            />
           </div>
-        ))}
+        </div>
+        <select
+          onChange={handleCategory}
+          name="category"
+          id="blog_category"
+          className="max-w-md mb-4 px-2 py-2 border outline-none rounded-md text-[var(--background-color)]"
+        >
+          {uniqueCategory.map((elm) => (
+            <option key={elm} value={elm}>
+              {elm.charAt(0).toUpperCase() + elm.slice(1)}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="container mx-auto flex flex-col lg:flex-row gap-12">
         <div className="w-full lg:w-3/4 mx-auto">

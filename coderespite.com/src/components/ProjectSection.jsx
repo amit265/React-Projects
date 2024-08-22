@@ -6,7 +6,7 @@ const ProjectSection = ({ title, projects, horizontalScroll, animation }) => {
       </h2>
 
       <div
-        className={`flex pb-4 justify-center lg:justify-between  ${
+        className={`flex pb-4 justify-center ${
           horizontalScroll
             ? "flex-wrap lg:flex-nowrap lg:overflow-x-auto lg:no-scollbar"
             : "flex-wrap"

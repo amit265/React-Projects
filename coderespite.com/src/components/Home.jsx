@@ -5,12 +5,15 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ShimmerHome from "./ShimmerHome";
 import shuffleArray from "../utils/shuffleArray";
+import BlogsSection from "./BlogsSection";
 
 const Home = () => {
   const [visibleProjects, setVisibleProjects] = useState([]);
 
 
   const projects = useSelector((store) => store?.projects);
+  const blogs = useSelector((store) => store?.blogs?.blogs);
+  console.log(blogs);
 
   const isLoading =
     projects?.javascript.length === 0 &&
@@ -41,6 +44,28 @@ const Home = () => {
   return (
     <div className="text-[var(--text-color)]">
       <Hero />
+
+      <section className="py-12"> 
+        <div className="container mx-auto sm:px-4">
+          <Link to={"/project"}>
+            <h2 className="text-center text-3xl font-bold mb-6 text-[var(--primary-color)] hover:text-[#ef233c] lexend">
+              Blogs
+            </h2>
+          </Link>
+
+          <div>
+            {!isLoading? (
+              <BlogsSection
+                blogs={blogs}
+                horizontalScroll={true}
+                animation={true}
+              />
+            ) : (
+              <ShimmerHome isLoading={isLoading} />
+            )}
+          </div>
+        </div>
+      </section>
 
       <section className="py-12">
         <div className="container mx-auto sm:px-4 text-center">

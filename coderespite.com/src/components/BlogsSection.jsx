@@ -1,18 +1,26 @@
 import { Link } from "react-router-dom";
 
-const BlogsSection = ({ blogs, handleTags }) => {
+const BlogsSection = ({ blogs, handleTags, horizontalScroll, animation }) => {
   return (
     <section className="text-[var(--background-color)] mx-auto">
       {/* <h2 className="text-2xl font-bold mb-4 text-[var(--primary-color)] hover:text-[#ef233c] lexend p-4">
         {title}
       </h2> */}
 
-      <div className="flex justify-center flex-wrap gap-8">
+      <div
+        className={`flex pb-4 justify-center ${
+          horizontalScroll
+            ? "flex-wrap lg:flex-nowrap lg:overflow-x-auto lg:no-scollbar"
+            : "flex-wrap"
+        } gap-8`}
+      >
+        {" "}
         {blogs.map((blog) => (
           <div
             key={blog.id}
-            className="w-80 px-4 py-2 my-4 border rounded-lg shadow-[var(--background-color)] shadow-lg flex-shrink-0 bg-[var(--text-color)] hover:scale-105"
-          >
+            className={`w-80 px-4 py-2 border rounded-lg shadow-[var(--background-color)] shadow-lg flex-shrink-0 bg-[var(--text-color)] ${
+              animation ? "project-animate" : ""
+            } hover:transform-gpu hover:scale-105`}          >
             <div>
               <h3 className="text-base font-semibold mb-2">{blog.title}</h3>
               <p className="text-xs mb-4">

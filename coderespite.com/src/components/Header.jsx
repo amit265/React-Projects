@@ -20,25 +20,25 @@ const Header = () => {
         <Link to={"/"}>
           <div className="flex flex-col items-center">
             <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--primary-color)] flex items-center lexend">
-              <span className="text-[var(--text-color)] text-2xl sm:text-3xl md:text-4xl">
+              {/* <span className="text-[var(--text-color)] text-2xl sm:text-3xl md:text-4xl">
                 {"<"}
-              </span>
+              </span> */}
               <span className="flex items-center">
                 <span className="text-[var(--primary-color)] text-lg sm:text-xl md:text-3xl">
                   CODE
                 </span>
-                <span className="text-lg text-[var(--text-color)] sm:text-xl md:text-2xl">
+                <span className="text-[var(--text-color)] text-lg sm:text-xl md:text-3xl">
                   RESPITE
                 </span>
               </span>
-              <span className="text-[var(--primary-color)] text-lg sm:text-xl md:text-3xl pt-0.5">
+              {/* <span className="text-[var(--primary-color)] text-lg sm:text-xl md:text-3xl pt-0.5">
                 /
               </span>
               <span className="text-[var(--primary-color)] text-2xl sm:text-3xl md:text-4xl">
                 {">"}
-              </span>
+              </span> */}
             </h1>
-            <h3 className="text-xs sm:text-xs mt-1">
+            <h3 className="text-xs sm:text-sm">
               REFRESH YOUR TECH SKILLS
             </h3>
           </div>
