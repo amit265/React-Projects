@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { auth } from './services/firebase';
 import Login from './components/Login';
 import Game from './pages/Game'; // Assuming you have a Game component
+import Category from './pages/Category';
+import Header from './components/Header';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -30,7 +32,8 @@ const App = () => {
 
   return (
     <div>
-      {user ? <Game user={user} /> : <Login />}
+      {user ? <Category user={user} /> : <Login />}
+    
     </div>
   );
 };

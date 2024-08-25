@@ -3,7 +3,7 @@ import { fetchQuestions } from "../services/api";
 import { shuffleArray } from "../services/shuffleArray";
 import LogoutButton from "../components/LogoutButton";
 
-const Game = ({ user }) => {
+const Game = ({ category }) => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
@@ -14,15 +14,15 @@ const Game = ({ user }) => {
   useEffect(() => {
     const loadQuestions = async () => {
       const fetchedQuestions = await fetchQuestions();
-      console.log(shuffleArray(fetchedQuestions));
-      setQuestions(shuffleArray(fetchedQuestions).slice(0, 5));
+      // console.log(shuffleArray(fetchedQuestions));
+      setQuestions(shuffleArray(fetchedQuestions.filter(game => game.category === category)).slice(0, 10));
     };
 
     loadQuestions();
   }, []);
   if (questions.length === 0) return <div>Loading...</div>;
 
-  console.log(feedback);
+  // console.log(feedback);
 
   const handleAnswerSubmit = () => {
     const isAnswerCotrrect =
@@ -38,13 +38,12 @@ const Game = ({ user }) => {
       );
       setScore(prevScore => prevScore - 5);
     }
-    console.log(score);
+    // console.log(score);
 
     setTimeout(() => {
       setFeedback("");
       setSelectedAnswer("");
       setIsSubmitted(false);
-      console.log(score);
       if (currentQuestion < questions.length - 1) {
         setCurrentQuestion(currentQuestion + 1);
       } else {
@@ -61,18 +60,8 @@ const Game = ({ user }) => {
     }
   };
 
-  console.log("selectedAnswer", selectedAnswer);
   return (
     <div className="p-4">
-      <div className="flex justify-between items-center p-4">
-        <img
-          src={user.photoURL}
-          alt="user.diaplayName"
-          className="rounded-full"
-        />
-        <h1 className="text-2xl">Welcome, {user.displayName}!</h1>
-        <LogoutButton />
-      </div>
       <div className="max-w-md mx-auto bg-white p-4 rounded-lg shadow-md">
         <h2 className="text-xl font-semibold mb-4">
           {currentQuestion + 1}. {questions[currentQuestion].question}
@@ -109,7 +98,7 @@ const Game = ({ user }) => {
         <div>
           Score: {score}/{questions.length * 10}
         </div>
-        {/* {feedback && (
+        {feedback && (
           <div
             className={`mt-4 text-lg font-semibold ${
               feedback === "Correct!" ? "text-green-500" : "text-red-500"
@@ -117,7 +106,7 @@ const Game = ({ user }) => {
           >
             {feedback}
           </div>
-        )} */}
+        )}
       </div>
     </div>
   );

@@ -1,19 +1,25 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup, setPersistence, browserLocalPersistence } from 'firebase/auth';
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  setPersistence,
+  browserLocalPersistence,
+} from "firebase/auth";
 const firebaseConfig = {
-  apiKey: "AIzaSyD7lSMsSVjSpwQ9GXcDggdK9qY6y0m3H_M",
+  apiKey: import.meta.env.VITE_FIREBASE_APIKEY,
 
-  authDomain: "trivia-app-57966.firebaseapp.com",
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
 
-  projectId: "trivia-app-57966",
+  projectId: import.meta.env.VITE_PROJECTID,
 
-  storageBucket: "trivia-app-57966.appspot.com",
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
 
-  messagingSenderId: "307915995541",
+  messagingSenderId: import.meta.env.VITE_MESSAGEID,
 
-  appId: "1:307915995541:web:7155ee5793787db6c89e9c",
+  appId: import.meta.env.VITE_APPID,
 
-  measurementId: "G-4TTM7EMEVT",
+  measurementId: import.meta.env.VITE_MEASUREMENTID,
 };
 
 const app = initializeApp(firebaseConfig);
@@ -21,12 +27,12 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 const signInWithGoogle = () => {
-    return setPersistence(auth, browserLocalPersistence)
+  return setPersistence(auth, browserLocalPersistence)
     .then(() => {
       return signInWithPopup(auth, provider);
     })
     .catch((error) => {
-      console.error('Error setting persistence:', error);
+      console.error("Error setting persistence:", error);
     });
 };
 
