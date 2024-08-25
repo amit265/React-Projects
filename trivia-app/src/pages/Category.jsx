@@ -30,7 +30,7 @@ const Category = ({ user }) => {
 
       <div>
         {gameCategory ? (
-          <Game category={gameCategory} />
+          <Game category={gameCategory} setCategory={setGameCategory}/>
         ) : (
           <div className="flex flex-col justify-between items-center p-4">
             <h1 className="">Choose a Category</h1>

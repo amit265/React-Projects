@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { fetchQuestions } from "../services/api";
 import { shuffleArray } from "../services/shuffleArray";
 import LogoutButton from "../components/LogoutButton";
+import { Link } from "react-router-dom";
 
-const Game = ({ category }) => {
+const Game = ({ category, setCategory }) => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
@@ -15,7 +16,11 @@ const Game = ({ category }) => {
     const loadQuestions = async () => {
       const fetchedQuestions = await fetchQuestions();
       // console.log(shuffleArray(fetchedQuestions));
-      setQuestions(shuffleArray(fetchedQuestions.filter(game => game.category === category)).slice(0, 10));
+      setQuestions(
+        shuffleArray(
+          fetchedQuestions.filter((game) => game.category === category)
+        ).slice(0, 10)
+      );
     };
 
     loadQuestions();
@@ -30,13 +35,13 @@ const Game = ({ category }) => {
     setIsSubmitted(true);
     setCorrectAnswer(questions[currentQuestion].correct_answer);
     if (isAnswerCotrrect) {
-      setScore(prevScore => prevScore + 10);
+      setScore((prevScore) => prevScore + 10);
       setFeedback("Correct!");
     } else {
       setFeedback(
         "Wrong! Correct answer is " + questions[currentQuestion].correct_answer
       );
-      setScore(prevScore => prevScore - 5);
+      setScore((prevScore) => prevScore - 5);
     }
     // console.log(score);
 
@@ -47,7 +52,11 @@ const Game = ({ category }) => {
       if (currentQuestion < questions.length - 1) {
         setCurrentQuestion(currentQuestion + 1);
       } else {
-        alert(`Quiz complete! Your score: ${isAnswerCotrrect ? score + 10 : score - 5 }/${questions.length * 10}`);
+        alert(
+          `Quiz complete! Your score: ${
+            isAnswerCotrrect ? score + 10 : score - 5
+          }/${questions.length * 10}`
+        );
         setCurrentQuestion(0);
         setScore(0);
       }
@@ -107,6 +116,18 @@ const Game = ({ category }) => {
             {feedback}
           </div>
         )}
+      </div>
+      <div className="text-center cursor-pointer">
+        <h2
+          className="p-4 m-4 bg-pink-400 mx-auto w-1/6 rounded-md"
+          onClick={() => {
+            if(confirm("are you sure")){ 
+            setCategory("")
+            }
+          }}
+        >
+          Go to category
+        </h2>
       </div>
     </div>
   );

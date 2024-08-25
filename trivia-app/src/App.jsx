@@ -32,7 +32,8 @@ const App = () => {
 
   return (
     <div>
-      {user ? <Category user={user} /> : <Login />}
+      {/* {user ? <Category user={user} /> : <Login />} */}
+      <Category user={user} />
     
     </div>
   );
