@@ -1,21 +1,21 @@
 import { Link } from "react-router-dom";
 import Hero from "./Hero";
 import ProjectSection from "./ProjectSection";
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ShimmerHome from "./ShimmerHome";
-import shuffleArray from "../utils/shuffleArray";
 import BlogsSection from "./BlogsSection";
 
 const Home = () => {
   // const [visibleProjects, setVisibleProjects] = useState([]);
 
   const projects = useSelector((store) => store?.projects);
+
   const blogs = useSelector((store) => store?.blogs?.blogs);
   const isLoading =
     projects?.javascript.length === 0 &&
     projects?.react.length === 0 &&
-    projects?.responsive.length === 0;
+    projects?.responsive.length === 0 &&
+    projects?.next.length === 0;
   // useEffect(() => {
   //   const updateProjectVisibility = () => {
   //     const screenWidth = window.innerWidth;
@@ -38,12 +38,6 @@ const Home = () => {
   //   return () => window.removeEventListener("resize", updateProjectVisibility);
   // }, [projects]);
 
-  console.log(
-    [...projects.react]
-      .sort((a, b) => b.rating - a.rating) // Sort by rating (highest to lowest)
-      .slice(0, 8) // Take the top 8
-  );
-
   const reactProject = [...projects.react]
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 4);
@@ -51,6 +45,9 @@ const Home = () => {
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 4);
   const blogProject = [...blogs]
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 4);
+  const nextProject = [...projects.next]
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 4);
 
@@ -70,13 +67,18 @@ const Home = () => {
             <div>
               {!isLoading ? (
                 <div>
-                <BlogsSection
-                  blogs={blogProject}
-                  horizontalScroll={true}
-                  animation={false}
-                />
-                <Link to={"/project"}> <h1 className="text-right mr-16 text-[var(--text-color)] hover:text-[var(--primary-color)]">more...</h1></Link>
-</div>
+                  <BlogsSection
+                    blogs={blogProject}
+                    horizontalScroll={true}
+                    animation={false}
+                  />
+                  <Link to={"/project"}>
+                    {" "}
+                    <h1 className="text-right mr-16 text-[var(--text-color)] hover:text-[var(--primary-color)]">
+                      more...
+                    </h1>
+                  </Link>
+                </div>
               ) : (
                 <ShimmerHome isLoading={isLoading} />
               )}
@@ -84,6 +86,36 @@ const Home = () => {
           </div>
         </section>
       )}
+
+      {nextProject.length > 0 && <section className="py-8">
+        <div className="container mx-auto sm:px-4 text-center">
+          <Link to={"/project"}>
+            <h2 className="text-3xl font-bold text-[var(--primary-color)] hover:text-[var(--text-color)] lexend">
+              Next.js Projects
+            </h2>
+          </Link>
+
+          <div>
+            {!isLoading ? (
+              <div>
+                <ProjectSection
+                  projects={nextProject}
+                  horizontalScroll={true}
+                  animation={false}
+                />
+                <Link to={"/project"}>
+                  {" "}
+                  <h1 className="text-right mr-16 text-[var(--text-color)] hover:text-[var(--primary-color)]">
+                    more...
+                  </h1>
+                </Link>
+              </div>
+            ) : (
+              <ShimmerHome isLoading={isLoading} />
+            )}
+          </div>
+        </div>
+      </section>}
 
       <section className="py-8">
         <div className="container mx-auto sm:px-4 text-center">

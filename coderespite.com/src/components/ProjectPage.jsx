@@ -7,9 +7,10 @@ const ProjectPage = () => {
   const [selectedTab, setSelectedTab] = useState("react");
   const [inputValue, setInputValue] = useState("");
   const projects = useSelector((store) => store?.projects);
-  const data = projects.javascript
+  const data = projects.next
     .map((item) => item.title)
     .concat(projects.react.map((item) => item.title))
+    .concat(projects.javascript.map((item) => item.title))
     .concat(projects.responsive.map((item) => item.title));
   const [value, setValue] = useState("");
 
@@ -24,26 +25,32 @@ const ProjectPage = () => {
     projects?.react.length === 0 &&
     projects?.responsive.length === 0;
 
+  const nextjsProject = [...projects.next].sort((a, b) => b.rating - a.rating);
 
   const reactProject = [...projects.react].sort((a, b) => b.rating - a.rating);
-  const javascriptProject = [...projects.javascript].sort((a, b) => b.rating - a.rating);
-  const responsiveProject = [...projects.responsive].sort((a, b) => b.rating - a.rating);
+
+  const javascriptProject = [...projects.javascript].sort(
+    (a, b) => b.rating - a.rating
+  );
+  const responsiveProject = [...projects.responsive].sort(
+    (a, b) => b.rating - a.rating
+  );
 
   // Total counts
   const total_js = projects?.javascript?.length || 0;
   const total_react = projects?.react?.length || 0;
+  const total_nextjs = projects?.next?.length || 0;
   const total_responsive = projects?.responsive?.length || 0;
-  const total = total_js + total_react + total_responsive;
+  const total = total_js + total_react + total_nextjs + total_responsive;
 
   // Tabs
   const tabs = [
     { name: "All (" + `${total}` + ")", key: "all" },
+    { name: "Nextjs (" + `${total_nextjs}` + ")", key: "nextjs" },
     { name: "React (" + `${total_react}` + ")", key: "react" },
     { name: "JavaScript (" + `${total_js}` + ")", key: "javascript" },
     { name: "HTML/CSS (" + `${total_responsive}` + ")", key: "responsive" },
   ];
-
-
 
   if (isLoading || isDataEmpty) {
     return (
@@ -54,26 +61,26 @@ const ProjectPage = () => {
   }
 
   return (
-      <section className="py-12 text-[var(--text-color)]">
-        <div className="flex justify-center pb-4">
-          <div className="relative w-80">
-            <div className="relative">
-              <MyAutocomplete
-                value={value}
-                setValue={setValue}
-                inputValue={inputValue}
-                setInputValue={setInputValue}
-                data={data}
-                searchPlaceholder = "Search Projects"
-
-              />
-            </div>
+    <section className="py-12 text-[var(--text-color)]">
+      <div className="flex justify-center pb-4">
+        <div className="relative w-80">
+          <div className="relative">
+            <MyAutocomplete
+              value={value}
+              setValue={setValue}
+              inputValue={inputValue}
+              setInputValue={setInputValue}
+              data={data}
+              searchPlaceholder="Search Projects"
+            />
           </div>
         </div>
+      </div>
 
-        <div className="container mx-auto text-center">
-          {/* Tabs */}
-         {!value && <div className="flex flex-wrap justify-center gap-4 p-4">
+      <div className="container mx-auto text-center">
+        {/* Tabs */}
+        {!value && (
+          <div className="flex flex-wrap justify-center gap-4 p-4">
             {tabs.map((tab) => (
               <button
                 key={tab.key}
@@ -87,63 +94,78 @@ const ProjectPage = () => {
                 {tab.name}
               </button>
             ))}
-          </div>}
+          </div>
+        )}
 
-          {value && (
-            <div className="flex justify-center">
-              <ProjectSection
-                title={value}
-                projects={[
-                  ...(projects?.javascript.filter(
-                    (item) => item.title === value
-                  ) || []),
-                  ...(projects?.responsive.filter(
-                    (item) => item.title === value
-                  ) || []),
-                  ...(projects?.react.filter((item) => item.title === value) ||
-                    []),
-                ]}
-              />
-            </div>
-          )}
+        {value && (
+          <div className="flex justify-center">
+            <ProjectSection
+              title={value}
+              projects={[
+                ...(projects?.javascript.filter(
+                  (item) => item.title === value
+                ) || []),
+                ...(projects?.responsive.filter(
+                  (item) => item.title === value
+                ) || []),
+                ...(projects?.react.filter((item) => item.title === value) ||
+                  []),
+                ...(projects?.next.filter((item) => item.title === value) ||
+                  []),
+              ]}
+            />
+          </div>
+        )}
 
-          {/* Project Sections */}
-          {!value && <div>
-          {selectedTab === "all" && (
-            <>
+        {/* Project Sections */}
+        {!value && (
+          <div>
+            {selectedTab === "all" && (
+              <>
+                <ProjectSection
+                  title="Nextjs Projects"
+                  projects={nextjsProject}
+                />
+                <ProjectSection
+                  title="React Projects"
+                  projects={reactProject}
+                />
+                <ProjectSection
+                  title="JavaScript Projects"
+                  projects={javascriptProject}
+                />
+                <ProjectSection
+                  title="HTML/CSS Projects"
+                  projects={responsiveProject}
+                />
+              </>
+            )}
+            {selectedTab === "nextjs" && (
               <ProjectSection
-                title="React Projects"
-                projects={reactProject}
+                title="Nextjs Projects"
+                projects={nextjsProject}
               />
+            )}
+            {selectedTab === "react" && (
+              <ProjectSection title="React Projects" projects={reactProject} />
+            )}
+
+            {selectedTab === "javascript" && (
               <ProjectSection
                 title="JavaScript Projects"
                 projects={javascriptProject}
               />
+            )}
+            {selectedTab === "responsive" && (
               <ProjectSection
                 title="HTML/CSS Projects"
                 projects={responsiveProject}
               />
-            </>
-          )}
-          {selectedTab === "react" && (
-            <ProjectSection title="React Projects" projects={reactProject} />
-          )}
-          {selectedTab === "javascript" && (
-            <ProjectSection
-              title="JavaScript Projects"
-              projects={javascriptProject}
-            />
-          )}
-          {selectedTab === "responsive" && (
-            <ProjectSection
-              title="HTML/CSS Projects"
-              projects={responsiveProject}
-            />
-          )}
-          </div>}
-        </div>
-
-      </section>
+            )}
+          </div>
+        )}
+      </div>
+    </section>
   );
 };
 

@@ -6,13 +6,16 @@ import {
   updateProject,
   deleteProject,
 } from "../utils/actions";
+import { BASE_URL } from "../utils/projects";
 
 function ProjectsManager({ table }) {
   const dispatch = useDispatch();
   const projects = useSelector((state) => state.projects[table]);
+
   const [newProject, setNewProject] = useState({
     title: "",
     path: "",
+    path_root: "",
     visible: true,
     rating: "",
     description: "",
@@ -25,13 +28,11 @@ function ProjectsManager({ table }) {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
 
     if (editProject) {
       setEditProject({ ...editProject, [name]: value });
     } else {
       setNewProject({ ...newProject, [name]: value });
-      console.log({ ...newProject, [name]: value });
     }
   };
 
@@ -42,10 +43,10 @@ function ProjectsManager({ table }) {
       setNewProject({
         title: "",
         path: "",
+        path_root: "",
         visible: true,
         rating: "",
         description: "",
-
       });
     }
   };
@@ -92,6 +93,18 @@ function ProjectsManager({ table }) {
           name="path"
           placeholder="Path"
           value={editProject ? editProject.path : newProject.path}
+          onChange={handleInputChange}
+        />
+        <h2 className="mb-2" htmlFor="">
+          {BASE_URL + "projects/" + table + "/" + newProject.path}
+        </h2>
+        {/* //https://coderespite.com/projects/react/swiggy/ */}
+        <input
+          className="mb-4 w-full px-4 py-2 border rounded-md text-[var(--background-color)]"
+          type="text"
+          name="path_root"
+          placeholder={BASE_URL + "projects/" + table + "/" + newProject.path}
+          value={editProject ? editProject.path_root : newProject.path_root}
           onChange={handleInputChange}
         />
 

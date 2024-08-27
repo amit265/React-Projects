@@ -9,6 +9,8 @@ const Header = () => {
   useProjects("responsive");
   useProjects("javascript");
   useProjects("react");
+  useProjects("next");
+
   useBlogs();
   const falseHam = () => {
     setOpen(false);

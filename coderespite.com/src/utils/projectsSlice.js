@@ -5,6 +5,7 @@ const projectsSlice = createSlice({
   name: "projects",
   initialState: {
     react: [],
+    next: [],
     javascript: [],
     responsive: [],
   },
@@ -12,6 +13,9 @@ const projectsSlice = createSlice({
     // Existing reducers (if needed)
     addReact: (state, action) => {
       state.react = action.payload;
+    },
+    addNext: (state, action) => {
+      state.next = action.payload;
     },
     addJavascript: (state, action) => {
       state.javascript = action.payload;
@@ -44,6 +48,6 @@ const projectsSlice = createSlice({
   }
 });
 
-export const { addReact, addJavascript, addResponsive } = projectsSlice.actions;
+export const { addReact, addJavascript, addResponsive, addNext } = projectsSlice.actions;
 
 export default projectsSlice.reducer;

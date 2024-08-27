@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { BASE_URL } from "../utils/projects";
 import { useDispatch, useSelector } from "react-redux";
-import { addJavascript, addReact, addResponsive } from "../utils/projectsSlice";
+import { addJavascript, addReact, addResponsive, addNext } from "../utils/projectsSlice";
 import { setError } from "../utils/errorSlice";
 
 const useProjects = (project) => {
@@ -19,9 +19,13 @@ const useProjects = (project) => {
         dispatch(addReact(data));
       } else if (project === "javascript") {
         dispatch(addJavascript(data));
+        
       } else if (project === "responsive") {
         dispatch(addResponsive(data));
       }
+     else if (project === "next") {
+      dispatch(addNext(data));
+    }
     } catch (error) {
       dispatch(setError("Failed to fetch projects: ", error));
     }

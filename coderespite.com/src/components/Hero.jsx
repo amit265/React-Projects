@@ -8,9 +8,10 @@ const Hero = () => {
   const [inputValue, setInputValue] = useState("");
   const blogs = useSelector((store) => store?.blogs?.blogs);
   const projects = useSelector((store) => store?.projects);
-  const data = projects.javascript
+  const data = projects.next
     .map((item) => item.title)
     .concat(projects.react.map((item) => item.title))
+    .concat(projects.javascript.map((item) => item.title))
     .concat(projects.responsive.map((item) => item.title))
     .concat(blogs.map((blog) => blog.title));
   const [value, setValue] = useState("");

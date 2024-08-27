@@ -15,7 +15,6 @@ const Admin = () => {
 
   const handleChange = (e) => {
     setProject(e.target.value);
-    console.log(e.target.value);
   };
   return (
     <section className="py-8 text-[var(--text-color)]">
@@ -29,6 +28,8 @@ const Admin = () => {
             className="max-w-md px-4 py-2 border rounded-md text-[var(--background-color)]"
           >
             <option value="react">React</option>
+            <option value="next">Next</option>
+
             <option value="javascript">JavaScript</option>
             <option value="responsive">Responsive</option>
             <option value="blog">Blog</option>
@@ -45,6 +46,8 @@ const Admin = () => {
         {project === "react" && <ProjectsManager table="react" />}
         {project === "javascript" && <ProjectsManager table="javascript" />}
         {project === "responsive" && <ProjectsManager table="responsive" />}
+        {project === "next" && <ProjectsManager table="next" />}
+
         {project === "blog" && <BlogAdmin />}
       </div>
     </section>

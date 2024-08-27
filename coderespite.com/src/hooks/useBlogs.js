@@ -19,7 +19,6 @@ const useBlogs = () => {
       dispatch(addBlog(data));
     } catch (error) {
       dispatch(setError("Failed to fetch blogs: ", error));
-      console.log(error);
     }
   };
 

@@ -33,7 +33,6 @@ const BlogAdmin = () => {
       const data = await response.json();
       // console.log("imge data", data);
       if (data.status === 1) {
-        console.log("image url", data.url);
         setImage_url(data.url);
         setIsImageUploaded(true);
       } else {
@@ -83,7 +82,6 @@ const BlogAdmin = () => {
         setMessage("Failed to add blog. Please try again.");
       }
     } catch (error) {
-      console.log("error", error);
       setMessage("An error occurred. Please try again.", error);
     }
 
