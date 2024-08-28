@@ -3,6 +3,7 @@ import userReducer from "./userSlice";
 import moviesReducer from "./moviesSlice";
 import gptReducer from "./gptSlice";
 import errorReducer from "./errorSlice"
+import loadingReducer from "./loadingSlice"
 import configReducer from "./configSlice"
 const appStore = configureStore(
     {
@@ -12,6 +13,7 @@ const appStore = configureStore(
             gpt: gptReducer,
             config: configReducer,
             error: errorReducer,
+            loading: loadingReducer,
         }
     }
 )

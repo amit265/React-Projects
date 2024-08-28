@@ -1,7 +1,7 @@
 const lang = {
   en: {
     search: "Search",
-    gptSearchPlaceholder: "API token is exhausted. You can only search movies?",
+    gptSearchPlaceholder: "What do you want to watch today?",
     allCategories: "Browse All Genre",
     top250: "Top 250",
     action: "Action",

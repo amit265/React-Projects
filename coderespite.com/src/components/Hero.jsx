@@ -51,6 +51,9 @@ const Hero = () => {
                       ) || []),
                       ...(projects?.react.filter((item) => item.title === value) ||
                         []),  
+
+                      ...(projects?.next.filter((item) => item.title === value) ||
+                      []),  
                     ]}
                   />
 

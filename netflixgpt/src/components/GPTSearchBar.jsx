@@ -1,13 +1,15 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import lang from "../utils/languageConstants";
 import { API_OPTIONS } from "../utils/constants";
 import { addGPTMovieResult, clearGPTMovieResults } from "../utils/gptSlice";
 import { clearMovieGenre } from "../utils/moviesSlice";
 import { clearError, setError } from "../utils/errorSlice";
-
+import openai from "../utils/openai";
+import { setLoading } from "../utils/loadingSlice";
 const GPTSearchBar = () => {
   const langKey = useSelector((store) => store.config.lang);
+  
   const searchText = useRef(null);
   const dispatch = useDispatch();
 
@@ -32,47 +34,57 @@ const GPTSearchBar = () => {
     const searchTextValue = searchText.current.value;
     dispatch(clearMovieGenre());
     dispatch(clearGPTMovieResults());
+    dispatch(setLoading());
+    const gptQuery =
+      "Act as a movie recommendation system and suggest some for the query" +
+      searchText.current.value +
+      ". only give me names of 5 movies, comma separated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmall, Koi Mil Gaya";
 
-    // const gptQuery =
-    //   "Act as a movie recommendation system and suggest some for the query" +
-    //   searchText.current.value +
-    //   ". only give me names of 5 movies, comma separated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmall, Koi Mil Gaya";
+    // make an api call to openai and get movie results
+    const gptResult = await openai.chat.completions.create({
+      messages: [{ role: "user", content: gptQuery }],
+      model: "gpt-3.5-turbo",
+    });
 
-    //make an api call to openai and get movie results
-    // const gptResults = await openai.chat.completions.create({
-    //   messages: [{ role: "user", content: gptQuery }],
-    //   model: "gpt-3.5-turbo",
-    // });
+    if (!gptResult.choices) {
+      // TODO: Write Error Handling
+      console.log("Error creating movie recommendations for " + gptQuery);
+      
+    }
 
-    const gptResults = {
-      choices: [
-        "The Godfather",
-        "The Shawshank Redemption",
-        "Schindler's List",
-        "Raging Bull",
-        "Casablanca",
-        "Citizen Kane",
-        "Gone with the Wind",
-        "The Wizard of Oz",
-        "One Flew Over the Cuckoo's Nest",
-        "Lawrence of Arabia",
-      ],
-    };
+    // console.log(gptResult?.choices?.[0]?.message?.content);
 
-    const gptMovies = gptResults.choices;
+
+    // const gptResults = {
+    //   choices: [
+    //     "The Godfather",
+    //     "The Shawshank Redemption",
+    //     "Schindler's List",
+    //     "Raging Bull",
+    //     "Casablanca",
+    //     "Citizen Kane",
+    //     "Gone with the Wind",
+    //     "The Wizard of Oz",
+    //     "One Flew Over the Cuckoo's Nest",
+    //     "Lawrence of Arabia",
+    //   ],
+    // };
+
+    const gptMovies = gptResult?.choices?.[0]?.message?.content.split(",");
+    
 
     try {
       let tmdbResults;
       if (searchTextValue) {
-        const result = await searchMovieTMDB(searchTextValue);
-        tmdbResults = [result];
-        dispatch(
-          addGPTMovieResult({
-            movieNames: [searchTextValue],
-            movieResults: tmdbResults,
-          })
-        );
-      } else {
+        // const result = await searchMovieTMDB(searchTextValue);
+        // tmdbResults = [result];
+        // dispatch(
+        //   addGPTMovieResult({
+        //     movieNames: [searchTextValue],
+        //     movieResults: tmdbResults,
+        //   })
+        // );
+
         const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
         tmdbResults = await Promise.all(promiseArray);
         dispatch(
@@ -81,11 +93,16 @@ const GPTSearchBar = () => {
             movieResults: tmdbResults,
           })
         );
+      } else {
+       
         // alert("Enter name of anymovie")
       }
     } catch (error) {
       console.error("Error during GPT search:", error);
     }
+
+    searchText.current.value = "";
+
   };
 
   return (
@@ -98,12 +115,15 @@ const GPTSearchBar = () => {
           <input
             className="p-4 sm:m-4 my-4 mx-2 col-span-9"
             type="text"
+            required
             ref={searchText}
             placeholder={lang[langKey].gptSearchPlaceholder}
           />
 
           <button
             onClick={handleGPTSearch}
+            type="submit"
+            disabled={!searchText}
             className="bg-red-700 hover:bg-red-900 my-4 mx-2 sm:m-4 sm:px-4 py-2 text-white rounded-lg col-span-3"
           >
             {lang[langKey].search}
