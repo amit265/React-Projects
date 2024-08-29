@@ -1,5 +1,4 @@
-import { signInWithGoogle } from '../services/firebase';
-
+import { signInWithGoogle } from "../services/firebase";
 
 const Login = ({ onLoginSuccess }) => {
   const handleLogin = async () => {

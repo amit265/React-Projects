@@ -26,14 +26,13 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-const signInWithGoogle = () => {
-  return setPersistence(auth, browserLocalPersistence)
-    .then(() => {
-      return signInWithPopup(auth, provider);
-    })
-    .catch((error) => {
-      console.error("Error setting persistence:", error);
-    });
+const signInWithGoogle = async () => {
+  try {
+    await setPersistence(auth, browserLocalPersistence);
+    return await signInWithPopup(auth, provider);
+  } catch (error) {
+    console.error("Error setting persistence:", error);
+  }
 };
 
 export { auth, signInWithGoogle };

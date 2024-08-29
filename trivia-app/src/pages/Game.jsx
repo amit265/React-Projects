@@ -247,9 +247,9 @@ const Game = ({ category, setCategory }) => {
               className={`block w-full text-left p-2 mb-2 rounded ${
                 isSubmitted
                   ? option === correct_answer
-                    ? "bg-green-500 text-white animate-pulse transition linear duration-50"
+                    ? "bg-green-500 text-white animate-pulse transition ease-in-out duration-75"
                     : option === selectedAnswer
-                    ? "bg-red-500 text-white animate-pulse transition linear duration-100"
+                    ? "bg-red-500 text-white animate-pulse transition ease-in-out duration-100"
                     : "bg-gray-100"
                   : selectedAnswer === option
                   ? "bg-blue-500 text-white"

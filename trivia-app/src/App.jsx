@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { auth } from './services/firebase';
 import Category from './pages/Category';
 import ReactLoading from "react-loading";
+import Login from './components/Login';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -20,6 +21,11 @@ const App = () => {
     return () => unsubscribe();
   }, []);
 
+
+   const handleLoginSuccess = (user) => {
+    setUser(user);
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -35,8 +41,7 @@ const App = () => {
 
   return (
     <div>
-      {/* {user ? <Category user={user} /> : <Login />} */}
-      <Category user={user} />
+      {user ? <Category user={user} /> : <Login onLoginSuccess={handleLoginSuccess} />}      {/* <Category user={user} /> */}
     
     </div>
   );
