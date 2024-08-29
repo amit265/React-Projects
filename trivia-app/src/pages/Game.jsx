@@ -22,7 +22,6 @@ const Game = ({ category, setCategory }) => {
   const [showLifelines, setShowLifelines] = useState(false); // State to control visibility of lifelines\\\
   const [removeIncorrectAnswer, setRemoveIncorrectAnswer] = useState([]);
   const [isskipQuestionUsed, setIsskipQuestionUsed] = useState(false); //
-  const [lifeline, setLifeline] = useState("3")
   useEffect(() => {
     const loadQuestions = async () => {
       const fetchedQuestions = await fetchQuestions();
@@ -54,12 +53,6 @@ const Game = ({ category, setCategory }) => {
       // return () => clearTimeout(lifelineTimer); // Clear the timer when the component unmounts or question changes
     }
   }, [currentQuestion, questions]);
-
-
-  useEffect(() => {
-    setLifeline(!isAiHintUsed + !isEliminateUsed + !isskipQuestionUsed);
-
-  }, [isAiHintUsed, isEliminateUsed, isskipQuestionUsed])
 
 
 
@@ -119,6 +112,8 @@ const Game = ({ category, setCategory }) => {
 
   const aiHint = async (question) => {
     if (isAiHintUsed) return; // Prevent re-execution if already used
+    setIsAiHintUsed(true);
+
     const gptQuery =
       "You are a trivia master. Please provide a hint for the question below that encourages the user to think critically, but do not reveal the answer directly. The hint should be in 1-2 sentences and guide the user to analyze the question and options: " +
       question;
@@ -139,12 +134,13 @@ const Game = ({ category, setCategory }) => {
       console.error("Error fetching hint:", error.message);
     }
     setLoading(false);
-    setIsAiHintUsed(true);
   };
 
 
   const eliminate = () => {
     if (isEliminateUsed) return; // Prevent re-execution if already used
+    setIsEliminateUsed(true);
+
     const correctAnswer = questions[currentQuestion].correct_answer;
     let incorrectOptions = questions[currentQuestion].options.filter(
       (option) => option !== correctAnswer
@@ -159,10 +155,11 @@ const Game = ({ category, setCategory }) => {
     setRemoveIncorrectAnswer(incorrectOptions);
     // setFilteredOptions([...incorrectOptions, correctAnswer]);
 
-    setIsEliminateUsed(true);
   };
 
   const skipQuestion = () => {
+    setIsskipQuestionUsed(true);
+
     if(isskipQuestionUsed) return; // Prevent re execution
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
@@ -171,7 +168,6 @@ const Game = ({ category, setCategory }) => {
       setCurrentQuestion(0);
       setScore(0);
     }
-    setIsskipQuestionUsed(true);
   };
 
   // console.log(loading);
@@ -251,9 +247,9 @@ const Game = ({ category, setCategory }) => {
               className={`block w-full text-left p-2 mb-2 rounded ${
                 isSubmitted
                   ? option === correct_answer
-                    ? "bg-green-500 text-white"
+                    ? "bg-green-500 text-white animate-pulse transition linear duration-50"
                     : option === selectedAnswer
-                    ? "bg-red-500 text-white"
+                    ? "bg-red-500 text-white animate-pulse transition linear duration-100"
                     : "bg-gray-100"
                   : selectedAnswer === option
                   ? "bg-blue-500 text-white"
@@ -266,8 +262,8 @@ const Game = ({ category, setCategory }) => {
                   removeIncorrectAnswer.find(
                     (incorrectOption) => incorrectOption === option
                   )
-                    ? "transition ease-linear duration-400 opacity-0"
-                    : "opacity-100"
+                    ? "transition ease-linear duration-400 line-through decoration-red-600 decoration-solid decoration-2	"
+                    : ""
                 }`}
               >
                 {option}
@@ -297,7 +293,7 @@ const Game = ({ category, setCategory }) => {
       </div>
       <div className="text-center cursor-pointer">
         <h2
-          className="p-4 m-4 bg-pink-400 mx-auto max-w-md rounded-md"
+          className="p-4 m-4 bg-pink-400 mx-auto max-w-md rounded-md "
           onClick={() => {
             if (confirm("Are you sure?")) {
               setCategory("");
@@ -305,6 +301,7 @@ const Game = ({ category, setCategory }) => {
           }}
         >
           category
+          
         </h2>
       </div>
     </div>
