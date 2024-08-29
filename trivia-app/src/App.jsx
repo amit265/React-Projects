@@ -1,11 +1,9 @@
 // App.jsx
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { auth } from './services/firebase';
-import Login from './components/Login';
-import Game from './pages/Game'; // Assuming you have a Game component
 import Category from './pages/Category';
-import Header from './components/Header';
+import ReactLoading from "react-loading";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -25,7 +23,12 @@ const App = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <p>Loading...</p>
+        <ReactLoading
+        type={"spin"}
+        color={"blue"}
+        height={"100px"}
+        width={"100px"}
+      />
       </div>
     );
   }

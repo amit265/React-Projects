@@ -2,6 +2,8 @@ import React from 'react'
 import LogoutButton from './LogoutButton'
 
 const Header = ({user}) => {
+
+  console.log(user?.displayName.split(" ")[0]);
   return (
         <div className="flex justify-center items-center p-4">
         {user && <img
@@ -9,7 +11,7 @@ const Header = ({user}) => {
           alt={user?.diaplayName}
           className="rounded-full"
         />}
-        <h1 className="text-2xl text-center">Welcome, {user ? user?.displayName : "user"}!</h1>
+        <h1 className="text-2xl text-center px-4">Welcome, {user ? user?.displayName.split(" ")[0] : "user"}!</h1>
         <LogoutButton user={user}/>
       </div>
   )
