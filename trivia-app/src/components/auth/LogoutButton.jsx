@@ -1,12 +1,16 @@
 // components/LogoutButton.jsx
 
 import React from 'react';
-import { auth } from '../services/firebase';
+import { auth } from '../../services/firebase';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/authSlice';
 
 const LogoutButton = ({user}) => {
+  const dispatch = useDispatch();
   const handleLogout = () => {
     auth.signOut()
       .then(() => {
+        dispatch(logout());
         console.log('User signed out');
       })
       .catch((error) => {

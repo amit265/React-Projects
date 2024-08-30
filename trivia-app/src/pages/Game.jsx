@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { fetchQuestions } from "../services/api";
+import useFetchQuestions from "../services/useFetchQuestions";
 import openai from "../utils/openai";
 import { shuffleArray } from "../services/shuffleArray";
 import ReactLoading from "react-loading";
-import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../utils/constants";
 
-const Game = ({ category, setCategory }) => {
+const Game = ({ category, setCategory, allQuestions }) => {
   const [questions, setQuestions] = useState([]);
   const [hint, setHint] = useState("");
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -22,12 +20,13 @@ const Game = ({ category, setCategory }) => {
   const [showLifelines, setShowLifelines] = useState(false); // State to control visibility of lifelines\\\
   const [removeIncorrectAnswer, setRemoveIncorrectAnswer] = useState([]);
   const [isskipQuestionUsed, setIsskipQuestionUsed] = useState(false); //
+  useFetchQuestions();
+
   useEffect(() => {
     const loadQuestions = async () => {
-      const fetchedQuestions = await fetchQuestions();
       setQuestions(
         shuffleArray(
-          fetchedQuestions.filter((game) => game.category === category)
+          allQuestions.filter((game) => game.category === category)
         ).slice(0, 10)
       );
     };
@@ -46,15 +45,10 @@ const Game = ({ category, setCategory }) => {
       setRemoveIncorrectAnswer([]);
       setCorrectAnswer("");
 
-      // const lifelineTimer = setTimeout(() => {
-        setShowLifelines(true); // Show lifelines after 10 seconds
-      // }, 5000);
+      setShowLifelines(true); // Show lifelines after 10 seconds
 
-      // return () => clearTimeout(lifelineTimer); // Clear the timer when the component unmounts or question changes
     }
   }, [currentQuestion, questions]);
-
-
 
   if (questions?.length === 0)
     return (
@@ -97,7 +91,7 @@ const Game = ({ category, setCategory }) => {
             isAnswerCorrect ? score + 10 : score - 5
           }/${questions.length * 10}`
         );
-        setCategory("")
+        setCategory("");
         setCurrentQuestion(0);
         setScore(0);
       }
@@ -136,7 +130,6 @@ const Game = ({ category, setCategory }) => {
     setLoading(false);
   };
 
-
   const eliminate = () => {
     if (isEliminateUsed) return; // Prevent re-execution if already used
     setIsEliminateUsed(true);
@@ -154,13 +147,12 @@ const Game = ({ category, setCategory }) => {
 
     setRemoveIncorrectAnswer(incorrectOptions);
     // setFilteredOptions([...incorrectOptions, correctAnswer]);
-
   };
 
   const skipQuestion = () => {
     setIsskipQuestionUsed(true);
 
-    if(isskipQuestionUsed) return; // Prevent re execution
+    if (isskipQuestionUsed) return; // Prevent re execution
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
@@ -183,10 +175,10 @@ const Game = ({ category, setCategory }) => {
 
         {showLifelines && (
           <div className="flex justify-between text-sm sm:text-base">
-             {/* <h2 className={`align-middle p-1 m-1 ${lifeline > 0 ? "text-green-600" : "text-red-600 text-center"} font-semibold`}>
+            {/* <h2 className={`align-middle p-1 m-1 ${lifeline > 0 ? "text-green-600" : "text-red-600 text-center"} font-semibold`}>
               {`${lifeline > 0 ? `use lifeline - ${lifeline}` : "No lifelines available"}`}
             </h2> */}
-           <div className="flex justify-center gap-4 mx-auto min-w-full">
+            <div className="flex justify-center gap-4 mx-auto min-w-full">
               <h2
                 className={`p-1 m-1 w-1/4 text-center bg-green-400 rounded-lg cursor-pointer ${
                   isskipQuestionUsed ? "opacity-50 cursor-not-allowed" : ""
@@ -301,7 +293,6 @@ const Game = ({ category, setCategory }) => {
           }}
         >
           category
-          
         </h2>
       </div>
     </div>
