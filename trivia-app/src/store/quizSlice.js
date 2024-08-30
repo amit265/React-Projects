@@ -12,6 +12,7 @@ const quizSlice = createSlice({
     isAnswerSubmitted: false,
     removeIncorrectAnswer: [],
     userScore: 0,
+    totalScore: [],
   },
   reducers: {
     setQuestions: (state, action) => {
@@ -43,7 +44,24 @@ const quizSlice = createSlice({
     },
     setRemoveIncorrectAnswer: (state, action) => {
         state.removeIncorrectAnswer = action.payload;
+    },
+    setTotalScore: (state, action) => {
+      state.totalScore.push(action.payload);
+    },
+    resetQuiz: (state) => {
+      state.questions = [];
+      state.currentQuestionIndex = 0;
+      state.userAnswer = null;
+      state.correctAnswer = null;
+      state.isAnswerCorrect = null;
+      state.currentQuestionOption = [];
+      state.isAnswerSubmitted = false;
+      state.removeIncorrectAnswer = [];
+      state.userScore = 0;
+      // state.totalScore = [];
+  
     }
+      
   },
 });
 
@@ -57,6 +75,8 @@ export const {
   setCurrentQuestionOption,
   setIsAnswerSubmitted,
   setRemoveIncorrectAnswer,
+  setTotalScore,
+  resetQuiz
 } = quizSlice.actions;
 
 export default quizSlice.reducer;

@@ -24,7 +24,7 @@ const LifeLine = () => {
 
     const eliminate = () => {
         dispatch(setIsEliminateUsed(true));
-        if(isEliminateUsed) return;
+        if(isEliminateUsed) {return};
     
         const correctAnswer = questions[currentQuestionIndex].correct_answer;
         let incorrectOptions = questions[currentQuestionIndex].options.filter(

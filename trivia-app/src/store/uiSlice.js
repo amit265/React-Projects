@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const uiSlice = createSlice({
     name: "ui",
     initialState: {
-        loading: false,
+        loading: true,
         modalOpen: false,
         feedback: "",
     },

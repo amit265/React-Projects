@@ -8,11 +8,12 @@ import Header from "./components/layout/Header";
 import { login } from "./store/authSlice";
 import useFetchQuestions from "./services/useFetchQuestions";
 import Footer from "./components/layout/Footer";
+import { setLoading } from "./store/uiSlice";
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
   const { isAuthenticated } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
+  const loading = useSelector((store) => store.ui.loading);
   // console.log("user from app.jsx", user);
   useFetchQuestions();
 
@@ -30,8 +31,9 @@ const App = () => {
 
         // Dispatch the serializable user object
         dispatch(login(serializableUser));
+
       }
-      setLoading(false); // Set loading state to false after authentication check
+      dispatch(setLoading(false));
     });
 
     // Cleanup subscription on unmount

@@ -9,10 +9,6 @@ const Question = () => {
   const questions = useSelector((store) => store.quiz.questions);
   console.log("questions from questions amit", questions);
   const question = questions[currentQuestionIndex];
-  console.log("currentQuestionIndex", currentQuestionIndex);
-  console.log("question frlmo question kumar", question);
-
-  // console.log("question", question);
   dispatch(setCurrentQuestionOption(question.options));
 
   return (

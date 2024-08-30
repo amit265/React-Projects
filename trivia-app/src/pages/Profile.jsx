@@ -3,7 +3,10 @@ import { useSelector } from "react-redux";
 
 const Profile = () => {
   const { isAuthenticated, user } = useSelector((store) => store.auth);
-  const userScore = useSelector((store) => store.quiz.userScore);
+  const totalScore = useSelector((store) => store.quiz.totalScore);
+
+  //add all the cells of an array, example: totalScore[90, 90,100]
+  const userScore = totalScore.reduce((a, b) => a + b, 0);
 
   return (
     <div className="max-w-md container mx-auto p-4 rounded-lg shadow-md flex gap-4 bg-gray-100">

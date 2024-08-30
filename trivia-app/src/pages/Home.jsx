@@ -17,7 +17,7 @@ const Home = () => {
         </div>
 
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Featured Quizzes</h2>
+          {/* <h2 className="text-2xl font-semibold text-gray-800 mb-4">Featured Quizzes</h2> */}
           {/* Optionally, display featured quizzes here */}
         </div>
 

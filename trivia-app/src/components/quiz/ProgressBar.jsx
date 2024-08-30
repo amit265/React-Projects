@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux';
 const ProgressBar = () => {
   const currentQuestionIndex = useSelector((store) => store.quiz.currentQuestionIndex);
   const totalQuestions = useSelector((store) => store.quiz.questions.length);
-  const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
-
+  const progress = (currentQuestionIndex  / (totalQuestions)) * 100;
   return (
     <div className="w-full bg-gray-200 h-2 mb-4">
       <div

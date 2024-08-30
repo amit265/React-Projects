@@ -22,7 +22,7 @@ const Category = () => {
       (question) => question.category === cat
     );
     dispatch(setSelectedCategory(cat));
-    dispatch(setQuestions(shuffleArray(filteredQuestions).slice(0,9)));
+    dispatch(setQuestions(shuffleArray(filteredQuestions).slice(0,10)));
     // setGameCategory(cat);
     navigate(BASE_URL + "/quiz")
 

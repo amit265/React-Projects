@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import QuizCard from "../components/quiz/QuizCard";
 import ProgressBar from "../components/quiz/ProgressBar";
 import {
+  resetQuiz,
   setCorrectAnswer,
   setCurrentQuestionIndex,
   setIsAnswerCorrect,
   setIsAnswerSubmitted,
+  setTotalScore,
   setUserAnswer,
   setUserScore,
 } from "../store/quizSlice";
@@ -14,7 +16,7 @@ import { setFeedBack } from "../store/uiSlice";
 import UserScore from "../components/quiz/UserScore";
 import LifeLine from "../components/quiz/LifeLine";
 import Feedback from "../components/quiz/Feedback";
-import { setAiHint } from "../store/lifeLine";
+import { resetLifeLine, setAiHint } from "../store/lifeLine";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 
@@ -38,6 +40,7 @@ const Quiz = () => {
     dispatch(setIsAnswerCorrect(isAnswerCorrect));
     dispatch(setIsAnswerSubmitted(true));
     dispatch(setAiHint(""));
+   
     console.log(isAnswerCorrect);
     if (isAnswerCorrect) {
       dispatch(setUserScore(userScore + 10));
@@ -66,14 +69,16 @@ const Quiz = () => {
             isAnswerCorrect ? userScore + 10 : userScore - 5
           }/${questions.length * 10}`
         );
-
-        navigate(BASE_URL + "/quiz");
+        dispatch(resetLifeLine());
+        dispatch(resetQuiz());
+        dispatch(setTotalScore(userScore));
+        navigate(BASE_URL + "/");
       }
     }, 2000);
   };
 
   if (!questions.length) {
-    return <div>Loading...</div>; // Handle the case where questions are still loading
+    return; // Handle the case where questions are still loading
   }
 
   return (
