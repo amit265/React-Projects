@@ -9,6 +9,7 @@ import { login } from "./store/authSlice";
 import useFetchQuestions from "./services/useFetchQuestions";
 import Footer from "./components/layout/Footer";
 import { setLoading } from "./store/uiSlice";
+import useFetchLeaderboard from "./services/useFetchLeaderboard";
 
 const App = () => {
   const { isAuthenticated } = useSelector((store) => store.auth);
@@ -16,6 +17,7 @@ const App = () => {
   const loading = useSelector((store) => store.ui.loading);
   // console.log("user from app.jsx", user);
   useFetchQuestions();
+  useFetchLeaderboard();
 
   useEffect(() => {
     // Function to handle authentication state change
