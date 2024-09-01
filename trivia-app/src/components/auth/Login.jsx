@@ -11,14 +11,14 @@ const Login = () => {
       const user = result.user;
       const serializableUser = {
         uid: user.uid,
-        displayName: user.displayName,
+        name: user.displayName,
         email: user.email,
-        photoURL: user.photoURL,
+        image_url: user.photoURL,
       };
       // onLoginSuccess(result.user);
+      console.log("serializableUser", serializableUser);
 
       dispatch(login(serializableUser));
-
     } catch (error) {
       console.error("Login failed: ", error);
     }

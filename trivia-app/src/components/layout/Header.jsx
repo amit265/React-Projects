@@ -6,6 +6,7 @@ import { BASE_URL } from "../../utils/constants";
 
 const Header = () => {
   const { isAuthenticated, user } = useSelector((store) => store.auth);
+  console.log("user", user);
   return (
     <div className="flex p-4 flex-col justify-center items-center">
       <div className="flex justify-center gap-12 p-1 m-1">
@@ -40,7 +41,7 @@ const Header = () => {
       <div>
       {isAuthenticated && user && (
             <h1 className="text-2xl text-center px-4 cursor-pointer">Welcome {" "} 
-            {user.displayName.split(" ")[0]}!
+            {user.name}!
           </h1>
            
         )}
