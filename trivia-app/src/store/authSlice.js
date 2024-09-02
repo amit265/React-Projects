@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const saveUserDataToApi = async (userData) => {
   try {
+    console.log("Starting to save user data..."); // Log before making the request
+
     const response = await fetch("https://coderespite.com/api/trivia/", {
       method: "POST",
       headers: {
@@ -10,21 +12,23 @@ const saveUserDataToApi = async (userData) => {
       body: JSON.stringify(userData),
     });
 
-    // Check if the response is OK (status code in the range 200-299)
-    if (!response.ok) {
-        const errorText = await response.text(); // Get the response text if not OK
-        console.error("Error response text:", errorText);
-        throw new Error("Network response was not ok.");
-      }
-  
+    console.log("Request sent, waiting for response..."); // Log after the request is sent
 
-    // Ensure the response is in JSON format
-    const result = await response.json();
+    const contentType = response.headers.get("content-type");
+    console.log("Response received, content type:", contentType); // Log after receiving the response
 
-    return result; // Return the result if successful
+    if (contentType && contentType.includes("application/json")) {
+      const result = await response.json(); // Parse JSON only if it's JSON
+      console.log("Parsed JSON successfully:", result); // Log parsed JSON
+      return result;
+    } else {
+      const text = await response.text(); // Handle non-JSON responses
+      console.warn("Unexpected response format:", text);
+      throw new Error("Unexpected response format");
+    }
   } catch (error) {
-    console.error("Error saving user data:", error);
-    throw error; // Rethrow the error after logging it
+    console.error("Error occurred during saveUserDataToApi:", error);
+    throw error;
   }
 };
 

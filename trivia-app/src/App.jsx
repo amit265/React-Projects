@@ -26,14 +26,13 @@ const App = () => {
         // Create a serializable user object
         const serializableUser = {
           uid: currentUser.uid,
-          displayName: currentUser.displayName,
+          name: currentUser.displayName,
           email: currentUser.email,
-          photoURL: currentUser.photoURL,
+          image_url: currentUser.photoURL,
         };
 
         // Dispatch the serializable user object
         dispatch(login(serializableUser));
-
       }
       dispatch(setLoading(false));
     });
@@ -66,9 +65,9 @@ const App = () => {
         <Login />
       ) : (
         <>
-        <Header />
-        <Outlet />
-        {/* <Footer /> */}
+          <Header />
+          <Outlet />
+          {/* <Footer /> */}
         </>
       )}
     </div>
