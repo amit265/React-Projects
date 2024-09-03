@@ -1,4 +1,6 @@
 const LeaderboardHead = ({ leaderboard }) => {
+  console.log("leaderboard", leaderboard);
+  
   const sortedLeaderboard = [...leaderboard].sort(
     (a, b) => b.total_score - a.total_score
   );
@@ -15,11 +17,11 @@ const LeaderboardHead = ({ leaderboard }) => {
       {topUsers[1] && (
         <div className="flex flex-col items-center w-1/3">
           <img
-            className="rounded-full h-24 w-24"
+            className="rounded-full "
             src={topUsers[1].image_url}
             alt={topUsers[1].name}
           />
-          <h1 className="text-sm text-center">{topUsers[1].name}</h1>
+          <h1 className="text-sm text-cenh-24 w-24ter">{topUsers[1].name}</h1>
           <h2 className="text-sm text-center">Total score: {topUsers[1].total_score}</h2>
           <h2 className="text-sm text-center">Streak: {topUsers[1].streak}</h2>
         </div>
@@ -29,7 +31,7 @@ const LeaderboardHead = ({ leaderboard }) => {
       {topUsers[0] && (
         <div className="flex flex-col items-center w-1/3">
           <img
-            className="rounded-full h-36 w-36"
+            className="rounded-full h-24 w-24"
             src={topUsers[0].image_url}
             alt={topUsers[0].name}
           />
