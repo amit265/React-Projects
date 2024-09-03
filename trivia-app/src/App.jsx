@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { auth } from "./services/firebase";
 import ReactLoading from "react-loading";
 import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Login from "./components/auth/Login";
 import Header from "./components/layout/Header";
-import { login } from "./store/authSlice";
+import { handleUserLoginCheck } from "./store/authSlice";
 import useFetchQuestions from "./services/useFetchQuestions";
-import Footer from "./components/layout/Footer";
 import { setLoading } from "./store/uiSlice";
 import useFetchLeaderboard from "./services/useFetchLeaderboard";
 
@@ -32,7 +31,7 @@ const App = () => {
         };
 
         // Dispatch the serializable user object
-        dispatch(login(serializableUser));
+        dispatch(handleUserLoginCheck(serializableUser));
       }
       dispatch(setLoading(false));
     });

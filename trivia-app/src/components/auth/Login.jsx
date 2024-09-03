@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { signInWithGoogle } from "../../services/firebase";
-import { login } from "../../store/authSlice";
+import { handleUserLoginCheck } from "../../store/authSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const Login = () => {
       // onLoginSuccess(result.user);
       console.log("serializableUser", serializableUser);
 
-      dispatch(login(serializableUser));
+      dispatch(handleUserLoginCheck(serializableUser));
     } catch (error) {
       console.error("Login failed: ", error);
     }
