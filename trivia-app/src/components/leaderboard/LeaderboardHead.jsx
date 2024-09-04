@@ -4,9 +4,11 @@ const LeaderboardHead = ({ leaderboard }) => {
   const sortedLeaderboard = [...leaderboard].sort(
     (a, b) => b.total_score - a.total_score
   );
-  //filter array based on total score in an array
   const topUsers = sortedLeaderboard.slice(0, 3);
   console.log("top user: ", sortedLeaderboard, leaderboard.length, leaderboard);
+
+
+
 
   return (
     <div className="max-w-md container mx-auto p-4 rounded-lg shadow-md flex flex-col items-center bg-gray-100">
