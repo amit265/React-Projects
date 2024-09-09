@@ -7,7 +7,9 @@ const Leaderboard = () => {
   const leaderboard = useSelector((store) => store.leaderboard.leaderboard);
   console.log("leaderboard form leaderboard", leaderboard);
   return (
-    <div className="container max-w-md mx-auto bg-white p-4 rounded-lg shadow-md">
+    <div className="container max-w-md mx-auto p-4 rounded-lg shadow-md text-white">
+      <h2 className="text-2xl font-semibold mb-6">Leaderboard</h2>
+
       <div className="flex flex-col gap-10">
         <div>
           <LeaderboardHead leaderboard={leaderboard} />

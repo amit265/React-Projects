@@ -22,10 +22,9 @@ const Category = () => {
       (question) => question.category === cat
     );
     dispatch(setSelectedCategory(cat));
-    dispatch(setQuestions(shuffleArray(filteredQuestions).slice(0,10)));
+    dispatch(setQuestions(shuffleArray(filteredQuestions).slice(0, 10)));
     // setGameCategory(cat);
-    navigate(BASE_URL + "/quiz")
-
+    navigate(BASE_URL + "/quiz");
   };
 
   //   console.log(category);
@@ -50,22 +49,22 @@ const Category = () => {
             allQuestions={questions}
           />
         ) : ( */}
-          <div className="flex flex-col justify-between items-center p-4">
-            <h1 className="sm:text-xl text-base font-semibold text-red-800 w-full text-center mx-auto">
-              Choose a Category
-            </h1>
-            <div className="grid sm:grid-cols-3 grid-cols-2 items-center">
-              {uniqueCategory.map((cat) => (
-                <div
-                  key={cat}
-                  className="p-4 m-4 bg-red-400 rounded-lg text-center cursor-pointer"
-                  onClick={() => handleCategory(cat)}
-                >
-                  <h1>{cat}</h1>
-                </div>
-              ))}
-            </div>
+        <div className="flex flex-col justify-between items-center p-4">
+          <h1 className="sm:text-xl text-base font-semibold text-red-800 w-full text-center mx-auto">
+            Choose a Category
+          </h1>
+          <div className="grid sm:grid-cols-1 grid-cols-1 items-center rounded-3xl">
+            {uniqueCategory.slice(0, 6).map((cat) => (
+              <div
+                key={cat}
+                className="p-4 m-4 bg-red-400 rounded-lg text-center cursor-pointer w-full mx-auto"
+                onClick={() => handleCategory(cat)}
+              >
+                <h1>{cat}</h1>
+              </div>
+            ))}
           </div>
+        </div>
         {/* )} */}
       </div>
     </div>

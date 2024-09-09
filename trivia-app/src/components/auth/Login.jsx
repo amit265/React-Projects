@@ -1,6 +1,9 @@
 import { useDispatch } from "react-redux";
 import { signInWithGoogle } from "../../services/firebase";
 import { handleUserLoginCheck } from "../../store/authSlice";
+import "../../index.css"
+import img from "../../assets/images/img.png"
+
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -25,10 +28,16 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
+    <div className="flex flex-col gap-8 items-center justify-center min-h-screen text-white ">
+      <h1 className="homemade-apple-regular text-5xl font-semibold">TriviaQuest</h1>
+      <div>
+        <img src={img} alt="trivia box" />
+      </div>
+      <h1 className="text-4xl text-center font-bold">Discover Facts, Conquer Challenges!</h1>
+      <p className="w-2/3 text-center">Join the ultimate trivia adventure with TriviaQuest! Dive into engaging quizzes, challenge your brain, and win amazing rewards</p>
       <button
         onClick={handleLogin}
-        className="px-6 py-3 text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300"
+        className=" bg-[#ffcc01] px-6 py-3 text-black font-semibold rounded-md hover:bg-blue-600 transition duration-300"
       >
         Sign in with Google
       </button>

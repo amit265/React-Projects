@@ -12,6 +12,7 @@ import Quiz from "./pages/Quiz.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import { Provider } from "react-redux";
 import appStore from "./store/appStore.js";
+import Setting from "./pages/Setting.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const appRouter = createBrowserRouter([
       {
         path: "category",
         element: <Category />,
+      },
+      {
+        path: "setting",
+        element: <Setting />
       },
       {
         path: "*",
