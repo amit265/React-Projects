@@ -17,7 +17,7 @@ const Header = () => {
     setMenuSelected(menuItem);
   };
   return (
-    <div className="flex p-4 flex-col justify-center items-center bg-white text-blue-600 rounded-lg">
+    <div className="flex p-4 -m-4 flex-col justify-center items-center rounded-b-2xl bg-white text-blue-600">
       <div className="flex justify-center w-full">
         <Link to={BASE_URL + "/"} className="w-1/4">
           <div

@@ -79,7 +79,7 @@ const App = () => {
   // }
 
   return (
-    <div className="max-w-screen-sm mx-auto shadow-2xl shadow-white p-4 bg-[#132f94] poppins-regular rounded-2xl min-h-screen m-4 transition-all duration-1000 ease-in">
+    <div className="max-w-screen-sm mx-auto shadow-2xl shadow-white p-4 bg-[#132f94] poppins-regular rounded-2xl min-h-screen m-4 transition ease-linear duration-1000">
       {!isAuthenticated ? (
         <Login />
       ) : (

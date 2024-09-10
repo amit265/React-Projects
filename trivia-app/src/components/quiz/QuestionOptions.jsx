@@ -54,7 +54,7 @@ const QuestionOptions = () => {
 
             >
               {option}
-            </h1>{" "}
+            </h1>
           </button>
         </div>
       ))}

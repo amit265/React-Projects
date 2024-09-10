@@ -23,6 +23,8 @@ import { BASE_URL } from "../utils/constants";
 const Quiz = () => {
   const navigate = useNavigate();
   const questions = useSelector((store) => store.quiz.questions);
+  const selectedCategory = useSelector((store) => store.category.selectedCategory);
+  
   console.log("questions", questions.length);
   const currentQuestionIndex = useSelector(
     (store) => store.quiz.currentQuestionIndex
@@ -40,7 +42,7 @@ const Quiz = () => {
     dispatch(setIsAnswerCorrect(isAnswerCorrect));
     dispatch(setIsAnswerSubmitted(true));
     dispatch(setAiHint(""));
-   
+
     console.log(isAnswerCorrect);
     if (isAnswerCorrect) {
       dispatch(setUserScore(userScore + 10));
@@ -81,20 +83,28 @@ const Quiz = () => {
     return; // Handle the case where questions are still loading
   }
 
+  console.log("selectedCategory", selectedCategory);
+  
   return (
-    <div className="container max-w-md mx-auto bg-white p-4 rounded-lg shadow-md">
+    <div className="max-auto p-4 h-screen shadow-md flex flex-col overflow-y-auto">
       <UserScore />
-      <ProgressBar />
-      <LifeLine />
-      <QuizCard />
-      <button
+
+      <div>
+        <h1 className="text-white text-2xl font-semibold text-center p-4">{selectedCategory}</h1>
+        <ProgressBar />
+
+        <QuizCard />
+        <button
         onClick={handleAnswerSubmit}
         disabled={!userAnswer || isAnswerSubmitted}
-        className="w-full p-2 bg-green-500 text-white rounded hover:bg-green-600 transition duration-300 cursor-pointer"
+        className="w-full p-2 bg-green-500 text-white rounded-b-lg hover:bg-green-600 transition duration-300 cursor-pointer"
       >
         Submit Answer
       </button>
-      <Feedback />
+        <LifeLine />
+
+        <Feedback />
+      </div>
     </div>
   );
 };
