@@ -8,6 +8,7 @@ import { BASE_URL } from "../utils/constants";
 const Login = () => {
   const [emailId, setEmailId] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -15,6 +16,8 @@ const Login = () => {
     // Add your login logic here
     // You can use emailId and password to authenticate the user
     console.log(emailId, password);
+    console.log("error", error);
+
     try {
       const res = await axios.post(
         BASE_URL + "/login",
@@ -28,9 +31,10 @@ const Login = () => {
       );
       console.log(res.data);
       dispatch(addUser(res.data));
-      navigate("/");
-    } catch (error) {
-      console.error("Error:", error);
+      navigate("/feed");
+    } catch (err) {
+      setError(err?.message || "Something went wrong");
+      console.error("Error:", err);
       alert("Invalid credentials");
     }
   };
@@ -61,6 +65,7 @@ const Login = () => {
               className="input input-bordered w-full max-w-xs"
             />
           </label>
+          <p className="text-red-500">{error}</p>
           <div className="card-actions justify-end">
             <button className="btn btn-primary" onClick={handleClick}>
               Login
