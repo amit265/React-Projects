@@ -12,7 +12,7 @@ const Header = () => {
   const [menuSelected, setMenuSelected] = useState("Home");
   const menuItems = ["Home", "Profile", "Leaderboard", "Setting"];
   const { isAuthenticated, user } = useSelector((store) => store.auth);
-  console.log("user", user);
+  // console.log("user", user);
   const handleMenu = (menuItem) => {
     setMenuSelected(menuItem);
   };

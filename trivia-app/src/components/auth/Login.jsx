@@ -19,7 +19,6 @@ const Login = () => {
         image_url: user.photoURL,
       };
       // onLoginSuccess(result.user);
-      console.log("serializableUser", serializableUser);
 
       dispatch(handleUserLoginCheck(serializableUser));
     } catch (error) {

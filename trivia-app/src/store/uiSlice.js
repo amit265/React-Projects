@@ -6,6 +6,7 @@ const uiSlice = createSlice({
         loading: true,
         modalOpen: false,
         feedback: "",
+        timer: 18,
     },
     reducers: {
 
@@ -19,11 +20,14 @@ const uiSlice = createSlice({
 
         setFeedBack: (state, action) => {
             state.feedback = action.payload;
-        }
+        },
+        setTimer : (state, action) => { 
+            state.timer = action.payload;
+        },
        
     },
 })
 
-export const { setLoading, setModalOpen, setFeedBack} = uiSlice.actions;
+export const { setLoading, setModalOpen, setFeedBack, setTimer} = uiSlice.actions;
 
 export default uiSlice.reducer;

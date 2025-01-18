@@ -23,8 +23,10 @@ import { BASE_URL } from "../utils/constants";
 const Quiz = () => {
   const navigate = useNavigate();
   const questions = useSelector((store) => store.quiz.questions);
-  const selectedCategory = useSelector((store) => store.category.selectedCategory);
-  
+  const selectedCategory = useSelector(
+    (store) => store.category.selectedCategory
+  );
+
   console.log("questions", questions.length);
   const currentQuestionIndex = useSelector(
     (store) => store.quiz.currentQuestionIndex
@@ -69,8 +71,15 @@ const Quiz = () => {
         alert(
           `Quiz complete! Your score: ${
             isAnswerCorrect ? userScore + 10 : userScore - 5
-          }/${questions.length * 10}`
-        );
+          }/${questions.length * 10}` );
+
+          if (isAnswerCorrect) {
+            dispatch(setTotalScore(userScore + 10));
+          } else {
+            dispatch(setTotalScore(userScore - 5));
+          }
+          console.log("userScore", userScore);
+          
         dispatch(resetLifeLine());
         dispatch(resetQuiz());
         dispatch(setTotalScore(userScore));
@@ -84,23 +93,25 @@ const Quiz = () => {
   }
 
   console.log("selectedCategory", selectedCategory);
-  
+
   return (
     <div className="max-auto p-4 h-screen shadow-md flex flex-col overflow-y-auto">
       <UserScore />
 
       <div>
-        <h1 className="text-white text-2xl font-semibold text-center p-4">{selectedCategory}</h1>
+        <h1 className="text-white text-2xl font-semibold text-center p-4">
+          {selectedCategory}
+        </h1>
         <ProgressBar />
 
         <QuizCard />
         <button
-        onClick={handleAnswerSubmit}
-        disabled={!userAnswer || isAnswerSubmitted}
-        className="w-full p-2 bg-green-500 text-white rounded-b-lg hover:bg-green-600 transition duration-300 cursor-pointer"
-      >
-        Submit Answer
-      </button>
+          onClick={handleAnswerSubmit}
+          disabled={!userAnswer || isAnswerSubmitted}
+          className="w-full p-2 bg-green-500 text-white rounded-b-lg hover:bg-green-600 transition duration-300 cursor-pointer"
+        >
+          Submit Answer
+        </button>
         <LifeLine />
 
         <Feedback />

@@ -6,9 +6,9 @@ const ProgressBar = () => {
   const totalQuestions = useSelector((store) => store.quiz.questions.length);
   const progress = (currentQuestionIndex  / (totalQuestions)) * 100;
   return (
-    <div className="w-full bg-gray-200 h-1 mb-1">
+    <div className="w-full mb-1">
       <div
-        className="bg-blue-500 h-1"
+        className="bg-red-500 h-1 rounded-full"
         style={{ width: `${progress}%` }}
       ></div>
     </div>
