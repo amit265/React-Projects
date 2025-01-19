@@ -22,7 +22,7 @@ const NavBar = () => {
 
   return (
     <div className="navbar bg-base-200">
-      <Link to="/" className="flex-1">
+      <Link to="/feed" className="flex-1">
         <h1 className="btn btn-ghost text-xl">💕 DevTinder</h1>
       </Link>
       <div>{user ? <h1>Welcome {user?.firstName}</h1> : <h1></h1>}</div>
@@ -54,7 +54,11 @@ const NavBar = () => {
                 <span className="badge">New</span>
               </Link>
             </li>
-            <li>Settings</li>
+            <li>
+              <Link className="justify-between" to="/connections">
+                Matches
+              </Link>
+            </li>
             <li>
               <h1 onClick={handleLogout}>Logout</h1>
             </li>
