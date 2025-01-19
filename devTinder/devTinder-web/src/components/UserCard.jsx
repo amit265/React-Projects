@@ -6,11 +6,11 @@ const UserCard = ({ user }) => {
   return (
     <div className="card bg-base-300 w-96 shadow-xl">
       <figure>
-        <img className="w-full" src={photoUrl} alt="userPhoto" />
+        <img className="w-full p-4" src={photoUrl} alt="userPhoto" />
       </figure>
       <div className="card-body">
         <h2 className="cardTitle">{firstName + " " + lastName}</h2>
-        {age && gender && <p>{age + " " + gender}</p>}
+        {age && gender && <p>{age + ", " + gender}</p>}
         <p>{about}</p>
         <div className="card-actions justify-center my-4">
           <button className="btn btn-primary">Ignore</button>

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../utils/constants";
-import { addRequests } from "../utils/requestSlice";
+import { addRequests, removeRequest } from "../utils/requestSlice";
 
 const Requests = () => {
   const dispatch = useDispatch();
@@ -23,6 +23,22 @@ const Requests = () => {
   useEffect(() => {
     fetchRequests();
   }, []);
+
+  const reviewRequest = async (status, _id) => {
+    try {
+      const res = await axios.post(
+        `${BASE_URL}/request/review/${status}/${_id}`,
+        {}, // Empty body if no payload is required
+        {
+          withCredentials: true, // Ensure this is part of the Axios config, not the body
+        }
+      );
+      console.log(res.data);
+      dispatch(removeRequest(_id));
+    } catch (error) {
+      console.log("error from request", error);
+    }
+  };
 
   if (!requests) return;
   if (requests.length === 0)
@@ -57,18 +73,19 @@ const Requests = () => {
               <p className="text-gray-600">{request.fromUserId.about}</p>
             </div>
             <div className="flex flex-col gap-4 justify-center items-center">
-            <button
-              className="h-10 w-full p-2 rounded-lg text-white bg-green-500 hover:bg-green-700"
-              onClick={() => {
-                // Handle accept request logic here
-              }}
-              >Accept</button>
+              <button
+                className="h-10 w-full p-2 rounded-lg text-white bg-green-500 hover:bg-green-700"
+                onClick={() => reviewRequest("accepted", request._id)}
+              >
+                Accept
+              </button>
               <button
                 className="h-10 p-2 w-full rounded-lg text-white bg-red-500 hover:bg-red-700"
-                onClick={() => {
-                    // Handle decline request logic here
-              }}>Reject</button>
-              </div>
+                onClick={() => reviewRequest("rejected", request._id)}
+              >
+                Reject
+              </button>
+            </div>
           </div>
         ))}
       </div>

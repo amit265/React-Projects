@@ -34,7 +34,7 @@ const Connections = () => {
   return (
     <div>
       <h1 className="text-center font-bold py-8 text-2xl">Connections</h1>
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-col items-center gap-2 flex-wrap justify-center">
         {connections.map((connection) => (
           <div key={connection._id} className="w-1/3 p-4 flex flex-row bg-slate-300 rounded-lg">
             <div>
