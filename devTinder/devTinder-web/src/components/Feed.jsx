@@ -3,6 +3,7 @@ import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../utils/feedSlice";
 import axios from "axios";
+import UserCard from "./UserCard";
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -26,22 +27,15 @@ const Feed = () => {
   };
   useEffect(() => {
     getFeed();
-  });
+  }, []);
   return (
-    <div>
-      {err && <p>{err}</p>}
-      <h1>Feed</h1>
+    <div className="flex flex-col items-center justify-center my-10">
+      {/* <h1>Feed</h1> */}
       {/* Add more feed items here */}
       {/* <FeedItem key={feed.id} data={feed} /> */}
-      {feeds.map((feed) => (
-        <div key={feed._id}>
-          <h3>userId - {feed._id}</h3>
-          <img src={feed.photoUrl} width={100} alt="" className="src" />
-          <h2>{feed.firstName + " " + feed.lastName}</h2>
-          <h2>{feed.password}</h2>
-          <h3>{feed.about}</h3>
-        </div>
-      ))}
+      {feeds && feeds.map((feed) => (
+        <UserCard key={feed._id} user={feed} />
+       ))}
     </div>
   );
 };
