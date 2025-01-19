@@ -7,6 +7,7 @@ import appStore from "./utils/appStore";
 import Feed from "./components/Feed";
 import NotFound from "./components/NotFound";
 import Connections from "./components/Connections";
+import Requests from "./components/Requests";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/feed" element={<Feed />} />
               <Route path="/connections" element={<Connections />} />
+              <Route path="/requests" element={<Requests />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
