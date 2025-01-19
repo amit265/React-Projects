@@ -8,7 +8,6 @@ import UserCard from "./UserCard";
 const Feed = () => {
   const dispatch = useDispatch();
   const feed = useSelector((store) => store.feed);
-  const [feeds, setFeeds] = useState([]);
   const [err, setErr] = useState("");
   const getFeed = async () => {
     if (feed) return;
@@ -17,7 +16,6 @@ const Feed = () => {
         withCredentials: true,
       });
       console.log("res from feed", res.data.data);
-      setFeeds(res.data.data);
       dispatch(addFeed(res.data.data));
     } catch (error) {
       setErr(error.message);
@@ -28,14 +26,15 @@ const Feed = () => {
   useEffect(() => {
     getFeed();
   }, []);
+
+  if (!feed) return;
+  if (feed.length <= 0) return <h1 className="text-xl text-red-600 text-center py-10">No more user left</h1>;
   return (
     <div className="flex flex-col items-center justify-center my-10">
       {/* <h1>Feed</h1> */}
       {/* Add more feed items here */}
       {/* <FeedItem key={feed.id} data={feed} /> */}
-      {feeds && feeds.map((feed) => (
-        <UserCard key={feed._id} user={feed} />
-       ))}
+      {feed && <UserCard user={feed[0]} />}
     </div>
   );
 };
