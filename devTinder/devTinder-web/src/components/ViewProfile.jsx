@@ -50,13 +50,13 @@ const ViewProfile = () => {
           {/* Action Buttons */}
           <div className="flex justify-between gap-4">
             <button
-              className="flex-grow px-4 py-2 text-sm rounded-lg text-white bg-red-500 hover:bg-red-600 transition-colors duration-200"
+              className="flex-grow px-4 py-2 text-sm rounded-lg text-white bg-green-500 hover:bg-green-600 transition-colors duration-200"
               // onClick={() => handleSendRequest("ignored", _id)}
             >
-              Message
+             Send Message
             </button>
             <button
-              className="flex-grow px-4 py-2 text-sm rounded-lg text-white bg-green-500 hover:bg-green-600 transition-colors duration-200"
+              className="flex-grow px-4 py-2 text-sm rounded-lg text-white bg-red-500 hover:bg-red-600 transition-colors duration-200"
               // onClick={() => handleSendRequest("interested", _id)}
             >
               Remove

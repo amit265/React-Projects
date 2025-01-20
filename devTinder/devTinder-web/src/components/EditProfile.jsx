@@ -125,7 +125,6 @@ const EditProfile = ({ user }) => {
                 className="input input-bordered w-full max-w-xs"
               />
             </label>
-            
 
             <p className="text-red-500">{error}</p>
             <div className="card-actions justify-end">
@@ -136,7 +135,7 @@ const EditProfile = ({ user }) => {
           </div>
         </div>
         <UserCard
-          user={{ firstName, lastName, photoUrl, age, gender, about }}
+          user={{ firstName, lastName, photoUrl, age, gender, about }} edit = {true}
         />
       </div>
       {showToast && (

@@ -7,8 +7,9 @@ const Profile = () => {
   return (
     <div className='mb-50'>
      <EditProfile user={user}/>
+
     </div>
   )
 }
 
-export default Profile
+export default Profile;

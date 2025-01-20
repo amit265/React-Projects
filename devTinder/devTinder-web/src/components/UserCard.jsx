@@ -4,7 +4,7 @@ import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { removeUserFromFeed } from "../utils/feedSlice";
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, edit }) => {
   const { _id, firstName, lastName, photoUrl, age, gender, about } = user;
   const dispatch = useDispatch();
   const handleSendRequest = async (status, userId) => {
@@ -49,7 +49,7 @@ const UserCard = ({ user }) => {
         </p>
 
         {/* Action Buttons */}
-        <div className="flex justify-between gap-4">
+        {!edit && <div className="flex justify-between gap-4">
           <button
             className="flex-grow px-4 py-2 text-sm rounded-lg text-white bg-red-500 hover:bg-red-600 transition-colors duration-200"
             onClick={() => handleSendRequest("ignored", _id)}
@@ -62,7 +62,7 @@ const UserCard = ({ user }) => {
           >
             Interested
           </button>
-        </div>
+        </div>}
       </div>
     </div>
   );
