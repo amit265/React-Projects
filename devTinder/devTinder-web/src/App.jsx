@@ -8,6 +8,7 @@ import Feed from "./components/Feed";
 import NotFound from "./components/NotFound";
 import Connections from "./components/Connections";
 import Requests from "./components/Requests";
+import ViewProfile from "./components/ViewProfile";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/feed" element={<Feed />} />
               <Route path="/connections" element={<Connections />} />
               <Route path="/requests" element={<Requests />} />
+              <Route path="/profile/:_id" element={<ViewProfile />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
