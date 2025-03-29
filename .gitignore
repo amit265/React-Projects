@@ -1,0 +1,86 @@
+# ===========================
+# Dependencies
+# ===========================
+node_modules/
+
+# ===========================
+# Expo
+# ===========================
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# ===========================
+# Native (Android/iOS)
+# ===========================
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+/android
+/ios
+*.xcworkspace
+*.xcodeproj/
+Pods/
+DerivedData/
+build/
+*.keystore
+
+# ===========================
+# Metro
+# ===========================
+.metro-health-check*
+
+# ===========================
+# Debugging
+# ===========================
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# ===========================
+# macOS
+# ===========================
+.DS_Store
+*.pem
+
+# ===========================
+# Environment Files
+# ===========================
+.env
+.env*.local
+
+# ===========================
+# TypeScript
+# ===========================
+*.tsbuildinfo
+
+# ===========================
+# Logs
+# ===========================
+*.log
+*.gz
+*.zip
+
+# ===========================
+# IDE / Editor Config Files
+# ===========================
+.vscode/
+.idea/
+*.iml
+
+# ===========================
+# Misc
+# ===========================
+.qodo
+app-example
+Thumbs.db
+
+
+# Ignore build artifacts
+*.aab
+*.apk
+build/
