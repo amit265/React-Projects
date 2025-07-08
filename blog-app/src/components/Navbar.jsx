@@ -47,10 +47,8 @@ function Navbar() {
     <header className="bg-black fixed top-0 left-0 right-0">
       <nav className="px-4 py-4 max-w-7xl mx-auto flex justify-between">
         <a href="/" className="text-xl font-bold text-orange-700">
-          <span className="text-white text-2xl">{"<"}</span>Code
           <span className="text-white">
-            Respite<span className="blink">/</span>
-            <span className="text-orange-500 text-2xl">{">"}</span>
+            Blog App
           </span>
         </a>
 

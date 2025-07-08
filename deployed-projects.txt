@@ -1,0 +1,6 @@
+articles-card → https://articles-card-k21t0b0wo-amits-projects-881fb715.vercel.app
+bg-changer → https://bg-changer-dimaju8cn-amits-projects-881fb715.vercel.app
+blog-app → https://blog-3wyqlcxh2-amits-projects-881fb715.vercel.app
+bpsc-answerwriting → FAILED
+calculator → FAILED
+customer-details-portal → FAILED

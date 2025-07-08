@@ -1,8 +1,9 @@
-import  { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import BlogCards from "./BlogCards";
 import Pagination from "./Pagination";
 import CategorySelection from "./CategorySelection";
 import SideBar from "./SideBar";
+import { DataContext } from "../context/DataContext";
 
 function BlogPage() {
   const [blogs, setBlogs] = useState([]);
@@ -10,21 +11,27 @@ function BlogPage() {
   const pageSize = 12;
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [activeCategory, setActiveCategory] = useState(null);
-  
+
+  const { data } = useContext(DataContext); // full dataset from context
+
   useEffect(() => {
-    let url = `https://coderespite.com/api/blogsData.json?page=${currentPage}&limit=${pageSize}`;
+    let filteredData = data;
 
-    //filter by category
-
+    // Filter by selected category if any
     if (selectedCategory) {
-      url += `&category=${selectedCategory}`;
+      filteredData = filteredData.filter(
+        (blog) => blog.category === selectedCategory
+      );
     }
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setBlogs(data));
-  }, [currentPage, pageSize, selectedCategory]);
 
-  //page changing  btn
+    // Pagination logic
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const paginatedData = filteredData.slice(startIndex, endIndex);
+
+    setBlogs(paginatedData);
+  }, [currentPage, selectedCategory, data]);
+
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -37,7 +44,7 @@ function BlogPage() {
 
   return (
     <>
-      {/* category section */}
+      {/* Category Section */}
       <div>
         <CategorySelection
           onSelectCategory={handleCategoryChange}
@@ -46,7 +53,7 @@ function BlogPage() {
         />
       </div>
 
-      {/* Blog card  */}
+      {/* Blog Cards and Sidebar */}
       <div className="flex flex-col lg:flex-row gap-12">
         <BlogCards
           blogs={blogs}
@@ -55,20 +62,20 @@ function BlogPage() {
           pageSize={pageSize}
         />
 
-
-      {/* Side bar */}
-    <div>
-      <SideBar />
-    </div>
+        <div>
+          <SideBar />
+        </div>
       </div>
-
-
 
       {/* Pagination */}
       <div>
         <Pagination
           onPageChange={handlePageChange}
-          blogs={blogs}
+          blogs={
+            selectedCategory
+              ? data.filter((blog) => blog.category === selectedCategory)
+              : data
+          }
           currentPage={currentPage}
           pageSize={pageSize}
         />

@@ -1,1 +1,1 @@
-export const BASE_URL = "/projects/react/react-router";
+export const BASE_URL = "";

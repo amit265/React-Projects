@@ -1,6 +1,6 @@
 // DataContext.js
 import { createContext, useState, useEffect } from 'react';
-
+import jsonData from '../assets/blogData.json'; // Adjust the path as necessary
 // Create a context with initial value (optional)
 export const DataContext = createContext();
 
@@ -12,13 +12,13 @@ export const DataProvider = ({ children }) => {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
+  // console.log('DataContext:', jsonData);
+  
+
+  const fetchData = () => {
     try {
-      const response = await fetch('https://coderespite.com/api/blogsData.json');
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const jsonData = await response.json();
+     
+      
       setData(jsonData);
     } catch (error) {
       console.error('Fetch error:', error);
